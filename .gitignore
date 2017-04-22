@@ -2,7 +2,7 @@
 .DS_Store
 .project
 .settings
-!/data/runtime/
+/data/runtime/
 .idea
 
 
