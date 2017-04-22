@@ -1,16 +1,24 @@
-<!doctype html>
+<?php if (!defined('THINK_PATH')) exit();?><!doctype html>
 <html>
 <head>
-<include file="Public:head" />
+<meta charset="utf-8" />
+<title>ThinkCMF安装</title>
+<link rel="stylesheet" href="/thinkcmfx/public/simpleboot/themes/flat/theme.min.css" />
+<link rel="stylesheet" href="/thinkcmfx/public/install/css/install.css" />
+<link rel="stylesheet" href="/thinkcmfx/public/simpleboot/font-awesome/4.4.0/css/font-awesome.min.css" />
+
 </head>
 <body>
 	<div class="wrap">
-		<include file="Public:header" />
+		<div class="header">
+	<h1 class="logo">ThinkCMF 安装向导</h1>
+	<div class="version"><?php echo (THINKCMF_VERSION); ?></div>
+</div>
 		<div class="section">
 			<div class="main">
 				<pre class="agreement">ThinkCMF软件使用协议
 
-版权所有 ©2013-{:date("Y")},ThinkCMF开源社区
+版权所有 ©2013-<?php echo date("Y");?>,ThinkCMF开源社区
 
 感谢您选择ThinkCMF内容管理框架, 希望我们的产品能够帮您把网站发展的更快、更好、更强！
 
@@ -49,10 +57,12 @@ ThinkCMF免责声明
   2、您一旦安装使用ThinkCMF，即被视为完全理解并接受本协议的各项条款，在享有上述条款授予的权力的同时，受到相关的约束和限制。</pre>
 			</div>
 			<div class="bottom text-center">
-				<a href="__ROOT__/index.php?g=install&a=step2" class="btn btn-primary">{:L('ACCEPT')}</a>
+				<a href="/thinkcmfx/index.php?g=install&a=step2" class="btn btn-primary"><?php echo L('ACCEPT');?></a>
 			</div>
 		</div>
 	</div>
-	<include file="Public:footer" />
+	<div class="footer">
+	&copy; 2013-<?php echo date('Y');?> <a href="http://www.thinkcmf.com" target="_blank">ThinkCMF</a>简约风网络科技出品
+</div>
 </body>
 </html>

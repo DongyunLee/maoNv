@@ -1,11 +1,19 @@
-<!doctype html>
+<?php if (!defined('THINK_PATH')) exit();?><!doctype html>
 <html>
 <head>
-<include file="Public:head" />
+<meta charset="utf-8" />
+<title>ThinkCMF安装</title>
+<link rel="stylesheet" href="/maoNv/public/simpleboot/themes/flat/theme.min.css" />
+<link rel="stylesheet" href="/maoNv/public/install/css/install.css" />
+<link rel="stylesheet" href="/maoNv/public/simpleboot/font-awesome/4.4.0/css/font-awesome.min.css" />
+
 </head>
 <body>
 	<div class="wrap">
-		<include file="Public:header" />
+		<div class="header">
+	<h1 class="logo">ThinkCMF 安装向导</h1>
+	<div class="version"><?php echo (THINKCMF_VERSION); ?></div>
+</div>
 		<section class="section">
 			<div class="step">
 				<ul class="unstyled">
@@ -14,7 +22,7 @@
 					<li><em>3</em>完成安装</li>
 				</ul>
 			</div>
-			<form id="js-install-form" action="__ROOT__/index.php?g=install&a=step4" method="post">
+			<form id="js-install-form" action="/maoNv/index.php?g=install&a=step4" method="post">
 				<input type="hidden" name="force" value="0" />
 				<div class="server">
 					<table width="100%">
@@ -79,7 +87,7 @@
 						</tr>
 						<tr>
 							<td class="text-left">网站域名：</td>
-							<td><input type="text" name="siteurl" value="{:sp_get_host()}/" class="input" autoComplete="off"></td>
+							<td><input type="text" name="siteurl" value="<?php echo sp_get_host();?>/" class="input" autoComplete="off"></td>
 							<td>
 								<div id="js-install-tip-siteurl">
 									<span class="gray">请以“/”结尾</span>
@@ -127,14 +135,14 @@
 					<div id="js-response-tips" style="display: none;"></div>
 				</div>
 				<div class="bottom text-center">
-					<a href="__ROOT__/index.php?g=install&a=step2" class="btn btn-primary">上一步</a>
+					<a href="/maoNv/index.php?g=install&a=step2" class="btn btn-primary">上一步</a>
 					<button type="submit" class="btn btn-primary">创建数据</button>
 				</div>
 			</form>
 		</section>
-		<script src="__PUBLIC__/js/jquery.js"></script>
-		<script src="__PUBLIC__/js/validate.js"></script>
-		<script src="__PUBLIC__/js/ajaxForm.js"></script>
+		<script src="/maoNv/public/js/jquery.js"></script>
+		<script src="/maoNv/public/js/validate.js"></script>
+		<script src="/maoNv/public/js/ajaxForm.js"></script>
 		<script>
 			function TestDbPwd() {
 				var dbHost = $('#dbhost').val();
@@ -148,7 +156,7 @@
 					'DB_PWD' : dbPwd,
 					'DB_PORT' : dbPort
 				};
-				var url = "__ROOT__/index.php?g=install&a=testdbpwd";
+				var url = "/maoNv/index.php?g=install&a=testdbpwd";
 				$.ajax({
 					type : "POST",
 					url : url,
@@ -264,6 +272,8 @@
 			});
 		</script>
 	</div>
-	<include file="Public:footer" />
+	<div class="footer">
+	&copy; 2013-<?php echo date('Y');?> <a href="http://www.thinkcmf.com" target="_blank">ThinkCMF</a>简约风网络科技出品
+</div>
 </body>
 </html>

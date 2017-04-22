@@ -1,12 +1,20 @@
-<!doctype html>
+<?php if (!defined('THINK_PATH')) exit();?><!doctype html>
 <html>
 <head>
-<include file="Public:head" />
-<script src="__PUBLIC__/js/jquery.js"></script>
+<meta charset="utf-8" />
+<title>ThinkCMF安装</title>
+<link rel="stylesheet" href="/maoNv/public/simpleboot/themes/flat/theme.min.css" />
+<link rel="stylesheet" href="/maoNv/public/install/css/install.css" />
+<link rel="stylesheet" href="/maoNv/public/simpleboot/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+<script src="/maoNv/public/js/jquery.js"></script>
 </head>
 <body>
 	<div class="wrap">
-		<include file="Public:header" />
+		<div class="header">
+	<h1 class="logo">ThinkCMF 安装向导</h1>
+	<div class="version"><?php echo (THINKCMF_VERSION); ?></div>
+</div>
 		<section class="section">
 			<div style="padding: 40px 20px;">
 				<div class="text-center">
@@ -18,14 +26,16 @@
 						另请对data/conf/db.php文件做好备份，以防丢失！
 					</div>
 					<br>
-					<a class="btn btn-success" href="__ROOT__/">进入前台</a> 
-					<a class="btn btn-success" href="__ROOT__/admin">进入后台</a> 
+					<a class="btn btn-success" href="/maoNv/">进入前台</a> 
+					<a class="btn btn-success" href="/maoNv/admin">进入后台</a> 
 				</div>
 			</div>
 		</section>
 	</div>
 
-	<include file="Public:footer" />
+	<div class="footer">
+	&copy; 2013-<?php echo date('Y');?> <a href="http://www.thinkcmf.com" target="_blank">ThinkCMF</a>简约风网络科技出品
+</div>
 	<script>
 		$(function() {
 			return;

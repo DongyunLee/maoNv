@@ -1,11 +1,19 @@
-<!doctype html>
+<?php if (!defined('THINK_PATH')) exit();?><!doctype html>
 <html>
 <head>
-<include file="Public:head" />
+<meta charset="utf-8" />
+<title>ThinkCMF安装</title>
+<link rel="stylesheet" href="/thinkcmfx/public/simpleboot/themes/flat/theme.min.css" />
+<link rel="stylesheet" href="/thinkcmfx/public/install/css/install.css" />
+<link rel="stylesheet" href="/thinkcmfx/public/simpleboot/font-awesome/4.4.0/css/font-awesome.min.css" />
+
 </head>
 <body>
 	<div class="wrap">
-		<include file="Public:header" />
+		<div class="header">
+	<h1 class="logo">ThinkCMF 安装向导</h1>
+	<div class="version"><?php echo (THINKCMF_VERSION); ?></div>
+</div>
 		<section class="section">
 			<div class="step">
 				<ul class="unstyled">
@@ -25,13 +33,13 @@
 					<tr>
 						<td>操作系统</td>
 						<td>类UNIX</td>
-						<td><i class="fa fa-check correct"></i> {$os}</td>
+						<td><i class="fa fa-check correct"></i> <?php echo ($os); ?></td>
 						<td>不限制</td>
 					</tr>
 					<tr>
 						<td>PHP版本</td>
 						<td>>5.6.x</td>
-						<td><i class="fa fa-check correct"></i> {$phpversion}</td>
+						<td><i class="fa fa-check correct"></i> <?php echo ($phpversion); ?></td>
 						<td>5.3.0</td>
 					</tr>
 					<!-- 模块检测 -->
@@ -44,7 +52,7 @@
 						<td>session</td>
 						<td>开启</td>
 						<td>
-							{$session}
+							<?php echo ($session); ?>
 						</td>
 						<td>开启</td>
 					</tr>
@@ -57,7 +65,7 @@
 						</td>
 						<td>开启</td>
 						<td>
-							{$pdo}
+							<?php echo ($pdo); ?>
 						</td>
 						<td>开启</td>
 					</tr>
@@ -70,7 +78,7 @@
 						</td>
 						<td>开启</td>
 						<td>
-							{$pdo_mysql}
+							<?php echo ($pdo_mysql); ?>
 						</td>
 						<td>开启</td>
 					</tr>
@@ -83,7 +91,7 @@
 						</td>
 						<td>开启</td>
 						<td>
-							{$curl}
+							<?php echo ($curl); ?>
 						</td>
 						<td>开启</td>
 					</tr>
@@ -96,7 +104,7 @@
 						</td>
 						<td>开启</td>
 						<td>
-							{$gd}
+							<?php echo ($gd); ?>
 						</td>
 						<td>开启</td>
 					</tr>
@@ -109,7 +117,7 @@
 						</td>
 						<td>开启</td>
 						<td>
-							{$mbstring}
+							<?php echo ($mbstring); ?>
 						</td>
 						<td>开启</td>
 					</tr>
@@ -123,7 +131,7 @@
 						<td>附件上传</td>
 						<td>>2M</td>
 						<td>
-							{$upload_size}
+							<?php echo ($upload_size); ?>
 						</td>
 						<td>不限制</td>
 					</tr>
@@ -134,35 +142,31 @@
 						<td class="td1" width="25%">写入</td>
 						<td class="td1" width="25%">读取</td>
 					</tr>
-					<foreach name="folders" item="vo" key="dir">
-						<tr>
+					<?php if(is_array($folders)): foreach($folders as $dir=>$vo): ?><tr>
 							<td>
-								./{$dir}
+								./<?php echo ($dir); ?>
 							</td>
 							<td>
-								<if condition="$vo['w']">
-									<i class="fa fa-check correct"></i> 可写 
-								<else/>
-									<i class="fa fa-remove error"></i> 不可写 
-								</if>
+								<?php if($vo['w']): ?><i class="fa fa-check correct"></i> 可写 
+								<?php else: ?>
+									<i class="fa fa-remove error"></i> 不可写<?php endif; ?>
 							</td>
 							<td>
-								<if condition="$vo['r']">
-									<i class="fa fa-check correct"></i> 可读
-								<else/>
-									<i class="fa fa-remove error"></i> 不可读
-								</if>
+								<?php if($vo['r']): ?><i class="fa fa-check correct"></i> 可读
+								<?php else: ?>
+									<i class="fa fa-remove error"></i> 不可读<?php endif; ?>
 							</td>
-						</tr>
-					</foreach>
+						</tr><?php endforeach; endif; ?>
 				</table>
 			</div>
 			<div class="bottom text-center">
-				<a href="__ROOT__/index.php?g=install&a=step2" class="btn btn-primary">重新检测</a>
-				<a href="__ROOT__/index.php?g=install&a=step3" class="btn btn-primary">下一步</a>
+				<a href="/thinkcmfx/index.php?g=install&a=step2" class="btn btn-primary">重新检测</a>
+				<a href="/thinkcmfx/index.php?g=install&a=step3" class="btn btn-primary">下一步</a>
 			</div>
 		</section>
 	</div>
-	<include file="Public:footer" />
+	<div class="footer">
+	&copy; 2013-<?php echo date('Y');?> <a href="http://www.thinkcmf.com" target="_blank">ThinkCMF</a>简约风网络科技出品
+</div>
 </body>
 </html>
