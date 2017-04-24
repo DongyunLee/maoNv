@@ -1,0 +1,68 @@
+
+/*时装搭配*/
+.model{
+	max-width: 1000px;
+	margin: 30px auto;
+}
+.model h1{
+	text-align: center;
+	line-height: 80px;
+	
+}
+.model a{
+	display: block;
+	text-align: center;
+	position: relative;
+	color: #101010;
+}
+.model img{
+	display: block;
+}
+.model a p{
+	position: absolute;
+	width: 90%;
+	height: 60px;
+	line-height: 60px;
+	background: rgba(0,0,0,0.5);
+	bottom: 0;	
+	left: 5%;
+	color: #FFFFFF;
+}
+.model1{
+	min-height: 500px;
+}
+.model1 img:hover{
+	opacity: 0.9;
+}
+.model1 a:hover{
+	
+	box-shadow: 1px 1px 5px #222222;	
+}
+
+/*排行*/
+.rank1 h3{
+	max-width: 400px;
+	margin: 24px auto;
+	line-height: 36px;
+	font-size: 24px;
+	border-bottom: 2px solid #101010;
+	text-align: center;
+	color: #101010;
+	font-weight: 600;
+}
+.rank1 a{
+	text-align: left;
+	line-height: 34px;
+	border-bottom: 1px solid #DDDDDD;
+	padding-left: 10px;
+}
+.rank1 a span{
+	font-family: "agency fb";
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: 10px;
+	color: #101010;
+}
+.rank1 a:hover{
+	color: #E00A00;
+}

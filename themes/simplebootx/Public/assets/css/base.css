@@ -1,0 +1,1272 @@
+/*预设*/
+*{margin:0;padding:0;outline:none;}
+html,body{font-size: 12px;color: #333; background-color: #fff; font-family:"宋体" "微软雅黑";}
+ul,ol{list-style-type:none}
+a{text-decoration:none;blr:expression(this.onFocus=this.blur());color:#666666;cursor:pointer;}
+a:hover{text-decoration:none;} a:focus{outline:none;}li:focus{outline:none;}
+article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary{display:block;}
+img{border:none;}
+input[type=text],input[type=password]{background: #fff;padding:0px 5px;color:#666;border:1px solid #d8d8d8;} 
+.clearfix:after {content: ".";display: block;height: 0;clear: both; visibility: hidden;}  
+.clearfix {zoom:1;}
+.fl{float:left;}
+.fr{float:right;}
+.clear_fr{ clear:both;}
+.boxSizing{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+
+header .headMain>ul>li:nth-child(5),
+nav .navBox form input:last-child{
+	background-image: url(../img/sprits01.png);
+}
+/**************************************返回顶部*************************/
+a.go_top{
+	position: fixed;
+	right: 30px;
+	bottom: 120px;
+	width: 30px;
+	height: 30px;
+	display: none;
+}
+/*********************************header**************************************/
+header .headMain select{
+	background: rgba(255,255,255,0);
+	border: none;
+	text-align: right;
+	cursor: pointer;
+	color: #666;
+	font-size: 12px;
+	
+}
+header .headMain select option{
+	
+	border: none;
+	
+}
+header .headMain{
+	width:1190px;
+	margin: 0 auto;
+	height: 36px;
+	line-height: 36px;
+}
+header .headMain>p{
+	padding-left: 14px;
+}
+header .headMain>ul>li{
+	float: left;
+}
+header .headMain>ul>li{
+	margin-right: 26px;
+}
+header .headMain>ul>li:last-child{
+	margin-right: 16px;
+}
+header .headMain>ul>li:first-child span{
+	padding: 0 5px;
+}
+header .headMain>ul>li:nth-child(5){
+	
+	background-position: -13px -443px;
+}
+header .headMain>ul>li:nth-child(5) a{
+	display: inline-block;
+	text-indent: 20px;
+}
+header .headMain>ul>li:nth-child(5) span{
+	color: #fa2222;
+}
+header .headMain ul li a:hover{
+	color: #FA2222;
+}
+
+header .headMain ul li.dhBox{
+	position: relative;
+	
+	cursor: pointer;
+}
+header .headMain ul li.dhBox .dhMain{
+	position: absolute;
+	top: 36px;
+	right: 0;
+	z-index: 100;
+	padding: 16px 10px;
+	width: 715px;
+	height: 182px;
+	background: rgba(255,255,255,0.8);
+	border: 1px solid #EDEDED;
+	box-shadow: 2px 2px 13px #777,
+				-2px -2px 13px #777;
+	-webkit-box-shadow: 2px 2px 13px #777,
+				-2px -2px 13px #777;
+	display: none;
+}
+header .headMain ul li.dhBox .dhMain span{
+	position: absolute;
+	top: -17px;
+	right: 17px;
+	z-index: 1;
+	width:0;    
+	height:0;   
+	border:8px solid transparent;    
+	border-bottom-color:rgba(255,255,255,0.8);
+}
+header .headMain ul li.dhBox .dhMain>li{
+	float: left;
+	padding: 0 30px;
+	width: 191px;
+	height: 148px;
+	border-right: 1px solid #d9d9d9;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+header .headMain ul li.dhBox .dhMain>li:last-child{
+	width: 120px;
+	border: none;
+}
+header .headMain ul li.dhBox .dhMain>li p{
+	color: #3e3e3e;
+	font-weight: bold;
+	font-size: 14px;
+	cursor: auto;
+}
+header .headMain ul li.dhBox .dhMain>li ul>li{
+	float: left;
+	width: 65px;
+	height: 28px;
+	line-height: 28px;
+	color: #999999;
+	white-space: nowrap;
+}
+
+
+
+
+
+
+/***********************************logo******************************/
+.hLogo{
+	width: 100%;
+	min-width: 1190px;
+}
+.hLogo a{
+	position: relative;
+	top: -20px;
+	left: 0;
+	margin-left: -60px;
+	display:block;
+	margin: 0 auto;
+	width: 120px;
+}
+/**********************************nav*************************/
+nav{
+	height: 36px;
+	line-height: 36px;
+	border-bottom: 2px solid #333;
+}
+nav .navBox{
+	width: 1190px;
+	margin: 0 auto;
+}
+nav .navBox ul li{
+	position: relative;
+	float: left;
+	font-size: 16px;
+}
+nav .navBox ul li a{
+	display: inline-block;
+	width: 100px;
+	text-align: center;
+	font-weight: bold;
+}
+nav .navBox ul li.on a{
+	border-bottom: 2px solid #FA2222;
+	
+}
+nav .navBox ul li.on span{
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-left: -8px;
+	z-index: 1;
+	width:0;    
+	height:0;   
+	border:8px solid transparent;    
+	border-bottom-color:#FA2222;
+}
+nav .navBox form{
+	width: 330px;
+	height: 26px;
+	line-height: 26px;
+	border: 1px solid #777576;
+	border-radius: 2px;
+}
+nav .navBox form input{
+	float: left;
+	border: none;
+}
+nav .navBox form input:first-child{
+	width: 260px;
+	height: 26px;
+}
+nav .navBox form input:last-child{
+	width: 60px;
+	height: 26px;
+	background-color:#535152 ;
+	background-position: 6px -493px;
+}
+
+/************************************分类**********************************/
+ h6.classTitle{
+
+	font-size: 12px;
+	font-weight: normal;
+	text-indent: 10px;
+	opacity: 0;
+}
+ h6.classTitle span:nth-child(2){
+	padding: 0 10px;
+}
+
+
+
+/*****************************************page*********************************************8*/
+.page{
+
+	width: 500px;
+	margin: 60px auto 0;
+}
+.page li{
+	font-size: 18px;
+	float: left;
+	margin-right: 6px;
+	width: 36px;
+	height: 36px;
+	border-radius: 2px;
+	line-height: 36px;
+	text-align: center;
+	border-radius: 2px;
+	border: 1px solid #e7e7e7;
+}
+.page li a:hover{
+	transition: all 0.3s;
+	background: #FA2222;
+	color: #FFFFFF;
+}
+
+.page li.all{
+	width: 100px;
+	border: none;
+	font-size: 15px;
+}
+.page li.more{
+	margin-right: 0;
+	border: none;
+}
+.page li.next{
+	background: url(../img/page.jpg) no-repeat center center;
+}
+.page a{
+	display: block;
+}
+.page .on{
+	color: #FFFFFF;
+	background: #FA2222;
+	font-weight: bold;
+}
+
+
+
+
+/************************************myOrder*****************************/
+/*myOrder*/
+.myOrderMain{
+	margin: 0 auto;
+	width: 1190px;
+}
+/*orderTit*/
+.myOrderMain aside{
+	padding-top: 22px;
+	background: #FB475B;
+	color: #FFFFFF;
+}
+.myOrderMain aside img{
+	display: block;
+	margin: 0 auto 14px;
+	width: 104px;
+	height: 104px;
+	border:3px solid #fff;
+	border-radius: 52px;
+}
+.myOrderMain aside h3{
+	text-align: center;
+	font-size: 14px;
+	color: #FFFFFF;
+}
+.myOrderMain aside ul.orTit{
+	margin-top: 30px;
+	padding: 0 36px 40px;
+}
+.myOrderMain aside ul.orTit>li>a{
+	display: block;
+	text-align: center;
+}
+.myOrderMain aside ul.orTit>li{
+	padding: 40px 0 20px 11px;
+	/*border-top: 1px solid #c4c2c2;*/
+}
+.myOrderMain aside ul.orTit>li.rig{
+	background-position: -340px -478px;
+}
+.myOrderMain aside ul.orTit>li.up{
+	background-position: -191px -438px;
+}
+.myOrderMain aside ul.orTit>li>a{
+	color: #FFFFFF;
+	font-size: 16px;
+}
+.myOrderMain aside ul.child{
+	display: none;
+	margin-top: 14px;
+}
+.myOrderMain aside ul.child li{
+	line-height: 28px;
+	font-size: 12px;
+	color:#666666;
+}
+.myOrderMain aside ul.child li.choice a{
+	color: #FA2222;
+}
+.myOrderMain aside ul.child li span{
+	margin-left: 10px;
+	color: #FA2222;
+}
+
+/*orderMain*/
+.myOrderMain article{
+	margin-top: 22px;
+	width: 968px;
+}
+.myOrderMain article h2{
+	margin-bottom: 16px;
+	height: 40px;
+	line-height: 40px;
+	font-weight: normal;
+	font-size: 16px;
+	border-bottom: 1px solid #dfdfdf;
+}
+.myOrderMain article h2 form.bhSear{
+	width: 200px;
+	height: 25px;
+	border: 1px solid #dfdfdf;
+	border-radius: 2px;
+}
+.myOrderMain article h2 form.bhSear input{
+	height: 25px;
+	line-height: 25px;
+	border: none;
+	
+}
+.myOrderMain article h2 form.bhSear input.bh1{
+	width: 150px;
+	text-indent: 5px;
+}
+.myOrderMain article h2 form.bhSear input.bh2{
+	width: 50px;
+	background-color: #999999;
+	color: #fff;
+	border-radius: 2;
+	cursor: pointer;
+}
+
+
+
+
+.myOrderMain article header{
+	display: flex;
+	align-items: center;
+	text-align: center;
+	height: 40px;
+	background: url(../img/orbg.jpg);
+}
+.myOrderMain article header span{
+	flex: 2;
+}
+.myOrderMain article header span:nth-child(1){
+	flex: 5;
+}
+.myOrderMain article header span:nth-child(3){
+	flex: 1;
+}
+.myOrderMain article section{
+	margin: 26px 2px 0 2px;
+	border: 1px solid #dfdfdf;
+	display: block;
+}
+.myOrderMain article section>p{
+	height: 40px;
+	line-height: 40px;
+	color: #666;
+	background: #f4f4f4;
+}
+.myOrderMain article section>p span:nth-child(1){
+	margin: 0 35px 0 12px;
+}
+
+/*orCon*/
+.myOrderMain article section .orCon{
+	display: flex;
+	text-align: center;
+	line-height: 20px;
+	padding-left: 10px;
+}
+.myOrderMain article section .orCon>p{
+	flex: 2;
+	padding-top: 20px;
+}
+.myOrderMain article section .orCon dl{
+	flex: 4.7;
+	display: flex;
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+.myOrderMain article section .orCon dl dt{
+	flex: 1;
+	margin-right: 10px;
+	text-align: center;
+}
+.myOrderMain article section .orCon dl dt a{
+	display: block;
+}
+.myOrderMain article section .orCon dl dt a img{
+	display: block;
+	width: 73px;
+	height: 73px;
+}
+
+.myOrderMain article section .orCon dl dd{
+	flex: 3;
+	text-align: left;
+}
+
+.myOrderMain article section .orCon dl dd p:nth-child(2),
+.myOrderMain article section .orCon dl dd p:nth-child(3){
+	color: #999;
+}
+
+.myOrderMain article section .orCon p:nth-child(2) del{
+	display: block;
+	color: #999;
+}
+.myOrderMain article section .orCon p:nth-child(2) span{
+	font-weight: bold;
+}
+.myOrderMain article section .orCon>p:nth-child(3){
+	flex: 1;
+	font-weight: bold;
+}
+.myOrderMain article section .orCon p.power a{
+	display: block;
+	color: #85735b;
+}
+
+
+
+
+.myOrderMain article section .orCon p:nth-child(5) strong{
+	display: block;
+	font-size: 14px;
+	font-weight: normal;
+}
+.myOrderMain article section .orCon>p:nth-last-child(1),
+.myOrderMain article section .orCon>p:nth-last-child(2),
+.myOrderMain article section .orCon>p:nth-last-child(3){
+	border-left: 1px solid #ececec;
+}
+.myOrderMain article section .orCon>p:nth-last-child(2) span{
+	font-weight: bold;
+	color: #666;
+}
+.myOrderMain article section .orCon>p:nth-last-child(2) a{
+	display: block;
+	color: #85735b;
+}
+.myOrderMain article section .orCon>p:nth-last-child(1) a{
+	color: #85735b;
+}
+
+
+
+
+
+
+.myOrderMain article section .orCon>p:nth-last-child(1) a:first-child{
+	display: block;
+	margin: 0 auto 8px;
+	width: 70px;
+	height: 22px;
+	line-height: 22px;
+	text-align: center;
+	border: 1px solid #fa2222;
+	border-radius: 2px;
+	color: #FA2222;
+	font-weight: bold;
+}
+.myOrderMain article section .orCon>p:nth-last-child(1) a.confirm{
+	color: #FFFFFF;
+
+	background: #FA2222;
+}
+/*orFoot*/
+ .myOrderMain article section .orFoot{
+	display: flex;
+	height: 50px;
+	align-items: center;
+	text-align: center;
+	border-top: 1px solid #e1e1e1;
+}
+.myOrderMain article section .orFoot a:first-child{
+	flex: 11;
+	margin-left: 30px;
+	text-align: left;
+	color: #85735b;
+}
+.myOrderMain article section .orFoot p,.myOrderMain article section .orFoot form{
+	flex: 2;
+}
+.myOrderMain article section .orFoot p span{
+	font-weight: bold;
+}
+.myOrderMain article section .orFoot p:nth-child(3){
+	color: #666;
+	font-weight: bold;
+}
+
+.myOrderMain article section .orFoot form input{
+	width: 72px;
+	height: 25px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background: #FA2222;
+	border:none;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+/*noOrder*/
+.myOrderMain article .noOrder{
+	margin: 30px auto;
+	width: 480px;
+	height: 165px;
+	display: none;
+}
+.myOrderMain article .noOrder img{
+	display: block;
+	margin-right: 52px;
+}
+.myOrderMain article .noOrder div{
+	margin-top: 40px;
+	line-height: 48px;
+}
+.myOrderMain article .noOrder div p{
+	font-size: 16px;
+	font-weight: bold;
+}
+.myOrderMain article .noOrder div p.hotSell{
+	font-weight: normal;
+	font-size: 12px;
+	color: #313534;
+}
+.myOrderMain article .noOrder div p.hotSell a{
+	margin: 0 4px;
+	color: #FA2222;
+	text-decoration: underline;
+}
+
+/*pay*/
+.payzz{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.6);
+	display: none;
+}
+.payzz .payBox{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -165px;
+	margin-left: -280px;
+	padding: 30px 80px;
+	width: 560px;
+	height: 330px;
+	background: #fff;
+}
+.payzz .payBox p.payRemind{
+	margin: 10px auto 54px;
+	width: 330px;
+	line-height: 30px;
+	color: #FA2222;
+	font-size: 14px;
+}
+.payzz .payBox form{
+	margin: 0 auto;
+	width: 365px;
+}
+.payzz .payBox form p.payMain{
+	margin-bottom: 20px;
+	height: 56px;
+	font-size: 14px;
+}
+.payzz .payBox form p.payMain span:nth-child(1){
+	display: inline-block;
+	margin-right: 8px;
+	height: 30px;
+	line-height: 30px;
+}
+.payzz .payBox form p.payMain input{
+	height: 30px;
+	border-color: #cdcece;
+}
+.payzz .payBox form p.payMain a{
+	margin-left: 8px;
+	color: #85735b;
+	font-size: 12px;
+}
+
+.payzz .payBox form p.payMain span.sim{
+	display: block;
+	margin-top: 8px;
+	margin-left: 80px;
+	color: #b3b4b5;
+}
+.payzz .payBox form p.surePay input{
+	margin: 0 20px 0 80px;
+	width: 80px;
+	height: 30px;
+	color: #fff;
+	font-weight: bold;
+	background: #FA2222;
+	border: none;
+	border-radius: 2px;
+	cursor: pointer;
+}
+.payzz .payBox form p.surePay span.dnone{
+	
+	width: 80px;
+	height: 28px;
+	line-height: 30px;
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+	border: 1px solid #DFDFDF;
+	border-radius: 2px;
+	background: #C4C2C2;
+	cursor: pointer;
+}
+
+
+
+/*************myAddress**************/
+.myAddress article.addressMain{
+	width: 968px;
+}
+.myAddress article.addressMain h2{
+	margin-bottom: 16px;
+	height: 40px;
+	line-height: 40px;
+	font-weight: normal;
+	font-size: 16px;
+	border-bottom: 1px solid #dfdfdf;
+}
+.myAddress article.addressMain a.addBtn{
+	display: block;
+	margin-left: 20px;
+	width: 114px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+	background: #fb475b;
+	border-radius: 2px;
+	/*background: -moz-linear-gradient(bottom,#fa2222,#fff);*/
+				
+}
+.myAddress article.addressMain div.addCon{
+	padding-left: 20px;
+}
+.myAddress article.addressMain div.addCon>div{
+	display: flex;
+	margin-top: 10px;
+	width: 760px;
+	height: 46px;
+	line-height: 46px;
+	border: 1px solid #efefef;
+	background: #fafafa;
+}
+.myAddress article.addressMain div.addCon>div p:nth-child(1){
+	flex: 2;
+}
+.myAddress article.addressMain div.addCon>div p:nth-child(1) span:first-child{
+	margin: 0 24px 0 16px;
+}
+
+.myAddress article.addressMain div.addCon>div p:nth-child(2){
+	flex: 1;
+}
+.myAddress article.addressMain div.addCon>div p:nth-child(2) span:first-child{
+	margin-right:10px ;
+}
+
+
+.myAddress article.addressMain div.addCon>div p:nth-child(3){
+	flex: 1;
+}
+.myAddress article.addressMain div.addCon>div p:nth-child(3) a{
+	padding: 0 8px 0 10px;
+	color: #2f63cf;
+}
+.myAddress article.addressMain div.addCon>div p:nth-child(3) a:not(:last-child){
+	border-right: 1px solid #e2e2e2;
+}
+
+.myAddress article.addressMain div.addCon div.bgCol{
+	border-color: #dedcba;
+	background: #fdfbea;
+}
+/*mark*/
+.myAddress .mask{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	display: none;
+}
+.myAddress .mask .appendCon{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -184px;
+	margin-left: -380px;
+	padding: 28px 14px;
+	width: 760px;
+	height: 400px;
+	background: #fff;
+}
+.myAddress .mask .appendCon p{
+	margin-bottom: 16px;
+	height: 30px;
+	/*line-height: 30px;*/
+}
+.myAddress .mask .appendCon p span{
+	height: 26px;
+	line-height: 26px;
+}
+.myAddress .mask .appendCon p span,.myAddress .mask .appendCon p select,.myAddress .mask .appendCon p textarea{
+	float: left;
+}
+.myAddress .mask .appendCon p span:nth-child(1){
+	margin-right: 10px;
+	width: 80px;
+	text-align: right;
+	color: #676767;
+	vertical-align: middle;
+}
+.myAddress .mask .appendCon p span:nth-child(1) b{
+	font-weight: normal;
+	color: #FA2222;
+}
+
+.myAddress .mask .appendCon #test1{
+	height: 35px;
+	padding-bottom: 16px;
+}
+.myAddress .mask .appendCon #test1 span{
+	float: left;
+	line-height: 32px;
+}
+.myAddress .mask .appendCon #test1 span.protit{
+	margin-right: 10px;
+	width: 80px;
+	text-align: right
+}
+.myAddress .mask .appendCon #test1 span.protit b{
+	font-weight: normal;
+	color: #FA2222;
+}
+.myAddress .mask .appendCon #test1 .province{
+	margin-right: 16px;
+	width: 138px;
+	height: 18px;
+	line-height: 18px;
+}
+.myAddress .mask .appendCon #test1 .city{
+	margin-right: 16px;
+	height: 18px;
+	line-height: 18px;
+}
+.myAddress .mask .appendCon #test1 .area{
+	height: 18px;
+	line-height: 18px;
+}
+
+
+.myAddress .mask .appendCon p:nth-child(2) input,.myAddress .mask .appendCon p:nth-child(4) input,.myAddress .mask .appendCon p:nth-child(5) input{
+	width: 136px;
+	height: 26px;
+	line-height: 26px;
+}
+.myAddress .mask .appendCon p:nth-child(3){
+	padding-bottom: 10px;
+	height: 95px;
+}
+.myAddress .mask .appendCon p:nth-child(3) textarea{
+	width: 588px;
+	height: 60px;
+	resize: none;
+	text-indent: 5px;
+}
+.myAddress .mask .appendCon p:nth-child(3) .remind{
+	margin-top: 14px;
+	margin-left: 100px;
+	color: #999;
+}
+.myAddress .mask .appendCon p.btn .sub{
+	margin-left: 90px;
+	margin-right: 14px;
+	width: 104px;
+	height: 34px;
+	font-weight: bold;
+	color: #fff;
+	background: #fb475b;
+	border: none;
+	cursor: pointer;
+}
+.myAddress .mask .appendCon p.btn button{
+	width: 68px;
+	height:34px;
+	border: none;
+	cursor: pointer;
+}
+
+/*************************safeSet********************/
+.safeSet article.safeMain{
+	padding-bottom: 90px;
+	border: 1px solid #dfdfdf;
+}
+.safeSet article.safeMain h2{
+	margin-bottom: 78px;
+	padding-left: 12px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 14px;
+	border-bottom: 1px solid #dfdfdf;
+	background: #f9f9f9;
+}
+.safeSet article.safeMain .passwordBox{
+	width: 350px;
+	margin-left: 170px;
+}
+.safeSet article.safeMain .passwordBox p{
+	margin-bottom: 20px;
+	height: 32px;
+}
+.safeSet article.safeMain .passwordBox p span,.safeSet article.safeMain .passwordBox p input{
+	float: left;
+}
+.safeSet article.safeMain .passwordBox p span{
+	margin-right: 5px;
+	width: 58px;
+	line-height: 32px;
+	text-align: right;
+}
+.safeSet article.safeMain .passwordBox p input{
+	width: 270px;
+	height: 26px;
+}
+.safeSet article.safeMain .passwordBox input.sure{
+	margin-left: 63px;
+	width: 100px;  
+	height: 30px;
+	color: #fff;
+	font-weight: bold;
+	background: #fb475b;
+	border: none;
+}
+
+/*****************************订单详情***********************/
+.orderDetail{
+	background: #f2f2f2;
+	padding-bottom:10px ;
+}
+.orderDetail .conBox{
+	width: 960px;
+	margin: 0 auto;
+	background: #FFFFFF;
+
+}
+.orderDetail .conBox h3{
+	font-size: 18px;
+	height: 64px;
+	line-height: 64px;
+	border-bottom: 1px solid #DFDFDF;
+	padding-left: 24px;
+}
+
+/*步骤*/
+.orderDetail .step{
+	padding: 24px;
+	border-bottom: 1px solid #DFDFDF;
+}
+.orderDetail .step p{
+	display: inline;
+	margin-right: 24px;
+}
+.orderDetail .step img{
+	display: block;
+	width: 750px;
+	margin: 44px auto 0;
+}
+.orderDetail .step .time{
+	width: 816px;
+	margin: 12px auto;
+	display: flex;
+	justify-content: space-between;
+	color: #999999;
+}
+/*详细信息*/
+.orderDetail .infor{
+	padding: 0 24px 24px;
+	border-bottom: 1px solid #DFDFDF;
+}
+.orderDetail .infor h4{
+	height: 60px;
+	line-height: 60px;
+	font-size: 16px;
+}
+.orderDetail .infor p{
+	line-height: 20px;
+}
+.orderDetail label{
+	display: inline-block;
+	width: 60px;
+	text-align: right;
+	margin-right: 18px;
+}
+/*物流*/
+.orderDetail .traffic{
+	padding: 0 24px 24px;
+	line-height: 20px;
+	border-bottom: 1px solid #DFDFDF;
+}
+.orderDetail .traffic h4{
+	height: 60px;
+	line-height: 60px;
+	font-size: 16px;
+}
+.orderDetail .traffic p:nth-child(3) a{
+	margin-left: 5px;
+}
+.orderDetail .traffic .trafficInfor span{
+	display: block;
+	margin-left: 66px;
+}
+.orderDetail .traffic .trafficInfor .finish{
+	color: #cba200;
+}
+
+/*商品信息*/
+.orderDetail .goods{
+	padding: 0 24px 24px;
+	border-bottom: 1px solid #DFDFDF;
+	
+}
+.orderDetail .goods h4{
+	height: 60px;
+	line-height: 60px;
+	font-size: 16px;
+}
+.orderDetail .goods .gBox{
+	width: 910px;
+	height: 146px;
+	border:1px solid #DFDFDF;
+}
+.orderDetail .goods .gBox ul.ghead{
+	background: #eff7ff;
+	height: 30px;
+	text-align: center;
+	
+}
+.orderDetail .goods .gBox ul{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.orderDetail .goods .gBox ul li{
+	flex: 1;
+}
+.orderDetail .goods .gBox ul li:first-of-type{
+	flex: 2.4;
+}
+.orderDetail .goods .gBox{
+	text-align: center;
+}
+.orderDetail .goods .gBox .gbody{
+	padding: 14px 0;
+	line-height: 18px;
+	font-family: arial;
+}
+.orderDetail .goods .gBox .good img{
+	display: block;
+	float: left;
+	margin: 0 10px;
+	width: 61px;
+	height: 61px;
+}
+.orderDetail .goods .gBox .good p{
+	float: left;
+	width: 150px;
+	text-align: left;
+}
+.orderDetail .goods .gBox .good p span{
+	line-height: 20px;
+	color: #999;
+}
+.orderDetail .goods .gBox .good p span:nth-child(1){
+	display: block;
+	color: #333;
+}
+
+
+
+.orderDetail .goods>p:first-of-type{
+	margin-top: 28px;
+	text-align: right;
+	color: #999999;
+}
+.orderDetail .goods>p:first-of-type span{
+	color: #FA2222;
+	margin-left: 4px;
+}
+.orderDetail .goods>p:last-of-type{
+	margin: 18px 0;
+	color: #999999;
+}
+.orderDetail .goods>p:last-of-type span{
+	color: #333333;
+}
+
+
+/******************************账户充值*************/
+.add{
+	width: 968px;
+	margin-left: 42px;
+	
+}
+.add>div{
+	margin-left: 158px;
+}
+.add h4{
+	height: 44px;
+	line-height: 44px;
+	border-bottom: 1px solid #dfdfdf;
+	font-size: 16px;
+	font-weight: 400;
+	padding-left: 26px;
+}
+.add input[type="number"]{
+	width: 138px;
+	height: 30px;
+	margin: 102px 4px 24px;
+	border: 1px solid #DFDFDF;
+}
+.add input[type="password"]{
+	width: 138px;
+	height: 30px;
+	margin: 0 4px 24px;
+	border:1px solid #DFDFDF;
+}
+.add input[type="submit"]{
+	width: 100px;
+	height: 30px;
+	margin: 72px 212px;
+	background: #FB475B;
+	border: none;
+	border-radius: 2px;
+	color: #FFFFFF;
+}
+.add>p{
+	font-size: 14px;
+	padding-left: 26px;
+}
+.add>p span{
+	color: #FA2222;
+	padding: 0 4px;
+}
+
+
+
+
+/************************个人设置**********************/
+
+.set{
+	margin: 20px 0;
+	text-align: center;
+}
+.set .Shead{
+	
+	height: 44px;
+	line-height: 44px;
+	background: #f9f9f9;
+	text-align: left;
+	font-size: 14px;
+}
+.set  form{
+	line-height: 46px;
+	text-align: left;
+}
+.set form span{
+	display: inline-block;
+	width: 94px;
+	text-align: right;
+	font-size: 14px;
+}
+.set .position{
+	margin-top: 6px;
+}
+.set .birth select{
+	width: 54px;
+	height: 26px;
+}
+.set .changeHead{
+	text-align: center;
+	margin-right: 40px;
+	margin-top: 10px;
+	background: #f8f6f4;
+	line-height: 26px;
+}
+.set .changeHead a:hover{
+	color: #FA2222;
+}
+.set .duty{
+	margin-bottom: 26px;
+}
+.set .duty select{
+	width: 74px;
+	text-align: center;
+}
+.set .selfIntro{
+	margin-top: 30px;
+}
+.set .selfIntro textarea{
+	width: 480px;
+	height: 130px;
+	resize: none;
+	vertical-align: top;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	padding: 10px;
+
+}
+.set input[type="submit"]{
+	background: #FB475B;
+	width: 100px;
+	margin: 48px auto;
+	
+	border-radius: 2px;
+	border: none;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+
+/*******************我的资产*******************/
+.cash{
+	float: right;
+}
+.cash>h3{
+	font-size: 16px;
+	font-weight: 400;
+	height: 46px;
+	line-height: 46px;
+	border-bottom: 1px solid #dfdfdf;
+	width: 974px;
+	padding-left: 26px;
+}
+.cash .rest{
+	margin: 34px 26px;
+	font-size: 16px;
+}
+.cash .rest span{
+	color: #FA2222;
+}
+.cash .Cbtn{
+	margin-left: 26px;
+}
+.cash .Cbtn a{
+	font-weight: bold;
+	float: left;
+	width: 116px;
+	height: 30px;
+	border-radius: 2px;
+	line-height: 30px;
+	color: #FFFFFF;
+	text-align: center;
+	background: #fb475b;
+	margin-right: 36px;
+	margin-bottom: 100px;
+}
+
+.cash .card{
+	width: 944px;
+	height: 158px;
+	border: 1px solid #dfdfdf;
+}
+.cash .card>p{
+	padding-left: 30px;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #dfdfdf;
+	font-size: 14px;
+}
+.cash .card>div{
+	
+	padding: 20px 0;
+	padding-left: 30px;
+	border-bottom: 1px solid #dfdfdf;
+	
+}
+.cash .card>div p{
+	line-height: 24px;
+	font-size: 16px;
+	margin-left: 30px;
+}
+.cash .card>div p:last-of-type{
+	color: #85735b;
+	font-weight: bold;
+	font-size: 14px;
+}
+.cash .card>a{
+	display: block;
+	text-align: center;
+	font-size: 14px;
+	color: #85735B;
+	font-weight: bold;
+	line-height: 40px;
+}
+

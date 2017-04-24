@@ -1,0 +1,108 @@
+
+.myedit{
+	line-height: 60px;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+.myTop{
+	padding: 10px 0;
+	background: #FB475B;
+	color: #FFFFFF;
+}
+.myTop h4{
+	text-align: center;
+}
+.myTop img{
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	border: 3px solid #FFFFFF;
+	
+}
+.myTop p{
+	line-height: 30px;
+}
+.myTop .topWord{
+	margin-top: 30px;
+}
+.myTop .topWord span{
+	padding-right:40px;
+}
+
+h3{
+	margin: 30px auto 10px;
+	font-weight: bolder;
+}
+
+
+/*申请*/
+.apply .myapply{
+	display: block;
+	border: 1px solid #DDDDDD;
+	padding: 16px 0;
+}
+.apply .tj{
+	display: block;
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+	color: #FFFFFF;
+	background: #CBA200;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	letter-spacing: 4px;
+}
+.apply .tj:hover{
+	opacity: 0.8;
+	cursor: pointer;
+}
+.apply .sh{
+	margin-top: 20px;
+	line-height: 40px;
+	text-align: center;
+}
+.apply .sh span{
+	font-weight: 700;
+	display: block;
+}
+
+/*报告*/
+.apply .baogao{
+	text-align: left;
+	
+}
+.apply .baogao a{
+	display: block;
+	margin-top: 16px;
+	line-height: 24px;
+}
+
+.apply .baogao a:hover{
+	color: #E00A00;
+}
+
+/*收藏*/
+.news-top{
+	
+	margin-top: 30px;
+	display: block;
+	border-bottom: 1px solid #E1E1E1;
+	margin-right:6%;
+}
+.news-top p{
+	
+	width: 58px;
+	height: 58px;
+	border-radius: 29px;
+	background: #60b000;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-align: center;
+}
+.news-top h4{
+	margin: 0 20px;
+	height: 58px;
+	line-height: 58px;
+	font-weight: bold;
+	color: #333333;
+}

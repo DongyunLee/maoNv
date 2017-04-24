@@ -1,0 +1,192 @@
+
+
+/*正在试用*/
+.try{
+	margin: 10px auto;
+}
+.try .Ttop1{
+	background: #F0F0F0;
+	padding: 6px;
+	line-height: 40px;
+}
+.btn1,.btn2,.btn3 {
+
+	font-weight: 700;
+	font-size: 14px;
+	color: #222222;
+	
+	background: url(../imgs/sj.png) no-repeat left center;
+	background-size: 10px 16px;
+}
+.btn1:hover,.btn2:hover,.btn3:hover{
+	cursor: pointer;
+	color: #E8A838;
+}
+.org{
+	color: #E8A838;
+}
+.try .Ttop1 li:first-of-type{
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+	color: #e8a838;
+}
+
+.try .Ttop2 h2{
+	
+	height: 40px;
+	line-height: 40px;
+	color: #FFFFFF;
+	background: #e8a838;
+	font-size: 20px;
+	text-align: center;
+	margin-top: 0;
+	font-weight: bold;
+}
+.try .Ttop2 li{
+	background: #F0F0F0;
+	color: #e8a838;
+	padding: 6px;
+	text-align: center;
+	font-size: 16px;
+	
+}
+.try .Ttop2 li:first-of-type{
+	padding: 0;
+}
+
+
+.try .Tmain{
+	padding: 20px;
+	
+}
+.try .Tmain li{
+	line-height:50px;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px dashed #444444;
+}
+.try .Tmain li span{
+	font-size: 16px;
+	color: #e8a838;
+}
+
+.try .Tmain .Timg{
+	
+	border: 1px solid #EEEEEE;
+	vertical-align: middle;
+	min-height: 220px;
+	
+}
+.try .Tbtn{
+	display: block;
+	text-align: center;
+	font-size: 16px;
+	color: #FFFFFF;
+	background: #e8a838;
+	width: 70%;
+	height: 40px;
+	line-height: 40px;
+	letter-spacing: 10px;
+	
+}
+.try .Tbtn:hover{
+	opacity: 0.8;
+}
+.try .Tnum{
+	line-height: 30px;
+	text-align: center;
+}
+.try .Tnum span{
+	display: block;
+	font-size: 12px;
+	text-align: center;
+}
+
+.Tword li h3{
+	padding-bottom: 8px;
+	border-bottom: 1px solid #C0C0C0;
+	margin: 36px auto 10px;
+}
+.Tword li p{
+	line-height: 26px;
+}
+
+
+/*往期试用*/
+
+.recom .Rimg img{
+	/*display: flex;
+	align-items:center;*/
+	width: 66px;
+	height: 66px;
+	border-radius: 33px;
+	/*overflow: hidden;*/
+	border: 3px solid #FFFFFF;
+	
+}
+.recom .huiyuan p{
+	line-height: 20px;
+	/*padding-left: 6px;*/
+	color: #555555;
+}
+.recom .huiyuan p:first-of-type{
+	font-weight: bold;
+}
+.recom .huiyuan p span{
+	font-size: 14px;
+	color: #555555;
+	padding-left:2px;
+	padding-right:16px;
+}
+.recom{
+	margin: 40px auto 10px;
+
+}
+.recom time{
+	font-size: 12px;
+	color: #888888;
+}
+.recom p {
+	line-height: 18px;
+}
+.recom h3{
+	margin: 0px 0px 16px;
+	line-height: 36px;
+}
+.recom a.RTitle{
+	font-size: 20px;
+	color: #252525;
+	font-weight: bold;
+}
+.recom a.RTitle:hover{
+	color: #E00A00;
+}
+.recom .Rword{
+	color: #737373;
+	line-height: 24px;
+	margin: 10px auto 20px;
+	color: #9D9D9D;
+}
+
+/*试用报告*/
+
+.recom .Bword:hover{
+	color: #CBA200;
+}
+.report .pro{
+	background: #F4F4F4;
+	padding: 4px;
+}
+.report .pro a{
+	display: block;
+}
+.report .pro img{
+	
+}
+.report .pro h3{
+	padding-left: 6px;
+	font-size: 14px;
+	line-height: 12px;
+	font-weight: bold;
+}

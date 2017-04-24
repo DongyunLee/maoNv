@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>联系我们</title>
+    <title>注册</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/public.css" />
-    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/login.css" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,7 +35,7 @@
 	      	 <a class="navbar-brand fl" href="index.html">猫 女 <span style="font-size: 0.2rem;">时尚杂志</span></a>
 	   			 <p class="fl"><a href="zhuce.html">注册</a>/<a href="login.html">登录</a>/<a href="my.html">个人中心</a></p>
 	      </div>
-		    </div>
+		     </div>
 		
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		     <ul class="nav navbar-nav navbar-right">
@@ -86,76 +86,25 @@
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
 	</nav>
-	
-		<!--banner-->
-		<div class="banner">
-			<img src="imgs/hua.jpg" width="100%"/>
-			<div class="shadow"></div>
-			<p class="bannerWord">
-				<span>联系我们</span>
-				<br />
-	      <span style="font-size: 0.5rem;">期 待 广 告 客 户 、读 者 与 猫 女 的 联 系 与 合 作</span>
-	     </p>
-		</div>
-	
-	
-	<!--main-->
-	
-		<div class="main container">
-			
-			<div class="row">
-				<div class="main-l col-md-9">
-					<h3>留下您的意见</h3>
-					<form class="form-horizontal" role="form">
-						<div class="form-group">
-					    <label for="inputName3" class="col-sm-2 control-label">姓名：</label>
-					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="inputName3" >
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="inputCity3" class="col-sm-2 control-label">所在城市：</label>
-					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="inputCity3" >
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="inputEmail3" class="col-sm-2 control-label">邮箱地址：</label>
-					    <div class="col-sm-10">
-					      <input type="email" class="form-control" id="inputEmail3" >
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="inputPassword3" class="col-sm-2 control-label">留言：</label>
-					    <div class="col-sm-10">
-					      <textarea></textarea>
-					    </div>
-					  </div>
-					 			<button type="submit" class="btn btn-default">发送</button>
-					      <button type="reset" class="btn btn-default">重置</button>
-	
-					</form>
-				</div>
-				<div class="col-md-3">
-					<p>
-						<h3>所在位置</h3>
-						<p>省份:<span>河北省</span></p>
-						<p>城市:<span>唐山</span></p>
-						<p>电话:<span>+354 5635600</span></p>
-						<p>邮箱:<span><a style="color: #60B000;text-decoration: underline;">elenwhite@mail.com</a></span></p>	
-					</p>
-					<p>
-						<h3>感谢您</h3>
-						<p style="letter-spacing: 3px;">
-								猫女时尚定期举行形式多样的推广活动，成为“时尚”与广告客户、读者沟通的桥梁。
-							
-						</p>
-					</p>
-				</div>
+	<div class="row">
+		<form class="login col-md-5 col-sm-9 col-xs-11">
+			<div>
+				<h2>RIGISTER&nbsp;&nbsp;注册</h2>
+				<p class="clearfix"><span>用户名:</span><input class="light" type="text" placeholder="用户名由3-15个字符组成" autofocus="autofocus" required="required"/></p>
+				<p class="clearfix"><span>密码:</span><input type="password" placeholder="6-20个字符" required="required"/></p>
+				<p class="clearfix"><span>确认密码:</span><input type="password" placeholder="请输入确认的密码" required="required"/></p>
+				<p class="clearfix"><span>邮箱：</span><input type="email" required="required" placeholder="请输入正确的邮箱地址"/></p>
+				<p class="clearfix"><span>验证码：</span><input type="text" required="required" placeholder="请输入正确的验证码"/></p>
+				
+				<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="点击换一张">
+					<img src="imgs/yz.jpg" width="30%" alt="验证码"/>
+				</button>
+				<p></p>
 			</div>
-			
-
+			<input type="submit" value="立即注册" />
+		</form>
 	</div>
+	
 	
 	<!--footer-->
 	<div class="footer-my">

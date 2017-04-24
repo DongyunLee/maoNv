@@ -1,0 +1,99 @@
+/* CSS Document */
+/*预设*/
+*{margin:0;padding:0;outline:none;font-family: "宋体";}
+ul,ol,li{list-style-type:none}
+a{text-decoration:none;blr:expression(this.onFocus=this.blur());color:#666666;cursor:pointer;}
+a:hover{text-decoration:none;color: none;} a:focus{outline:none;}li:focus{outline:none;}
+article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary{display:block;}
+img{border:none;}
+input[type=text],input[type=password]{background: white;padding:0px 5px;color:#ACAAAB;border:0;/*color:#ccc;*/} 
+.clearfix:after {content: ".";display: block;height: 0;clear: both; visibility: hidden;}  
+.clearfix {zoom:1;}
+.fl{float:left;}
+.fr{float:right;}
+.clear_fr{ clear:both;}
+table td{border: 1px solid #;}
+h1,h2,h3,h4,h5,h6{
+	font-weight: normal;
+}
+
+
+.show{
+	background:#E00A00;
+	color: #FFFFFF;
+}
+.up{
+	background:#E00A00;
+	color: #FFFFFF;
+}
+.change>a{
+	background: red;
+	color: #FFFFFF;
+}
+
+/*点击更多*/
+.more{
+	margin-top: 15px;
+	display: inline-block;
+	padding:0 10px;
+	width: 90px;
+	height: 38px;
+	line-height: 34px;
+	border: 2px solid #fff ;
+	color: #FFFFFF;
+	border-radius: 20px;
+	font-size: 16px;
+	position: relative;
+}
+a.more:hover{
+	color: #FFFFFF;
+}
+.more .iconfont{
+	opacity: 0;
+	position: absolute;
+	width: 40px;
+	height: 34px;
+	top: 0;
+	right: 14px;
+	background: url(../imgs/jt1.png) no-repeat right center;
+	background-size:20px;
+	
+}
+
+/*图标................................................*/
+@font-face {font-family: "iconfont";
+  src: url('../iconfont/iconfont.eot?t=1474442824'); /* IE9*/
+  src: url('../iconfont/iconfont.eot?t=1474442824#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../iconfont/iconfont.woff?t=1474442824') format('woff'), /* chrome, firefox */
+  url('../iconfont/iconfont.ttf?t=1474442824') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../iconfont/iconfont.svg?t=1474442824#iconfont') format('svg'); /* iOS 4.1- */}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;}
+    
+/*banner*/
+.banner{
+	position: relative;
+}
+.shadow{
+	position: absolute;
+	background: rgba(0,0,0,0.3);
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+.bannerWord{
+	font-weight: bold;
+	font-size:0.8rem;
+	color: #FFFFFF;
+	position: absolute;
+	bottom: 2rem;
+	width: 100%;
+	text-align: center;
+	opacity: 0;
+	
+}

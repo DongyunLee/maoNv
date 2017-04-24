@@ -1,0 +1,16 @@
+.aboutUs h2{
+	font-size: 40px;
+	padding: 20px 0;
+	border-bottom: 1px solid #e5e5e5;
+}
+.aboutUs .media{
+	margin-top: 28px;
+	
+}
+.aboutUs .media-body p{
+	font-style: italic;
+	height: 22px;
+	line-height: 22px;
+	color: #696969;
+}
+

@@ -1,0 +1,94 @@
+
+
+.detail{
+	float: none;
+	margin: 20px auto;
+}
+.detail h2{
+	font-weight: bolder;
+	color: #101010;
+}
+
+
+/*left*/
+
+.detailL p{
+	line-height: 30px;
+	margin: 16px;
+}
+.detail h6{
+	text-align: center;
+	margin: 10px auto;
+	font-size: 14px;
+}
+.detailL .Dpage{
+	width: 80%;
+	margin: 24px auto;
+	text-align: center;
+	height: 60px;
+	line-height: 60px;
+	border:  1px solid #313534;
+	
+}
+.detailL .Dpage a{
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+}
+.detailL .Dpage a:hover{
+	color: #E00A00;
+}
+/*right*/
+.detailR h3{
+	
+	font-size: 20px;
+	line-height: 40px;
+	font-weight: bolder;
+	font-family: "bodoni mt condensed";
+	background: #FAFAFA;
+	text-align: center;
+
+}
+.detailR a{
+	display: block;
+	line-height: 40px;
+	height: 40px;
+	overflow: hidden;
+	border-bottom: 1px solid #E1E1E1;
+	font-size: 12px;
+}
+.detailR a:hover{
+	color: #E00A00;
+}
+
+/*回到顶部*/
+.gotop{
+	position: fixed;
+	bottom: 40px;
+	right: 30px;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	border-radius: 30px;
+	background: rgba(0,0,0,0.6);
+	color: #FFFFFF;
+	font-weight: 600;
+	text-align: center;
+	font-size: 14px;
+}
+
+/*top*/
+
+.Dtop p{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.Dtop .collect{
+	text-align: right;
+	text-align: center;
+	border: 1px solid #CBA200;
+	font-size: 14px;
+	cursor: pointer;
+}
+

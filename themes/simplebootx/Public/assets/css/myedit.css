@@ -1,0 +1,137 @@
+.title1{
+	line-height: 40px;
+	margin-bottom: 20px;
+	background: #EFF7FF;
+	text-align: center;
+	margin-top: 0;
+}
+.Emain{
+	clear: both;
+	float: none;
+	margin: 20px auto;
+	border: 1px solid #CDCECE;
+}
+.base{
+	margin-left: 20px;
+}
+.base h6{
+	/*padding-left: 1rem;*/
+	font-size:15px ;
+	clear: both;
+	padding: 10px 0;
+	line-height: 40px;
+}
+.base select{
+	width: 200px;
+	height: 30px;
+	padding-left: 8px;
+	float: left;
+}
+.base textarea{
+	width: 90%;
+	height: 160px;
+	margin-bottom: 20px;
+	float: left;
+}
+.base input{
+	width: 200px;
+	
+	border: 1px solid #ECECEC;
+	height:30px;
+	color: #101010;
+	float: left;
+}
+.base input[type="radio"]{
+	float: none;
+}
+.base .sex input{
+	width:30px;
+	height: 12px;
+	margin: 12px auto;
+	
+}
+
+.base span{
+	width: 90px;
+	float: left;
+	
+}
+
+/*收货地址*/
+
+.my .myaddress .dizhi{
+	
+	padding: 4px;
+	line-height: 50px;
+	border: 1px solid #ECECEC;
+	width: 90%;
+	margin: 10px auto;
+	padding:0 10px;
+	
+}
+
+.Emain .finish{
+	display: block;
+	width:40%;
+	margin: 60px auto 40px;
+	line-height: 40px;
+	height: 46px;
+	background: #FB475B;
+	color: #FFFFFF;
+	border-radius: 2px;
+	font-size: 16px;
+	letter-spacing: 10px;
+	border: none;
+}
+
+/*新增地址*/
+.btnAdd{
+	width: 150px;
+	margin: 20px auto;
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid #777777;
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+}
+.xinz{
+	width: 90%;
+	margin: 0 auto;
+	
+}
+.xinz span{
+	width: 90px;
+	float: left;
+}
+.xinz input{
+	width: 200px;
+	height: 30px;
+	border: 1px solid #ECECEC;
+}
+.xinz h5{
+	line-height: 60px;
+	font-size: 18px;
+	font-weight: 800;
+}
+.xinz textarea{
+	width: 90%;
+}
+.xinz p,.xinz div{
+	clear: both;
+	line-height: 40px;
+}
+/*{ background:#EEEEEE;margin:0; padding:0; font-family:"微软雅黑", Arial, Helvetica, sans-serif; }
+
+a{ color:#006600; text-decoration:none;}
+
+a:hover{color:#990000;}*/
+
+.top{ margin:5px auto; color:#990000; text-align:center;}
+
+.info select{ border:1px #ECECEC solid; background:#FFFFFF;height: 30px;}
+
+.info{ margin:5px; margin-left: 0;}
+
+.info #show{ color:#3399FF; }
+
