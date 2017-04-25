@@ -56,29 +56,29 @@
 }
 
 
-.try .Tmain{
+ .Tmain{
 	padding: 20px;
 	
 }
-.try .Tmain li{
+ .Tmain li{
 	line-height:50px;
 	margin-bottom: 20px;
 	padding-bottom: 20px;
 	border-bottom: 1px dashed #444444;
 }
-.try .Tmain li span{
+..Tmain li span{
 	font-size: 16px;
 	color: #e8a838;
 }
 
-.try .Tmain .Timg{
+.Tmain .Timg{
 	
 	border: 1px solid #EEEEEE;
 	vertical-align: middle;
 	min-height: 220px;
 	
 }
-.try .Tbtn{
+.Tbtn{
 	display: block;
 	text-align: center;
 	font-size: 16px;
@@ -90,14 +90,14 @@
 	letter-spacing: 10px;
 	
 }
-.try .Tbtn:hover{
+.Tbtn:hover{
 	opacity: 0.8;
 }
-.try .Tnum{
+.Tnum{
 	line-height: 30px;
 	text-align: center;
 }
-.try .Tnum span{
+.Tnum span{
 	display: block;
 	font-size: 12px;
 	text-align: center;
@@ -189,4 +189,54 @@
 	font-size: 14px;
 	line-height: 12px;
 	font-weight: bold;
+}
+
+/**********************申请步骤1***************/
+.apply1{
+	margin-top: 40px;
+}
+.apply1 dl{
+	text-align: center;
+	
+	
+}
+.apply1 dl img{
+	border: 1px solid #DFDFDF; 
+	margin: 20px auto;
+}
+dt{
+	font-weight: 400;
+	line-height: 30px;
+	text-align: center;
+}
+.apply1 form{
+	text-align: center;
+}
+.apply1 form h4{
+	font-weight: bold;
+	
+	font-size: 28px;
+	border-bottom: 2px solid #333333;
+	color: #CBA200;
+	text-align: center;
+	padding-bottom: 10px;
+	letter-spacing: 10px;
+	width: 80%;
+	margin: 0 auto;
+}
+.apply1 form textarea{
+	width: 80%;
+	margin: 20px auto;
+	height: 260px;
+	padding: 2%;
+}
+.apply1 form input[type="submit"]{
+	border: none;
+	background: #CBA200;
+	width: 60%;
+	margin: 10px auto;
+	color: #FFFFFF;
+	height: 40px;
+	line-height: 20px;
+	
 }

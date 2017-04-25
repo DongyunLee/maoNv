@@ -58,18 +58,18 @@ var all=wt+wh;
 })
 
 //******************************************************秀场切换
-	 $(".fash li").eq(0).addClass("red").siblings().removeClass("red");
-	$(".showOut>div").eq(0).show().siblings().hide();
-  $(".fash li").click(function(){
-    var num =$(".fash li").index(this);
-	$(this).addClass("red").siblings().removeClass("red");
-    var ou=$(".showOut>div").eq(num);
-    ou.show().siblings().hide();
-    var pic=ou.find(".fashion");
-    console(pic);
-    ou.siblings().find(".fashion").attr("id","");
-   
-  })
+//	 $(".fash li").eq(0).addClass("red").siblings().removeClass("red");
+//	$(".showOut>div").eq(0).show().siblings().hide();
+//$(".fash li").click(function(){
+//  var num =$(".fash li").index(this);
+//	$(this).addClass("red").siblings().removeClass("red");
+//  var ou=$(".showOut>div").eq(num);
+//  ou.show().siblings().hide();
+//  var pic=ou.find(".fashion");
+//  console(pic);
+//  ou.siblings().find(".fashion").attr("id","");
+// 
+//})
 
 //****************************************************试用中心切换
 $(".past,.report").hide();
