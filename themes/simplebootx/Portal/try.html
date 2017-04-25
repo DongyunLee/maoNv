@@ -1,534 +1,404 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>试用中心</title>
+    <head>
+        <title>试用中心</title>
+        <tc_include file='Public:head'/>
+        <link rel="stylesheet" href="__TMPL__Public/assets/css/try.css" />
+    </head>
+    <body>
+        <!--nav-->
+        <tc_include file="Public:nav"/>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/public.css" />
-    <link rel="stylesheet" href="css/try.css" />
+        <!--banner-->
+        <div class="banner">
+            <img src="__TMPL__Public/assets/imgs/sy.jpg" width="100%"/>
+            <div class="shadow"></div>
+            <p class="bannerWord">
+                <span>试用中心</span>
+                <br />
+                <span style="font-size: 0.5rem;">积 极 参 加 我 们 的 试 用 活 动 ，你 将 成 为 我 们 的 优 质 用 户，获 得 更 多 试 用 机 会</span>
+            </p>
+        </div>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <!--nav-->
-    <nav class="navbar navbar-default" role="navigation">
-		  <div class="container">
-		    <!-- Brand and toggle get grouped for better mobile display -->
-		    <div class="navbar-header">
-		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		      </button>
-		      <div class="logo clearfix">
-	      	 <a class="navbar-brand fl" href="index.html">猫 女 <span style="font-size: 0.2rem;">时尚杂志</span></a>
-	   			 <p class="fl"><a href="zhuce.html">注册</a>/<a href="login.html">登录</a>/<a href="my.html">个人中心</a></p>
-	      </div>
-		    </div>
-		
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		     <ul class="nav navbar-nav navbar-right">
-	          <li>
-	          	<div class="back"></div>
-	        	<a href="index.html">
-	        	首页
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="product.html">
-	        		国际秀场
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="news.html">
-	        		时尚资讯	
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="model.html">
-	        	时装潮流
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="try.html">
-	        	试用中心
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="aboutUs.html">
-	        		关于我们
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="contact.html">
-	        		联系我们
-	        	</a>
-	        </li>
-	   
-	      </ul>
-		    </div><!-- /.navbar-collapse -->
-		  </div><!-- /.container-fluid -->
-	</nav>
-	
-		<!--banner-->
-		<div class="banner">
-			<img src="imgs/sy.jpg" width="100%"/>
-			<div class="shadow"></div>
-			<p class="bannerWord">
-				<span>试用中心</span>
-				<br />
-	      <span style="font-size: 0.5rem;">积 极 参 加 我 们 的 试 用 活 动 ，你 将 成 为 我 们 的 优 质 用 户，获 得 更 多 试 用 机 会</span>
-	     </p>
-		</div>
-	
-	
-	<!--main-->
-	
-		<div class="try container">
-			
-			<!--top-->
-			<ul class="Ttop1 row">
-				<li class="col-md-3 col-sm-12 col-xs-12">试用中心</li>
-				<li class="col-md-3 col-sm-4 col-xs-4 btn1 org" >正在试用</li>
-				<li class="col-md-3 col-sm-4 col-xs-4 btn2" >往期试用</li>
-				<li class="col-md-3 col-sm-4 col-xs-4 btn3" >试用报告</li>
-			</ul>	
-			<ul class="Ttop2 row">
-				<li class="col-md-12 col-sm-12 col-xs-12"><h2>试用流程</h2></li>
-				<li class="col-md-3 col-sm-6 col-xs-12">1.注册登录猫女官方网站</li>
-				<li class="col-md-3 col-sm-6 col-xs-12">2.申请试用填写地址</li>
-				<li class="col-md-3 col-sm-6 col-xs-12">3.审核通过免费试用</li>
-				<li class="col-md-3 col-sm-6 col-xs-12">4.提交试用报告</li>
-			</ul>
-			
-			<!--------------------------------------左侧----------------------------------------------------->
-			
-			<div class="col-md-9" >
-					<!------------------------正在试用---------------------------->
-			<div class="trying row ">
-				<ul class="Tmain row">
-				<li class="col-md-12 row">
-					<div class="Timg col-md-4 col-sm-4" ><img src="imgs/t1.jpg" width="100%"/></div>
-					<div class="col-md-8 col-sm-4">
-						<h3>Neom香氛蜡烛</h3>
-						<p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
-						<div class="Tnum row">
-							<p class="col-md-4 col-xs-4">试用数：
-								<span>10</span></p>
-							<p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
-							<p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
-						</div>
-						<a class="Tbtn container" href="#">申请试用</a>
-					</div>
-					
-				</li>
-				<li class="col-md-12 row">
-					<div class="Timg col-md-4 col-sm-4" ><img src="imgs/t2.jpg" width="100%"/></div>
-					<div class="col-md-8 col-sm-4">
-						<h3>Neom香氛蜡烛</h3>
-						<p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
-						<div class="Tnum row">
-							<p class="col-md-4 col-xs-4">试用数：
-								<span>10</span></p>
-							<p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
-							<p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
-						</div>
-						<a class="Tbtn container" href="#">申请试用</a>
-					</div>
-				</li>
-				<li class="col-md-12 row">
-					<div class="Timg col-md-4 col-sm-4" ><img src="imgs/t3.jpg" width="100%"/></div>
-					<div class="col-md-8 col-sm-4">
-						<h3>Neom香氛蜡烛</h3>
-						<p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
-						<div class="Tnum row">
-							<p class="col-md-4 col-xs-4">试用数：
-								<span>10</span></p>
-							<p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
-							<p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
-						</div>
-						<a class="Tbtn container" href="#">申请试用</a>
-					</div>
-				</li>
-				<li class="col-md-12 row">
-					<div class="Timg col-md-4 col-sm-4" ><img src="imgs/t4.jpg" width="100%"/></div>
-					<div class="col-md-8 col-sm-4">
-						<h3>Neom香氛蜡烛</h3>
-						<p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
-						<div class="Tnum row">
-							<p class="col-md-4 col-xs-4">试用数：
-								<span>10</span></p>
-							<p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
-							<p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
-						</div>
-						<a class="Tbtn container" href="#">申请试用</a>
-					</div>
-				</li>
-				<li class="col-md-12 row">
-					<div class="Timg col-md-4 col-sm-4" ><img src="imgs/t5.jpg" width="100%"/></div>
-					<div class="col-md-8 col-sm-4">
-						<h3>Neom香氛蜡烛</h3>
-						<p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
-						<div class="Tnum row">
-							<p class="col-md-4 col-xs-4">试用数：
-								<span>10</span></p>
-							<p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
-							<p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
-						</div>
-						<a class="Tbtn container" href="#">申请试用</a>
-					</div>
-				</li>
-			</ul>
-			</div>
-			
-			
-			<!--------------------往期试用------------------------>
-			
-			<div class="past">
-				<ul class="Tmain row col-md-11">
-				<li class="col-md-12 row">
-					<div class="row">
-						<div class="Timg col-md-4 col-sm-4" ><img src="imgs/t6.jpg" width="100%"/></div>
-						<div class="col-md-8 col-sm-4">
-							<h3>Neom香氛蜡烛</h3>
-							<p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
-							<div class="Tnum row">
-								<p class="col-md-4 col-xs-4">试用数：
-									<span>10</span></p>
-								<p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
-								<p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
-							</div>
-							<a class="Tbtn container" href="#">申请试用</a>
-						</div>
-					</div>
-					
-					
-					<!-----评论1------>
-					<div class="recom row">
-						<div class="row">
-							<div class="col-md-7 col-sm-7 col-xs-12 row">
-								<div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="imgs/n10.jpg" /></div>
-									<div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
-										<p>calals</p>
-										<p>肤质：<span>干性</span>年龄：<span>26</span></p>
-									</div>
-							</div>
-							<time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
-							<p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;"><img src="imgs/pa1.png" width="100%"/></p>
-							
-						</div>
-						
-						<a class="RTitle" href="#2">＃SK-II肌因光蕴祛斑精华露 试用＃</a>
-						<p class="Rword">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色的，类似乳液质地，好吸收，不是特别粘...</p>	
-					</div>
-				</li>
-				
-				<li class="col-md-12 row">
-					<div class="row">
-						<div class="Timg col-md-4 col-sm-4" ><img src="imgs/t7.jpg" width="100%"/></div>
-						<div class="col-md-8 col-sm-4">
-							<h3>Neom香氛蜡烛</h3>
-							<p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
-							<div class="Tnum row">
-								<p class="col-md-4 col-xs-4">试用数：
-									<span>10</span></p>
-								<p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
-								<p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
-							</div>
-							<a class="Tbtn container" href="#">申请试用</a>
-						</div>
-					</div>
-					
-					
-					<!-----评论2------>
-					<div class="recom row">
-						<div class="row">
-							<div class="col-md-7 col-sm-7 col-xs-12 row">
-								<div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="imgs/n10.jpg" /></div>
-									<div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
-										<p>calals</p>
-										<p>肤质：<span>干性</span>年龄：<span>26</span></p>
-									</div>
-							</div>
-							<time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
-							<p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;"><img src="imgs/pa1.png" width="100%"/></p>
-							
-						</div>
-						
-						<a class="RTitle" href="#2">＃SK-II肌因光蕴祛斑精华露 试用＃</a>
-						<p class="Rword">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色的，类似乳液质地，好吸收，不是特别粘...</p>	
-					</div>
-				</li>
-				
-				<li class="col-md-12 row">
-					<div class="row">
-						<div class="Timg col-md-4 col-sm-4" ><img src="imgs/t8.jpg" width="100%"/></div>
-						<div class="col-md-8 col-sm-4">
-							<h3>Neom香氛蜡烛</h3>
-							<p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
-							<div class="Tnum row">
-								<p class="col-md-4 col-xs-4">试用数：
-									<span>10</span></p>
-								<p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
-								<p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
-							</div>
-							<a class="Tbtn container" href="#">申请试用</a>
-						</div>
-					</div>
-					
-					
-					<!-----评论------>
-					<div class="recom row">
-						<div class="row">
-							<div class="col-md-7 col-sm-7 col-xs-12 row">
-								<div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="imgs/n10.jpg" /></div>
-									<div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
-										<p>calals</p>
-										<p>肤质：<span>干性</span>年龄：<span>26</span></p>
-									</div>
-							</div>
-							<time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
-							<p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;"><img src="imgs/pa1.png" width="100%"/></p>
-							
-						</div>
-						
-						<a class="RTitle" href="#2">＃SK-II肌因光蕴祛斑精华露 试用＃</a>
-						<p class="Rword">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色的，类似乳液质地，好吸收，不是特别粘...</p>	
-					</div>
-				</li>
-				
-				<li class="col-md-12 row">
-					<div class="row">
-						<div class="Timg col-md-4 col-sm-4" ><img src="imgs/t9.jpg" width="100%"/></div>
-						<div class="col-md-8 col-sm-4">
-							<h3>Neom香氛蜡烛</h3>
-							<p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
-							<div class="Tnum row">
-								<p class="col-md-4 col-xs-4">试用数：
-									<span>10</span></p>
-								<p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
-								<p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
-							</div>
-							<a class="Tbtn container" href="#">申请试用</a>
-						</div>
-					</div>
-					
-					
-					<!-----评论------>
-					<div class="recom row">
-						<div class="row">
-							<div class="col-md-7 col-sm-7 col-xs-12 row">
-								<div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="imgs/n10.jpg" /></div>
-									<div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
-										<p>calals</p>
-										<p>肤质：<span>干性</span>年龄：<span>26</span></p>
-									</div>
-							</div>
-							<time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
-							<p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;"><img src="imgs/pa1.png" width="100%"/></p>
-							
-						</div>
-						
-						<a class="RTitle" href="#2">＃SK-II肌因光蕴祛斑精华露 试用＃</a>
-						<p class="Rword">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色的，类似乳液质地，好吸收，不是特别粘...</p>	
-					</div>
-				</li>
-			</ul>
-			</div>
-		
-		
-		<!-------------------------试用报告--------------------->
-			<div class="report">
-				
-				<ul class="Tmain row col-md-11">
-				<li class="col-md-12 row">
-					
-					
-					
-					<!-----评论1------>
-					<div class="recom row">
-						<div class="row">
-							<div class="col-md-7 col-sm-7 col-xs-12 row">
-								<div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="imgs/n10.jpg" /></div>
-									<div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
-										<p>calals</p>
-										<p>肤质：<span>干性</span>年龄：<span>26</span></p>
-									</div>
-							</div>
-							<time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
-							<p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;"><img src="imgs/pa1.png" width="100%"/></p>
-							
-						</div>
-						
-						<h3 style="font-weight: bolder;">＃SK-II肌因光蕴祛斑精华露 试用＃</h3>
-						
-						<a href="#" class="Rword Bword">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色的，类似乳液质地，好吸收，不是特别粘...</a>	
-						<div class="row">
-						  <div class="col-xs-6 col-md-3">
-						    <a href="#" class="thumbnail">
-						      <img src="imgs/re1.jpg" >
-						    </a>
-					
-						  </div>
-						 
-						</div>
-					</div>
-					
-					<!--试用产品-->
-					<div class="pro row">
-						<a href="#" class="col-md-8 col-sm-8 row">
-							<img src="imgs/t5.jpg" class="col-md-3 col-sm-3"/>
-							<h3 class="col-md-6 col-sm-6">
-								<p>试用产品：</p>
-								<p>SK-II肌因光蕴祛斑精华露</p>
-							</h3>
-						</a>
-						<p class="col-md-4 col-sm-4">心水指数：<span>5</span>分</p>
-					</div>
-				</li>
-						<li class="col-md-12 row">
-					
-					
-					
-					<!-----评论1------>
-					<div class="recom row">
-						<div class="row">
-							<div class="col-md-7 col-sm-7 col-xs-12 row">
-								<div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="imgs/n10.jpg" /></div>
-									<div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
-										<p>calals</p>
-										<p>肤质：<span>干性</span>年龄：<span>26</span></p>
-									</div>
-							</div>
-							<time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
-							<p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;"><img src="imgs/pa1.png" width="100%"/></p>
-							
-						</div>
-						
-						<h3 style="font-weight: bolder;">＃SK-II肌因光蕴祛斑精华露 试用＃</h3>
-						
-						<a href="#" class="Rword Bword">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色的，类似乳液质地，好吸收，不是特别粘...</a>	
-						<div class="row">
-						  <div class="col-xs-6 col-md-3">
-						    <a href="#" class="thumbnail">
-						      <img src="imgs/re1.jpg" >
-						    </a>
-					
-						  </div>
-						 
-						</div>
-					</div>
-					
-					<!--试用产品-->
-					<div class="pro row">
-						<a href="#" class="col-md-8 col-sm-8 col-xs-8 row">
-							<img src="imgs/t5.jpg" class="col-md-3 col-sm-3 col-xs-3"/>
-							<h3 class="col-md-6 col-sm-6 col-xs-6">
-								<p>试用产品：</p>
-								<p>SK-II肌因光蕴祛斑精华露</p>
-							</h3>
-						</a>
-						<p class="col-md-4 col-sm-4 col-xs-4">心水指数：<span>5</span>分</p>
-					</div>
-				</li>
-				
 
-			</ul>
-			
-			</div>
-			
-			</div>
-			
-			<!-------------------------------------------------------------右侧------------------------------>
-			<ul class="Tword col-md-3">
-				<li>
-					<h3><img src="imgs/tr1.jpg"/></h3>
-					<p style="color: #E00A00;font-size: 16px;">如何得到更多化妆品免费试用机会？</p>
-					<p>积极参加我们的试用活动，认真填写试用申请宣言，申请成功后，及时提交图文试用报告，你将成为我们的优质用户，下次获得更高的试用机会。</p>
-				</li>
-				<li>
-					<h3><img src="imgs/tr2.jpg"/></h3>
-					<p>联系人：尧尧</p>
-					<p>电话：13810625881</p>
-					<p>邮箱：zhangzhongyao@trends.com.cn</p>
-				</li>
-				<li>
-					<h3><img src="imgs/tr3.jpg"/></h3>
-				</li>
-			</ul>
-		</div>
-	
-	<!--footer-->
-	<div class="footer-my">
-		<div class="container">
-			<div class="row" style="margin-bottom: 20px;">
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>优惠政策</h3></li>
-					<li>新会员优惠</li>
-					<li>团购优惠</li>
-					<li>优惠券抵扣活动</li>
-					<li>其他活动</li>
-				</ul>
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>地址</h3></li>
-					<li>国家:<span>中国</span></li>
-					<li>城市:<span>唐山</span></li>
-					<li>联系方式:<span>8 800 154-45-67</span></li>
-					<li>邮箱:<span>progress@mail.com</span><a href="#"></a></li>
-				</ul>
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>联系我们</h3></li>
-					<li><a href="#">QQ</a></li>
-					<li><a href="#">微信</a></li>
-					<li><a href="#">微博</a></li>
-					<li><a href="#">人人网</a></li>
-				</ul>
-				<div class="col-md-3 col-sm-6">
-					<h3>您的意见</h3>
-					<form action="#" method="post">
-						<div class="fr" style="width: 178px;">
-							<input type="email"value="写下您的邮箱地址" />
-							<input type="submit" value="进入留言"  />
-						</div>
-						
-					</form>	
-				</div>	
-			</div>	
-			
-		</div>
-		<div class="footer-t">
-			<div class="container">
-				<p class="col-md-12">版权所有© 2015-2016 中国尚摄工作室 技术支持：品色创意设计中心</p>
-        		<p class="col-md-12">尚摄工作室摄影隶属于唐山企业发展有限公司</p>
-			</div>
-			
-		</div>
-	</div>
-	
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.js"></script>
-    <script type="text/javascript" src="js/public.js" ></script>
-    <script type="text/javascript" src="js/rem.js" ></script>
-  </body>
+        <!--main-->
+
+        <div class="try container">
+
+            <!--top-->
+            <ul class="Ttop1 row">
+                <li class="col-md-3 col-sm-12 col-xs-12">试用中心</li>
+                <li class="col-md-3 col-sm-4 col-xs-4 btn1 org" >正在试用</li>
+                <li class="col-md-3 col-sm-4 col-xs-4 btn2" >往期试用</li>
+                <li class="col-md-3 col-sm-4 col-xs-4 btn3" >试用报告</li>
+            </ul>	
+            <ul class="Ttop2 row">
+                <li class="col-md-12 col-sm-12 col-xs-12"><h2>试用流程</h2></li>
+                <li class="col-md-3 col-sm-6 col-xs-12">1.注册登录猫女官方网站</li>
+                <li class="col-md-3 col-sm-6 col-xs-12">2.申请试用填写地址</li>
+                <li class="col-md-3 col-sm-6 col-xs-12">3.审核通过免费试用</li>
+                <li class="col-md-3 col-sm-6 col-xs-12">4.提交试用报告</li>
+            </ul>
+
+            <!--------------------------------------左侧----------------------------------------------------->
+
+            <div class="col-md-9" >
+                <!------------------------正在试用---------------------------->
+                <div class="trying row ">
+                    <ul class="Tmain row">
+                        <li class="col-md-12 row">
+                            <div class="Timg col-md-4 col-sm-4" ><img src="__TMPL__Public/assets/imgs/t1.jpg" width="100%"/></div>
+                            <div class="col-md-8 col-sm-4">
+                                <h3>Neom香氛蜡烛</h3>
+                                <p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
+                                <div class="Tnum row">
+                                    <p class="col-md-4 col-xs-4">试用数：
+                                        <span>10</span></p>
+                                    <p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
+                                    <p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
+                                </div>
+                                <a class="Tbtn container" href="#">申请试用</a>
+                            </div>
+
+                        </li>
+                        <li class="col-md-12 row">
+                            <div class="Timg col-md-4 col-sm-4" ><img src="__TMPL__Public/assets/imgs/t2.jpg" width="100%"/></div>
+                            <div class="col-md-8 col-sm-4">
+                                <h3>Neom香氛蜡烛</h3>
+                                <p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
+                                <div class="Tnum row">
+                                    <p class="col-md-4 col-xs-4">试用数：
+                                        <span>10</span></p>
+                                    <p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
+                                    <p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
+                                </div>
+                                <a class="Tbtn container" href="#">申请试用</a>
+                            </div>
+                        </li>
+                        <li class="col-md-12 row">
+                            <div class="Timg col-md-4 col-sm-4" ><img src="__TMPL__Public/assets/imgs/t3.jpg" width="100%"/></div>
+                            <div class="col-md-8 col-sm-4">
+                                <h3>Neom香氛蜡烛</h3>
+                                <p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
+                                <div class="Tnum row">
+                                    <p class="col-md-4 col-xs-4">试用数：
+                                        <span>10</span></p>
+                                    <p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
+                                    <p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
+                                </div>
+                                <a class="Tbtn container" href="#">申请试用</a>
+                            </div>
+                        </li>
+                        <li class="col-md-12 row">
+                            <div class="Timg col-md-4 col-sm-4" ><img src="__TMPL__Public/assets/imgs/t4.jpg" width="100%"/></div>
+                            <div class="col-md-8 col-sm-4">
+                                <h3>Neom香氛蜡烛</h3>
+                                <p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
+                                <div class="Tnum row">
+                                    <p class="col-md-4 col-xs-4">试用数：
+                                        <span>10</span></p>
+                                    <p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
+                                    <p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
+                                </div>
+                                <a class="Tbtn container" href="#">申请试用</a>
+                            </div>
+                        </li>
+                        <li class="col-md-12 row">
+                            <div class="Timg col-md-4 col-sm-4" ><img src="__TMPL__Public/assets/imgs/t5.jpg" width="100%"/></div>
+                            <div class="col-md-8 col-sm-4">
+                                <h3>Neom香氛蜡烛</h3>
+                                <p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
+                                <div class="Tnum row">
+                                    <p class="col-md-4 col-xs-4">试用数：
+                                        <span>10</span></p>
+                                    <p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
+                                    <p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
+                                </div>
+                                <a class="Tbtn container" href="#">申请试用</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <!--------------------往期试用------------------------>
+
+                <div class="past">
+                    <ul class="Tmain row col-md-11">
+                        <li class="col-md-12 row">
+                            <div class="row">
+                                <div class="Timg col-md-4 col-sm-4" ><img src="__TMPL__Public/assets/imgs/t6.jpg" width="100%"/></div>
+                                <div class="col-md-8 col-sm-4">
+                                    <h3>Neom香氛蜡烛</h3>
+                                    <p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
+                                    <div class="Tnum row">
+                                        <p class="col-md-4 col-xs-4">试用数：
+                                            <span>10</span></p>
+                                        <p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
+                                        <p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
+                                    </div>
+                                    <a class="Tbtn container" href="#">申请试用</a>
+                                </div>
+                            </div>
+
+
+                            <!-----评论1------>
+                            <div class="recom row">
+                                <div class="row">
+                                    <div class="col-md-7 col-sm-7 col-xs-12 row">
+                                        <div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="__TMPL__Public/assets/imgs/n10.jpg" /></div>
+                                        <div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
+                                            <p>calals</p>
+                                            <p>肤质：<span>干性</span>年龄：<span>26</span></p>
+                                        </div>
+                                    </div>
+                                    <time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
+                                    <p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;"><img src="__TMPL__Public/assets/imgs/pa1.png" width="100%"/></p>
+
+                                </div>
+
+                                <a class="RTitle" href="#2">＃SK-II肌因光蕴祛斑精华露 试用＃</a>
+                                <p class="Rword">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色的，类似乳液质地，好吸收，不是特别粘...</p>	
+                            </div>
+                        </li>
+
+                        <li class="col-md-12 row">
+                            <div class="row">
+                                <div class="Timg col-md-4 col-sm-4" ><img src="__TMPL__Public/assets/imgs/t7.jpg" width="100%"/></div>
+                                <div class="col-md-8 col-sm-4">
+                                    <h3>Neom香氛蜡烛</h3>
+                                    <p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
+                                    <div class="Tnum row">
+                                        <p class="col-md-4 col-xs-4">试用数：
+                                            <span>10</span></p>
+                                        <p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
+                                        <p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
+                                    </div>
+                                    <a class="Tbtn container" href="#">申请试用</a>
+                                </div>
+                            </div>
+
+
+                            <!-----评论2------>
+                            <div class="recom row">
+                                <div class="row">
+                                    <div class="col-md-7 col-sm-7 col-xs-12 row">
+                                        <div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="__TMPL__Public/assets/imgs/n10.jpg" /></div>
+                                        <div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
+                                            <p>calals</p>
+                                            <p>肤质：<span>干性</span>年龄：<span>26</span></p>
+                                        </div>
+                                    </div>
+                                    <time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
+                                    <p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;"><img src="__TMPL__Public/assets/imgs/pa1.png" width="100%"/></p>
+
+                                </div>
+
+                                <a class="RTitle" href="#2">＃SK-II肌因光蕴祛斑精华露 试用＃</a>
+                                <p class="Rword">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色的，类似乳液质地，好吸收，不是特别粘...</p>	
+                            </div>
+                        </li>
+
+                        <li class="col-md-12 row">
+                            <div class="row">
+                                <div class="Timg col-md-4 col-sm-4" ><img src="__TMPL__Public/assets/imgs/t8.jpg" width="100%"/></div>
+                                <div class="col-md-8 col-sm-4">
+                                    <h3>Neom香氛蜡烛</h3>
+                                    <p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
+                                    <div class="Tnum row">
+                                        <p class="col-md-4 col-xs-4">试用数：
+                                            <span>10</span></p>
+                                        <p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
+                                        <p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
+                                    </div>
+                                    <a class="Tbtn container" href="#">申请试用</a>
+                                </div>
+                            </div>
+
+
+                            <!-----评论------>
+                            <div class="recom row">
+                                <div class="row">
+                                    <div class="col-md-7 col-sm-7 col-xs-12 row">
+                                        <div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="__TMPL__Public/assets/imgs/n10.jpg" /></div>
+                                        <div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
+                                            <p>calals</p>
+                                            <p>肤质：<span>干性</span>年龄：<span>26</span></p>
+                                        </div>
+                                    </div>
+                                    <time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
+                                    <p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;"><img src="__TMPL__Public/assets/imgs/pa1.png" width="100%"/></p>
+
+                                </div>
+
+                                <a class="RTitle" href="#2">＃SK-II肌因光蕴祛斑精华露 试用＃</a>
+                                <p class="Rword">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色的，类似乳液质地，好吸收，不是特别粘...</p>	
+                            </div>
+                        </li>
+
+                        <li class="col-md-12 row">
+                            <div class="row">
+                                <div class="Timg col-md-4 col-sm-4" ><img src="__TMPL__Public/assets/imgs/t9.jpg" width="100%"/></div>
+                                <div class="col-md-8 col-sm-4">
+                                    <h3>Neom香氛蜡烛</h3>
+                                    <p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
+                                    <div class="Tnum row">
+                                        <p class="col-md-4 col-xs-4">试用数：
+                                            <span>10</span></p>
+                                        <p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
+                                        <p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
+                                    </div>
+                                    <a class="Tbtn container" href="#">申请试用</a>
+                                </div>
+                            </div>
+
+
+                            <!-----评论------>
+                            <div class="recom row">
+                                <div class="row">
+                                    <div class="col-md-7 col-sm-7 col-xs-12 row">
+                                        <div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="__TMPL__Public/assets/imgs/n10.jpg" /></div>
+                                        <div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
+                                            <p>calals</p>
+                                            <p>肤质：<span>干性</span>年龄：<span>26</span></p>
+                                        </div>
+                                    </div>
+                                    <time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
+                                    <p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;"><img src="__TMPL__Public/assets/imgs/pa1.png" width="100%"/></p>
+
+                                </div>
+
+                                <a class="RTitle" href="#2">＃SK-II肌因光蕴祛斑精华露 试用＃</a>
+                                <p class="Rword">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色的，类似乳液质地，好吸收，不是特别粘...</p>	
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <!-------------------------试用报告--------------------->
+                <div class="report">
+
+                    <ul class="Tmain row col-md-11">
+                        <li class="col-md-12 row">
+
+
+
+                            <!-----评论1------>
+                            <div class="recom row">
+                                <div class="row">
+                                    <div class="col-md-7 col-sm-7 col-xs-12 row">
+                                        <div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="__TMPL__Public/assets/imgs/n10.jpg" /></div>
+                                        <div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
+                                            <p>calals</p>
+                                            <p>肤质：<span>干性</span>年龄：<span>26</span></p>
+                                        </div>
+                                    </div>
+                                    <time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
+                                    <p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;"><img src="__TMPL__Public/assets/imgs/pa1.png" width="100%"/></p>
+
+                                </div>
+
+                                <h3 style="font-weight: bolder;">＃SK-II肌因光蕴祛斑精华露 试用＃</h3>
+
+                                <a href="#" class="Rword Bword">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色的，类似乳液质地，好吸收，不是特别粘...</a>	
+                                <div class="row">
+                                    <div class="col-xs-6 col-md-3">
+                                        <a href="#" class="thumbnail">
+                                            <img src="__TMPL__Public/assets/imgs/re1.jpg" >
+                                        </a>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!--试用产品-->
+                            <div class="pro row">
+                                <a href="#" class="col-md-8 col-sm-8 row">
+                                    <img src="__TMPL__Public/assets/imgs/t5.jpg" class="col-md-3 col-sm-3"/>
+                                    <h3 class="col-md-6 col-sm-6">
+                                        <p>试用产品：</p>
+                                        <p>SK-II肌因光蕴祛斑精华露</p>
+                                    </h3>
+                                </a>
+                                <p class="col-md-4 col-sm-4">心水指数：<span>5</span>分</p>
+                            </div>
+                        </li>
+                        <li class="col-md-12 row">
+
+
+
+                            <!-----评论1------>
+                            <div class="recom row">
+                                <div class="row">
+                                    <div class="col-md-7 col-sm-7 col-xs-12 row">
+                                        <div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="__TMPL__Public/assets/imgs/n10.jpg" /></div>
+                                        <div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
+                                            <p>calals</p>
+                                            <p>肤质：<span>干性</span>年龄：<span>26</span></p>
+                                        </div>
+                                    </div>
+                                    <time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
+                                    <p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;"><img src="__TMPL__Public/assets/imgs/pa1.png" width="100%"/></p>
+
+                                </div>
+
+                                <h3 style="font-weight: bolder;">＃SK-II肌因光蕴祛斑精华露 试用＃</h3>
+
+                                <a href="#" class="Rword Bword">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色的，类似乳液质地，好吸收，不是特别粘...</a>	
+                                <div class="row">
+                                    <div class="col-xs-6 col-md-3">
+                                        <a href="#" class="thumbnail">
+                                            <img src="__TMPL__Public/assets/imgs/re1.jpg" >
+                                        </a>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!--试用产品-->
+                            <div class="pro row">
+                                <a href="#" class="col-md-8 col-sm-8 col-xs-8 row">
+                                    <img src="__TMPL__Public/assets/imgs/t5.jpg" class="col-md-3 col-sm-3 col-xs-3"/>
+                                    <h3 class="col-md-6 col-sm-6 col-xs-6">
+                                        <p>试用产品：</p>
+                                        <p>SK-II肌因光蕴祛斑精华露</p>
+                                    </h3>
+                                </a>
+                                <p class="col-md-4 col-sm-4 col-xs-4">心水指数：<span>5</span>分</p>
+                            </div>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <!-------------------------------------------------------------右侧------------------------------>
+            <ul class="Tword col-md-3">
+                <li>
+                    <h3><img src="__TMPL__Public/assets/imgs/tr1.jpg"/></h3>
+                    <p style="color: #E00A00;font-size: 16px;">如何得到更多化妆品免费试用机会？</p>
+                    <p>积极参加我们的试用活动，认真填写试用申请宣言，申请成功后，及时提交图文试用报告，你将成为我们的优质用户，下次获得更高的试用机会。</p>
+                </li>
+                <li>
+                    <h3><img src="__TMPL__Public/assets/imgs/tr2.jpg"/></h3>
+                    <p>联系人：尧尧</p>
+                    <p>电话：13810625881</p>
+                    <p>邮箱：zhangzhongyao@trends.com.cn</p>
+                </li>
+                <li>
+                    <h3><img src="__TMPL__Public/assets/imgs/tr3.jpg"/></h3>
+                </li>
+            </ul>
+        </div>
+
+        <!--footer-->
+        <tc_include file="Public:footer"/>
+        <tc_include file="Public:scripts"/>
+    </body>
 </html>

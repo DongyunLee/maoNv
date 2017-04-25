@@ -1,6 +1,8 @@
-# Cat-girls
-伟杰毕设
+# 猫女
+#伟杰毕设
 
 #运用了thinkcmfx2.2<br>
 #数据库配置文件为/data/conf/db.php<br/>
 #数据库文件备份在/sql/catgirls.sql<hr/>
+
+#把首页、秀场、资讯、时装、使用、关于、联系套完了<hr/>

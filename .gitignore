@@ -4,5 +4,4 @@
 .settings
 /data/runtime/
 .idea
-
-
+/nbproject

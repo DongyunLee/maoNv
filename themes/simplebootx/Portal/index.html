@@ -1,364 +1,222 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>猫女时尚杂志首页</title>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css" />
-	<link rel="stylesheet" href="css/public.css" />
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-  </head>
-  <body>
-<!--[if lte IE 6]><script>window.location.href='http://cdn.dmeng.net/upgrade-your-browser.html?referrer='+location.href;</script><![endif]-->
+    <head>
+        <title>猫女时尚杂志首页</title>
+        <tc_include file="Public:head"/>   
+    </head>
+<body>
     <!--nav-->
-    <nav class="navbar navbar-default" role="navigation">
-	  <div class="container">
-	    <!-- Brand and toggle get grouped for better mobile display -->
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
-	      <div class="logo clearfix">
-	      	 <a class="navbar-brand fl" href="index.html">猫 女 <span style="font-size: 0.2rem;">时尚杂志</span></a>
-	   			 <p class="fl"><a href="zhuce.html">注册</a>/<a href="login.html">登录</a>/<a href="my.html">个人中心</a></p>
-	      </div>
-	     
-	    </div>
-	
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	      <ul id="nav" class="nav navbar-nav navbar-right">
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="index.html">
-	        	首页
-	        	</a>
-	        </li>
-	        <li>
-	        		<div class="back"></div>
-	        	<a href="product.html">
-	        		国际秀场
-	        	</a>
-	        </li>
-	        <li>
-	        		<div class="back"></div>
-	        	<a href="news.html">
-	        		时尚资讯	
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="model.html">
-	        	时装潮流
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="try.html">
-	        	试用中心
-	        	</a>
-	        </li>
-	        <li>
-	        		<div class="back"></div>
-	        	<a href="aboutUs.html">
-	        		关于我们
-	        	</a>
-	        </li>
-	        <li>
-	        		<div class="back"></div>
-	        	<a href="contact.html">
-	        		联系我们
-	        	</a>
-	        </li>
-	   
-	      </ul>
-	    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
-	</nav>
-	
-	<!--banner-->
-	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-	  <!-- Indicators -->
-	  <ol class="carousel-indicators">
-	    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-	    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-	    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-	    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-	  </ol>
-	
-	  <!-- Wrapper for slides -->
-	  <div class="carousel-inner" role="listbox">
-	    <div class="item active">
-	      <img src="imgs/banner1.jpg" width="100%">
-	      <a href="#" class="mask">
-	      	服 务 于 中 国 精 英 女 性  阶 层 的 时 尚 杂 志 
-	      	<br />
-	      	---------------------------------------------------------
-	      </a>
-	    </div>
-	    <div class="item">
-	      <img src="imgs/banner22.jpg" width="100%">
-	      <a href="#" class="mask">
-	      	提 供  <span style="font-size: 1rem;"> 最  新 </span>时 尚 资 讯， <span style="font-size: 1rem;">精 辟 </span>的 流 行 趋 势 报 道
-	      
-	      </a>
-	    </div>
-	    <div class="item">
-	      <img src="imgs/banner3.jpg" width="100%">
-	      <a href="#" class="mask">
-	      	<span style="font-size: 1rem;">	时 尚 & 潮 流</span>
-	      	<br />
-	      	传 播 时 装 、美 和 女 性 的 力 量
-	      </a>
-	      
-	    </div>
-	    <div class="item">
-	      <img src="imgs/banner44.jpg" width="100%">
-	      <a href="#" class="mask">
-	
-	     		<span style="font-size: 1rem;"> 时刻</span> 与 读 者 分 享 当 代 女 性 生 活 的 乐 趣 和 智 慧——
-	     		<br />
-	     		<span>做 个 现 代、优 雅 代 言 人</span>  
-	      </a>
-	      
-	    </div>
-	  </div>
-	
-	  <!-- Controls -->
-	 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
+<tc_include file="Public:nav"/>
+<!--banner-->
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    </ol>
 
-	</div>
-	
-	
-	
-	<!--center-->
-	
-	<!--introduce-->
-	<div class="container introduce">
-		<div class="row">
-			
-			<!--introduce left-->
-			<div class="container col-md-5 col-sm-12 introL">
-				
-				<!--about us-->
-				<div class="about">
-					<div class="Aword">
-				    <h4 class="Atitle">关于我们</h4>
-				    <p>《猫女时尚》是拥有137年悠久历史的国际著名时装杂志，最能体现时代风尚的权威引领者，阅读率高居同类时尚杂志排行榜第三位，跻身最畅销时尚类女性杂志前五名。
-				   <br />
-				   <!--<a class="more" href="aboutUs.html">了解更多<i class="iconfont"></i></a>-->
-				    </p>
-				  </div>
-				  <div class="Img" id="Aimg" href="#">
-				  	<a href="aboutUs.html">
-				  		
-				  	</a>
-				  	<div>
-				  		<p>关于我们</p>
-				  		<p style="font-size: 12px;">点击更全面的了解我们</p>
-				  	</div>
-				  	
-				  </div>
-				  
-				</div>
-				
-				<!--says-->
-				<div class="about">
-				  <div class="Img" id="Simg" href="#">
-				  	<a href="#">
-				  		
-				  	</a>
-				  	<div>
-					  		<p>试用中心</p>
-					  		<p style="font-size: 12px;">点击查看更多可试用产品</p>
-					  	</div>
-				  	
-				  </div>
-				  <div class="Aword Sword">
-				    <h4 class="Atitle">试用规则</h4>
-				    <p>积极参加我们的试用活动，认真填写试用申请宣言，申请成功后，及时提交图文试用报告，你将成为我们的优质用户，下次获得更高的试用机会。
-				  
-				    </p>
-				  </div>
-				</div>
-				
-			</div>
-			
-			<!--introduction right-->
-			<div class="col-md-7 col-sm-12 introR">
-				<h4>最 热 资 讯</h4>
-				<div class="gxh">
-					<a href="#">换件薄内衣舒服又时髦 为什么不呢？</a> 
-					<a href="#">除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引...</a>
-				
-				</div>
-				<div class="ycx">
-				<a href="#">入夏倒计时，一件连衣裙可以锁住初夏的所有美丽</a> 
-					<a href="#">4月已经进行了1/3，你的装备还停留在瑟瑟发抖暗黑色系的冬季吗？春寒料峭，乍暖还寒，群芳争妍，美美的春季该穿什么样的连衣裙，估计成为了潮妹们的心中小纠结...</a>
-				</div>
-				<div class="ydy">
-					<a href="#">换件薄内衣舒服又时髦 为什么不呢？</a> 
-					<a href="#">除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引...</a>
-				</div>
-				<div class="ydy">
-					<a href="#">换件薄内衣舒服又时髦 为什么不呢？</a> 
-					<a href="#">除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引...</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	
-	<!--main-->
-	
-	<div class="Title">
-		<h3>最新推荐</h3>	
-	</div>
-	<div class="aboutUsMain container">
-		<div class="row aboutUss">
-			<div class=" col-md-4 col-sm-12">
-				<a href="detail.html" class="Ssort">
-					<label class="Ssort1"></label>
-					<h4>潮流搭配</h4>
-						<p>这些超模生力军出门懒到只穿一个色，怎么就成为了全球穿衣榜样？</p>
-						<img src="imgs/c2.jpg" />
-						
-				</a>
-				
-			</div>
-			<div class=" col-md-4 col-sm-12">
-				<a href="#" class="Ssort">
-					<label class="Ssort2"></label>
-					<h4>明星时尚</h4>
-					<p>当了Chanel大使的刘诗诗要美要英俊都她说得算！</p>
-					<img src="imgs/c4.jpg" />
-				</a>	
-			</div>
-			<div class="col-md-4 col-sm-12">
-				<a href="http://beauty.bazaar.com.cn/2017/0415/231572.shtml" class="Ssort">
-					<label class="Ssort3"></label>
-					<h4>美容造型</h4>
-					<p>扮得了嫩，耍得了时髦，Baby Hair正当红！</p>
-					<img src="imgs/c5.jpg" />
-				</a>
-			</div>
-		</div>
-	</div>
-	
-	
-	<div class="contact">
-		<div class="contactcenter">
-			<div class="contactWord"></div>
-			<div class="contactCon">
-				<h3>欢迎广告商、读者的咨询</h3>
-				<p>联系方式：010-58568561</p>
-				<a href="contact.html"> 更多联系方式 </a>
-			</div>
-			
-		</div>
-		
-	</div>
-	
-	
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="__TMPL__Public/assets/imgs/banner1.jpg" width="100%">
+            <a href="#" class="mask">
+                服 务 于 中 国 精 英 女 性  阶 层 的 时 尚 杂 志 
+                <br />
+                ---------------------------------------------------------
+            </a>
+        </div>
+        <div class="item">
+            <img src="__TMPL__Public/assets/imgs/banner22.jpg" width="100%">
+            <a href="#" class="mask">
+                提 供  <span style="font-size: 1rem;"> 最  新 </span>时 尚 资 讯， <span style="font-size: 1rem;">精 辟 </span>的 流 行 趋 势 报 道
 
-	<!--the reason of selection-->
-	<div class="center container">
-		<div class="Title honor">
-			<h3>主要合作品牌</h3>
-			<p></p>
-		</div>
-		<div class="reasonMain row">
-			<div class="col-md-3 col-sm-12">
-				<a href="http://baike.baidu.com/item/MURSTER/7466030"><img src="imgs/b1.jpg"/></a>
-			</div>
-			<div class="col-md-3 col-sm-12">
-				<a href="http://baike.baidu.com/link?url=GmsT_dRHcjjAxiehtYNdMtX1EvFcFgDkzVYSY4loc-FzpLheiggw1p_6O4cnBUrmWnlwzSVXG5BIVhmqz91XVyH3r_pXQ2hbfhyryfJFe2K"><img src="imgs/b2.jpg"/></a>
-			</div>
-			<div class="col-md-3 col-sm-12">
-				<a href="http://baike.baidu.com/link?url=M6W1fxZCSrvViVUjiM071eQAF0tXQxxiqK5-NsryRyaHIDZ2sNFHgg_zygdBji-6uu_X6ocmPloieGflsasZpczx6UjJym2qXsJ_1aUqxxW3uoadX0d_c5NjQ-GkVpqC"><img src="imgs/b3.jpg"/></a>
-			</div>
-			<div class="col-md-3 col-sm-12">
-				<a href="http://baike.baidu.com/link?url=89JttsV4bUG9jABtN6Ew6QXfJxBNoTLICs9yR9AfJzafb5sDKodCnlnLBcIW0hZ6sfAtvHm_5iXsiiOlk6x4rq"><img src="imgs/b4.jpg"/></a>
-			</div>
-		</div>
-	</div>
+            </a>
+        </div>
+        <div class="item">
+            <img src="__TMPL__Public/assets/imgs/banner3.jpg" width="100%">
+            <a href="#" class="mask">
+                <span style="font-size: 1rem;">	时 尚 & 潮 流</span>
+                <br />
+                传 播 时 装 、美 和 女 性 的 力 量
+            </a>
 
-	
-	<!--footer-->
-	<div class="footer-my">
-		<div class="container">
-			<div class="row" style="margin-bottom: 20px;">
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>优惠政策</h3></li>
-					<li>新会员优惠</li>
-					<li>团购优惠</li>
-					<li>优惠券抵扣活动</li>
-					<li>其他活动</li>
-				</ul>
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>地址</h3></li>
-					<li>国家:<span>中国</span></li>
-					<li>城市:<span>唐山</span></li>
-					<li>联系方式:<span>8 800 154-45-67</span></li>
-					<li>邮箱:<span>progress@mail.com</span><a href="#"></a></li>
-				</ul>
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>联系我们</h3></li>
-					<li><a href="#">QQ</a></li>
-					<li><a href="#">微信</a></li>
-					<li><a href="#">微博</a></li>
-					<li><a href="#">人人网</a></li>
-				</ul>
-				<div class="col-md-3 col-sm-6">
-					<h3>您的意见</h3>
-					<form action="#" method="post">
-						<div class="fr" style="width: 178px;">
-							<input type="email"value="写下您的邮箱地址" />
-							<input type="submit" value="进入留言"  />
-						</div>
-						
-					</form>	
-				</div>	
-			</div>	
-			
-		</div>
-		<div class="footer-t">
-			<div class="container">
-				<p class="col-md-12">版权所有© 2015-2016 中国尚摄工作室 技术支持：品色创意设计中心</p>
-        		<p class="col-md-12">尚摄工作室摄影隶属于唐山企业发展有限公司</p>
-			</div>
-			
-		</div>
-	</div>
-	
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-     <!--用于解决IE9以下版本浏览器对HTML5新增标签不识别，并导致CSS不起作用的问题。-->
-    <script src="js/html5shiv.js"></script>
-    <!--让不支持css3 Media Query的浏览器包括IE6-IE8等其他浏览器支持查询。-->
-    <script src="js/respond.js"></script>
-    <script type="text/javascript" src="js/public.js" ></script>
-    <script type="text/javascript" src="js/rem.js" ></script>
-  </body>
+        </div>
+        <div class="item">
+            <img src="__TMPL__Public/assets/imgs/banner44.jpg" width="100%">
+            <a href="#" class="mask">
+
+                <span style="font-size: 1rem;"> 时刻</span> 与 读 者 分 享 当 代 女 性 生 活 的 乐 趣 和 智 慧——
+                <br />
+                <span>做 个 现 代、优 雅 代 言 人</span>  
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+    </a>
+
+</div>
+
+
+
+<!--center-->
+
+<!--introduce-->
+<div class="container introduce">
+    <div class="row">
+
+        <!--introduce left-->
+        <div class="container col-md-5 col-sm-12 introL">
+
+            <!--about us-->
+            <div class="about">
+                <div class="Aword">
+                    <h4 class="Atitle">关于我们</h4>
+                    <p>《猫女时尚》是拥有137年悠久历史的国际著名时装杂志，最能体现时代风尚的权威引领者，阅读率高居同类时尚杂志排行榜第三位，跻身最畅销时尚类女性杂志前五名。
+                        <br />
+                        <!--<a class="more" href="aboutUs.html">了解更多<i class="iconfont"></i></a>-->
+                    </p>
+                </div>
+                <div class="Img" id="Aimg" href="#">
+                    <a href="aboutUs.html">
+
+                    </a>
+                    <div>
+                        <p>关于我们</p>
+                        <p style="font-size: 12px;">点击更全面的了解我们</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--says-->
+            <div class="about">
+                <div class="Img" id="Simg" href="#">
+                    <a href="#">
+
+                    </a>
+                    <div>
+                        <p>试用中心</p>
+                        <p style="font-size: 12px;">点击查看更多可试用产品</p>
+                    </div>
+
+                </div>
+                <div class="Aword Sword">
+                    <h4 class="Atitle">试用规则</h4>
+                    <p>积极参加我们的试用活动，认真填写试用申请宣言，申请成功后，及时提交图文试用报告，你将成为我们的优质用户，下次获得更高的试用机会。
+
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!--introduction right-->
+        <div class="col-md-7 col-sm-12 introR">
+            <h4>最 热 资 讯</h4>
+            <div class="gxh">
+                <a href="#">换件薄内衣舒服又时髦 为什么不呢？</a> 
+                <a href="#">除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引...</a>
+
+            </div>
+            <div class="ycx">
+                <a href="#">入夏倒计时，一件连衣裙可以锁住初夏的所有美丽</a> 
+                <a href="#">4月已经进行了1/3，你的装备还停留在瑟瑟发抖暗黑色系的冬季吗？春寒料峭，乍暖还寒，群芳争妍，美美的春季该穿什么样的连衣裙，估计成为了潮妹们的心中小纠结...</a>
+            </div>
+            <div class="ydy">
+                <a href="#">换件薄内衣舒服又时髦 为什么不呢？</a> 
+                <a href="#">除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引...</a>
+            </div>
+            <div class="ydy">
+                <a href="#">换件薄内衣舒服又时髦 为什么不呢？</a> 
+                <a href="#">除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引...</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--main-->
+
+<div class="Title">
+    <h3>最新推荐</h3>	
+</div>
+<div class="aboutUsMain container">
+    <div class="row aboutUss">
+        <div class=" col-md-4 col-sm-12">
+            <a href="detail.html" class="Ssort">
+                <label class="Ssort1"></label>
+                <h4>潮流搭配</h4>
+                <p>这些超模生力军出门懒到只穿一个色，怎么就成为了全球穿衣榜样？</p>
+                <img src="__TMPL__Public/assets/imgs/c2.jpg" />
+
+            </a>
+
+        </div>
+        <div class=" col-md-4 col-sm-12">
+            <a href="#" class="Ssort">
+                <label class="Ssort2"></label>
+                <h4>明星时尚</h4>
+                <p>当了Chanel大使的刘诗诗要美要英俊都她说得算！</p>
+                <img src="__TMPL__Public/assets/imgs/c4.jpg" />
+            </a>	
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <a href="http://beauty.bazaar.com.cn/2017/0415/231572.shtml" class="Ssort">
+                <label class="Ssort3"></label>
+                <h4>美容造型</h4>
+                <p>扮得了嫩，耍得了时髦，Baby Hair正当红！</p>
+                <img src="__TMPL__Public/assets/imgs/c5.jpg" />
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div class="contact">
+    <div class="contactcenter">
+        <div class="contactWord"></div>
+        <div class="contactCon">
+            <h3>欢迎广告商、读者的咨询</h3>
+            <p>联系方式：010-58568561</p>
+            <a href="contact.html"> 更多联系方式 </a>
+        </div>
+    </div>
+</div>
+<!--the reason of selection-->
+<div class="center container">
+    <div class="Title honor">
+        <h3>主要合作品牌</h3>
+        <p></p>
+    </div>
+    <div class="reasonMain row">
+        <div class="col-md-3 col-sm-12">
+            <a href="http://baike.baidu.com/item/MURSTER/7466030"><img src="__TMPL__Public/assets/imgs/b1.jpg"/></a>
+        </div>
+        <div class="col-md-3 col-sm-12">
+            <a href="http://baike.baidu.com/link?url=GmsT_dRHcjjAxiehtYNdMtX1EvFcFgDkzVYSY4loc-FzpLheiggw1p_6O4cnBUrmWnlwzSVXG5BIVhmqz91XVyH3r_pXQ2hbfhyryfJFe2K"><img src="__TMPL__Public/assets/imgs/b2.jpg"/></a>
+        </div>
+        <div class="col-md-3 col-sm-12">
+            <a href="http://baike.baidu.com/link?url=M6W1fxZCSrvViVUjiM071eQAF0tXQxxiqK5-NsryRyaHIDZ2sNFHgg_zygdBji-6uu_X6ocmPloieGflsasZpczx6UjJym2qXsJ_1aUqxxW3uoadX0d_c5NjQ-GkVpqC"><img src="__TMPL__Public/assets/imgs/b3.jpg"/></a>
+        </div>
+        <div class="col-md-3 col-sm-12">
+            <a href="http://baike.baidu.com/link?url=89JttsV4bUG9jABtN6Ew6QXfJxBNoTLICs9yR9AfJzafb5sDKodCnlnLBcIW0hZ6sfAtvHm_5iXsiiOlk6x4rq"><img src="__TMPL__Public/assets/imgs/b4.jpg"/></a>
+        </div>
+    </div>
+</div>
+<!--footer-->
+<tc_include file="Public:footer"/>
+<tc_include file="Public:scripts"/>
+</body>
 </html>
