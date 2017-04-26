@@ -1,0 +1,38 @@
+
+.navbar{
+	border-bottom: 2px solid #101010;
+}
+.pinglun{
+	float: none;
+	margin: 10px auto;
+	
+}
+.Tmain li{
+	border-bottom: none;
+}
+.pinglun>div:first-of-type{
+	border-bottom: 1px solid #9D9D9D;
+}
+.pinglun1 p{
+line-height: 20px;
+margin: 20px auto;
+}
+.pinglun1 img{
+display: block;
+margin: 10px auto;
+}
+.pinglun1{
+	border-bottom: 1px dashed #CBA200;
+}
+.go-back{
+	float: none;
+	margin: 10px auto;
+	border: 2px solid #888888;
+	display: flex;
+	justify-content: space-around;
+	padding: 10px 0;
+}
+.go-back a{
+	font-weight: bold;
+}
+

@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>个人中心</title>
+    <title>试用中心</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/public.css" />
-    <link rel="stylesheet" href="css/my.css" />
+    <link rel="stylesheet" href="css/try.css" />
+   
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -87,83 +88,69 @@
 		  </div><!-- /.container-fluid -->
 	</nav>
 	
-		
 	
 	
 	<!--main-->
-		<div class="my container">
-			
+	
+		<div class="try container">
 			
 			<!--top-->
+			
+			<ul class="Ttop2 row">
+				<li class="col-md-12 col-sm-12 col-xs-12"><h2>试用流程</h2></li>
+				<li class="col-md-3 col-sm-6 col-xs-12" style="color: #080808;">1.注册登录猫女官方网站</li>
+				<li class="col-md-3 col-sm-6 col-xs-12" style="color: #080808;">2.申请试用填写地址</li>
+				<li class="col-md-3 col-sm-6 col-xs-12">3.审核通过免费试用</li>
+				<li class="col-md-3 col-sm-6 col-xs-12">4.提交试用报告</li>
+			</ul>
+			
+			<!--申请步骤二-->
+			<div class="row apply1">
+				<dl class="col-md-4">
+					<dt>正在申请试用得产品</dt>
+					<dd><img src="imgs/ap1.jpg" width="90%"/></dd>
+					<dt>THE LAUNDRESS白色衣物专用亮色洗衣精</dt>
+				</dl>
+				<form action="#" method="get" class="col-md-8 Aaddress">
+						<h5>填写有效收获地址</h5>
+						<p><span>姓名:</span><input type="text" placeholder="柠檬c加冰"/></p>
+						<p><span>手机号:</span><input type="tel" placeholder="15732052193"/></p>
+						<p><span>邮政编码:</span><input placeholder="000000" /></p>
+						<div class="info">
 	
-			<div class="myTop row">
-				<h4 class="col-md-3">
-					<img src="imgs/DP9.jpg" />
-					<p><span>昵称：</span>柠檬c加冰</p>
-				</h4>
-				
-				<div class="col-md-7 topWord"> 
-					<p>
-						个性签名：<br />
-						是不是总觉得款式有限选择空间小，怎么也挑不到一款让自己称心如意的美甲？每天修炼时尚跟美容秘籍，怎么甘心让手的颜值拖了后腿！
-					</p>
-					<p>
+							<div >
+								<span>收件地址：</span>
+								
+							<select id="s_province" name="s_province"></select>  
 						
-						<span>肤质：干性</span>
-					<span>年龄：26</span>
-					</p>
-				</div>
-				<a href="myedit.html" class="col-md-2 myedit">
-					编辑资料
-				</a>
-			</div>
-			
-			
-			<!--main-->
-			
-			<!--我的申请-->
-			<div class="apply">
-				<h3>我的报告</h3>
-				<div class="myapply row" href="#">
-					<a href="#" class="col-md-2"><img src="imgs/t8.jpg" width="90%"/></a>
-					<div href="#" class="col-md-9 sh baogao">
-						<span>##SK-II肌因光蕴祛斑精华露 试用##</span>
-						<a href="#">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色...</a>
+						    <select id="s_city" name="s_city" ></select>  
+						
+						    <select id="s_county" name="s_county"></select>
+						
+						    <script class="resources library" src="js/area.js" type="text/javascript"></script>
+						
+						    
+						
+						    <script type="text/javascript">_init_area();</script>
+						
+						    </div>
+	
+	   		 <div id="show"></div>
+	
 					</div>
+					<p><span>详细地址：</span><br/><textarea placeholder="河北省廊坊市大城县永乐家园203b"></textarea></p>
+					<input type="submit" value="提交申请" id="sub" />
 					
-				</div>
-			</div>
-			<div class="apply">
-				<h3>我的申请</h3>
-				<div class="myapply row" href="#">
-					<a href="#" class="col-md-2"><img src="imgs/t9.jpg" width="90%"/></a>
-					<div class="col-md-4 sh">
-						<span>##SK-II肌因光蕴祛斑精华露 试用##</span>
-						<span class="tj" href="submitReport.html">提交报告</span>
-					</div>
-					
-				</div>
-			</div>
-			
-			<div class="sc">
-				<h3>我的收藏</h3>
-				<div class="row">
-					<a href="#" class="news-top clearfix col-md-5">
-					  <p class="fl"><span style="font-size: 32px; display: block; height: 32px;">28</span><span style="display: block;">06</span></p>
-					  <h4 class="fl">蒋梦婕：她心中住着一只猛虎</h4>
-					</a>
-					<a href="#" class="news-top clearfix col-md-5">
-					  <p class="fl"><span style="font-size: 32px; display: block; height: 32px;">28</span><span style="display: block;">06</span></p>
-					  <h4 class="fl">蒋梦婕：她心中住着一只猛虎</h4>
-					</a>
-					<a href="#" class="news-top clearfix col-md-5">
-					  <p class="fl"><span style="font-size: 32px; display: block; height: 32px;">28</span><span style="display: block;">06</span></p>
-					  <h4 class="fl">蒋梦婕：她心中住着一只猛虎</h4>
-					</a>
-				</div>
 				
+				</form>
+					<!--弹出层-->
+					<div class="tc">
+						<p>您已成功提交申请,请耐心等待!</p>
+					</div>	
 		</div>
-	</div>
+		
+		</div>	
+	
 	<!--footer-->
 	<div class="footer-my">
 		<div class="container">
@@ -196,7 +183,6 @@
 							<input type="email"value="写下您的邮箱地址" />
 							<input type="submit" value="进入留言"  />
 						</div>
-						
 					</form>	
 				</div>	
 			</div>	
@@ -219,5 +205,22 @@
     <script src="js/respond.js"></script>
     <script type="text/javascript" src="js/public.js" ></script>
     <script type="text/javascript" src="js/rem.js" ></script>
+    <script type="text/javascript">
+
+var Gid  = document.getElementById ;
+
+var showArea = function(){
+
+	Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" + 	
+
+	Gid('s_city').value + " - 县/区" + 
+
+	Gid('s_county').value + "</h3>"
+
+							}
+
+Gid('s_county').setAttribute('onchange','showArea()');
+
+</script>
   </body>
 </html>

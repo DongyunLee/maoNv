@@ -164,10 +164,19 @@ $(".btn3").click(function(){
 		$(".payzz").hide();
 	})
 
-//已收藏
+//***************************已收藏
  $("#collect").click(function(){
  	$(this).text("已收藏");
  	
+ });
+ 
+ //***************************提交申请弹出层
+ 
+ $("#sub").click(function(){
+ 	$(".tc").fadeIn(200);
+ })
+ $(".tc").click(function(){
+ 	$(this).fadeOut(200);
  })
 
 });

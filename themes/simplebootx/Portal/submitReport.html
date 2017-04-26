@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>个人中心</title>
+    <title>提交报告</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/public.css" />
-    <link rel="stylesheet" href="css/my.css" />
+    <link rel="stylesheet" href="css/contact.css" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,7 +21,7 @@
   </head>
   <body>
     <!--nav-->
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default" role="navigation" style="border-bottom: 2px solid #101010;">
 		  <div class="container">
 		    <!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">
@@ -91,79 +91,43 @@
 	
 	
 	<!--main-->
-		<div class="my container">
-			
-			
-			<!--top-->
 	
-			<div class="myTop row">
-				<h4 class="col-md-3">
-					<img src="imgs/DP9.jpg" />
-					<p><span>昵称：</span>柠檬c加冰</p>
-				</h4>
-				
-				<div class="col-md-7 topWord"> 
-					<p>
-						个性签名：<br />
-						是不是总觉得款式有限选择空间小，怎么也挑不到一款让自己称心如意的美甲？每天修炼时尚跟美容秘籍，怎么甘心让手的颜值拖了后腿！
-					</p>
-					<p>
-						
-						<span>肤质：干性</span>
-					<span>年龄：26</span>
-					</p>
-				</div>
-				<a href="myedit.html" class="col-md-2 myedit">
-					编辑资料
-				</a>
-			</div>
+		<div class="main container" >
 			
-			
-			<!--main-->
-			
-			<!--我的申请-->
-			<div class="apply">
-				<h3>我的报告</h3>
-				<div class="myapply row" href="#">
-					<a href="#" class="col-md-2"><img src="imgs/t8.jpg" width="90%"/></a>
-					<div href="#" class="col-md-9 sh baogao">
-						<span>##SK-II肌因光蕴祛斑精华露 试用##</span>
-						<a href="#">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色...</a>
-					</div>
-					
-				</div>
-			</div>
-			<div class="apply">
-				<h3>我的申请</h3>
-				<div class="myapply row" href="#">
-					<a href="#" class="col-md-2"><img src="imgs/t9.jpg" width="90%"/></a>
-					<div class="col-md-4 sh">
-						<span>##SK-II肌因光蕴祛斑精华露 试用##</span>
-						<span class="tj" href="submitReport.html">提交报告</span>
-					</div>
-					
-				</div>
-			</div>
-			
-			<div class="sc">
-				<h3>我的收藏</h3>
-				<div class="row">
-					<a href="#" class="news-top clearfix col-md-5">
-					  <p class="fl"><span style="font-size: 32px; display: block; height: 32px;">28</span><span style="display: block;">06</span></p>
-					  <h4 class="fl">蒋梦婕：她心中住着一只猛虎</h4>
-					</a>
-					<a href="#" class="news-top clearfix col-md-5">
-					  <p class="fl"><span style="font-size: 32px; display: block; height: 32px;">28</span><span style="display: block;">06</span></p>
-					  <h4 class="fl">蒋梦婕：她心中住着一只猛虎</h4>
-					</a>
-					<a href="#" class="news-top clearfix col-md-5">
-					  <p class="fl"><span style="font-size: 32px; display: block; height: 32px;">28</span><span style="display: block;">06</span></p>
-					  <h4 class="fl">蒋梦婕：她心中住着一只猛虎</h4>
-					</a>
+		
+				<div class="main-l">
+					<h3>提交报告</h3>
+					<form class="form-horizontal" role="form">
+						<div class="form-group">
+					    <label for="inputName3" class="col-sm-2 control-label">产品名称：</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="inputName3" placeholder="试用产品名称">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="inputCity3" class="col-sm-2 control-label">报告标题：</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="inputCity3" placeholder="填写报告标题" >
+					    </div>
+					  </div>
+					 
+					  <div class="form-group">
+					    <label for="inputPassword3" class="col-sm-2 control-label">用后体验：</label>
+					    <div class="col-sm-10">
+					      <textarea placeholder="请留下您的用后体验"></textarea>
+					    </div>
+					  </div>
+					 			<button type="submit" class="btn btn-default">提交报告</button>
+					      <button type="reset" class="btn btn-default">重置</button>
+	
+					</form>
 				</div>
 				
-		</div>
+		
+			
+
 	</div>
+	
 	<!--footer-->
 	<div class="footer-my">
 		<div class="container">
