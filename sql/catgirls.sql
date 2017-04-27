@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-04-22 19:20:46
+-- Generation Time: 2017-04-27 16:59:41
 -- 服务器版本： 5.7.14
--- PHP Version: 5.6.25
+-- PHP Version: 7.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -679,6 +679,13 @@ CREATE TABLE `cg_posts` (
   `recommended` tinyint(1) NOT NULL DEFAULT '0' COMMENT '推荐 1推荐 0不推荐'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Portal文章表';
 
+--
+-- 转存表中的数据 `cg_posts`
+--
+
+INSERT INTO `cg_posts` (`id`, `post_author`, `post_keywords`, `post_source`, `post_date`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `post_modified`, `post_content_filtered`, `post_parent`, `post_type`, `post_mime_type`, `comment_count`, `smeta`, `post_hits`, `post_like`, `istop`, `recommended`) VALUES
+(1, 1, '', '百度', '2017-04-28 00:23:16', '<p>除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引</p>', '换件薄内衣舒服 为什么不呢？', '除去对于样式的偏好，很多女孩可能会毫不犹豫的选右边那件，原因很简单，它够厚（也许还能塞垫子）会让胸看起来更大。相信很多姑娘都曾被“聚拢”、“加厚”这样的字眼吸引', 1, 1, '2017-04-28 00:29:04', NULL, 0, 1, '', 0, '{"thumb":"portal\\/20170428\\/59021b2107c0f.jpg","template":"","photo":[{"url":"http:\\/\\/localhost\\/maonv\\/data\\/upload\\/portal\\/20170428\\/59021b2d24cb8.jpg","alt":"1417659158310.jpg"}]}', 0, 0, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -746,6 +753,15 @@ CREATE TABLE `cg_slide` (
   `listorder` int(10) DEFAULT '0' COMMENT '排序'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='幻灯片表';
 
+--
+-- 转存表中的数据 `cg_slide`
+--
+
+INSERT INTO `cg_slide` (`slide_id`, `slide_cid`, `slide_name`, `slide_pic`, `slide_url`, `slide_des`, `slide_content`, `slide_status`, `listorder`) VALUES
+(1, 1, 'banner1', 'admin/20170427/59020c7983040.jpg', 'http://baidu.com', 'banner1', 'banner1', 1, 0),
+(2, 1, 'banner2', 'admin/20170427/59020dee42c18.jpg', 'http://taobao.com', 'banner2', 'banner2', 1, 0),
+(3, 1, 'banner3', 'admin/20170427/59020e138a321.jpg', 'http://qiecloud.cn', 'banner3', 'banner3', 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -759,6 +775,13 @@ CREATE TABLE `cg_slide_cat` (
   `cat_remark` text COMMENT '分类备注',
   `cat_status` int(2) NOT NULL DEFAULT '1' COMMENT '状态，1显示，0不显示'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='幻灯片分类表';
+
+--
+-- 转存表中的数据 `cg_slide_cat`
+--
+
+INSERT INTO `cg_slide_cat` (`cid`, `cat_name`, `cat_idname`, `cat_remark`, `cat_status`) VALUES
+(1, 'index_banner', 'portal_index', ' 首页banner', 1);
 
 -- --------------------------------------------------------
 
@@ -789,8 +812,7 @@ CREATE TABLE `cg_terms` (
 --
 
 INSERT INTO `cg_terms` (`term_id`, `name`, `slug`, `taxonomy`, `description`, `parent`, `count`, `path`, `seo_title`, `seo_keywords`, `seo_description`, `list_tpl`, `one_tpl`, `listorder`, `status`) VALUES
-(1, '列表演示', '', 'article', '', 0, 0, '0-1', '', '', '', 'list', 'article', 0, 1),
-(2, '瀑布流', '', 'article', '', 0, 0, '0-2', '', '', '', 'list_masonry', 'article', 0, 1);
+(3, '最热资讯', '', 'article', '首页——最热资讯', 0, 0, '0-3', '', '', '', 'list', 'article', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -805,6 +827,13 @@ CREATE TABLE `cg_term_relationships` (
   `listorder` int(10) NOT NULL DEFAULT '0' COMMENT '排序',
   `status` int(2) NOT NULL DEFAULT '1' COMMENT '状态，1发布，0不发布'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Portal 文章分类对应表';
+
+--
+-- 转存表中的数据 `cg_term_relationships`
+--
+
+INSERT INTO `cg_term_relationships` (`tid`, `object_id`, `term_id`, `listorder`, `status`) VALUES
+(1, 1, 3, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -839,7 +868,7 @@ CREATE TABLE `cg_users` (
 --
 
 INSERT INTO `cg_users` (`id`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `avatar`, `sex`, `birthday`, `signature`, `last_login_ip`, `last_login_time`, `create_time`, `user_activation_key`, `user_status`, `score`, `user_type`, `coin`, `mobile`) VALUES
-(1, 'admin', '###14f9952da28b2c38a57588a7e5a78145', 'admin', '1811128205@qq.com', '', NULL, 0, '2000-01-01', NULL, '0.0.0.0', '2017-04-23 03:16:22', '2017-04-23 03:16:22', '', 1, 0, 1, 0, '');
+(1, 'admin', '###14f9952da28b2c38a57588a7e5a78145', 'admin', '1811128205@qq.com', '', NULL, 0, '2000-01-01', NULL, '0.0.0.0', '2017-04-28 00:22:28', '2017-04-23 03:16:22', '', 1, 0, 1, 0, '');
 
 -- --------------------------------------------------------
 
@@ -1107,7 +1136,7 @@ ALTER TABLE `cg_plugins`
 -- 使用表AUTO_INCREMENT `cg_posts`
 --
 ALTER TABLE `cg_posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- 使用表AUTO_INCREMENT `cg_role`
 --
@@ -1122,22 +1151,22 @@ ALTER TABLE `cg_route`
 -- 使用表AUTO_INCREMENT `cg_slide`
 --
 ALTER TABLE `cg_slide`
-  MODIFY `slide_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `slide_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- 使用表AUTO_INCREMENT `cg_slide_cat`
 --
 ALTER TABLE `cg_slide_cat`
-  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- 使用表AUTO_INCREMENT `cg_terms`
 --
 ALTER TABLE `cg_terms`
-  MODIFY `term_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '分类id', AUTO_INCREMENT=3;
+  MODIFY `term_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '分类id', AUTO_INCREMENT=4;
 --
 -- 使用表AUTO_INCREMENT `cg_term_relationships`
 --
 ALTER TABLE `cg_term_relationships`
-  MODIFY `tid` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `tid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- 使用表AUTO_INCREMENT `cg_users`
 --
