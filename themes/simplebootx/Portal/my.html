@@ -1,235 +1,101 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>个人中心</title>
+    <head>
+        <title>个人中心</title>
+        <tc_include file='Public:head'/>
+        <link rel="stylesheet" href="__TMPL__Public/assets/css/my.css" />
+    </head>
+    <body>
+        <!--nav-->
+        <tc_include file='Public:nav'/>
+        <!--main-->
+        <div class="my container">
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/public.css" />
-    <link rel="stylesheet" href="css/my.css" />
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <!--nav-->
-    <nav class="navbar navbar-default" role="navigation">
-		  <div class="container">
-		    <!-- Brand and toggle get grouped for better mobile display -->
-		    <div class="navbar-header">
-		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		      </button>
-		      <div class="logo clearfix">
-	      	 <a class="navbar-brand fl" href="index.html">猫 女 <span style="font-size: 0.2rem;">时尚杂志</span></a>
-	   			 <p class="fl"><a href="zhuce.html">注册</a>/<a href="login.html">登录</a>/<a href="my.html">个人中心</a></p>
-	      </div>
-		    </div>
-		
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		     <ul class="nav navbar-nav navbar-right">
-	          <li>
-	          	<div class="back"></div>
-	        	<a href="index.html">
-	        	首页
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="product.html">
-	        		国际秀场
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="news.html">
-	        		时尚资讯	
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="model.html">
-	        	时装潮流
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="try.html">
-	        	试用中心
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="aboutUs.html">
-	        		关于我们
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="contact.html">
-	        		联系我们
-	        	</a>
-	        </li>
-	   
-	      </ul>
-		    </div><!-- /.navbar-collapse -->
-		  </div><!-- /.container-fluid -->
-	</nav>
-	
-		
-	
-	
-	<!--main-->
-		<div class="my container">
-			
-			
-			<!--top-->
-	
-			<div class="myTop row">
-				<h4 class="col-md-3">
-					<img src="imgs/DP9.jpg" />
-					<p><span>昵称：</span>柠檬c加冰</p>
-				</h4>
-				
-				<div class="col-md-7 topWord"> 
-					<p>
-						个性签名：<br />
-						是不是总觉得款式有限选择空间小，怎么也挑不到一款让自己称心如意的美甲？每天修炼时尚跟美容秘籍，怎么甘心让手的颜值拖了后腿！
-					</p>
-					<p>
-						
-						<span>肤质：干性</span>
-					<span>年龄：26</span>
-					</p>
-				</div>
-				<a href="myedit.html" class="col-md-2 myedit">
-					编辑资料
-				</a>
-			</div>
-			
-			
-			<!--main-->
-			
-			<!--我的申请-->
-				<div class="apply">
-					<h3>已申请</h3>
-					<div class="myapply row" href="#">
-						<a href="chanpin.html" class="col-md-2"><img src="imgs/t7.jpg" width="90%"/></a>
-						<div class="col-md-4 sh">
-							<span>##SK-II肌因光蕴祛斑精华露 试用##</span>
-							<a href="chanpin.html" class="tj" href="#" style="background: #ACAAAB;">待审核</a>
-						</div>
-						
-					</div>
-				</div>
-				<div class="apply">
-					<h3>待交报告</h3>
-					<div class="myapply row" href="#">
-						<a href="chanpin.html" class="col-md-2"><img src="imgs/t9.jpg" width="90%"/></a>
-						<div class="col-md-4 sh">
-							<span>##SK-II肌因光蕴祛斑精华露 试用##</span>
-							<a href="submitReport.html" class="tj" href="#">提交报告</a>
-						</div>
-						
-					</div>
-				</div>
-			<div class="apply">
-				<h3>我的报告</h3>
-				<div class="myapply row" href="#">
-					<a href="#" class="col-md-2"><img src="imgs/t8.jpg" width="90%"/></a>
-					<div href="#" class="col-md-9 sh baogao">
-						<span>##SK-II肌因光蕴祛斑精华露 试用##</span>
-						<a href="pinglun.html">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色...</a>
-					</div>
-					
-				</div>
-			</div>
-		
-			
-			<div class="sc">
-				<h3>我的收藏</h3>
-				<div class="row">
-					<a href="#" class="news-top clearfix col-md-5">
-					  <p class="fl"><span style="font-size: 32px; display: block; height: 32px;">28</span><span style="display: block;">06</span></p>
-					  <h4 class="fl">蒋梦婕：她心中住着一只猛虎</h4>
-					</a>
-					<a href="#" class="news-top clearfix col-md-5">
-					  <p class="fl"><span style="font-size: 32px; display: block; height: 32px;">28</span><span style="display: block;">06</span></p>
-					  <h4 class="fl">蒋梦婕：她心中住着一只猛虎</h4>
-					</a>
-					<a href="#" class="news-top clearfix col-md-5">
-					  <p class="fl"><span style="font-size: 32px; display: block; height: 32px;">28</span><span style="display: block;">06</span></p>
-					  <h4 class="fl">蒋梦婕：她心中住着一只猛虎</h4>
-					</a>
-				</div>
-				
-		</div>
-	</div>
-	<!--footer-->
-	<div class="footer-my">
-		<div class="container">
-			<div class="row" style="margin-bottom: 20px;">
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>优惠政策</h3></li>
-					<li>新会员优惠</li>
-					<li>团购优惠</li>
-					<li>优惠券抵扣活动</li>
-					<li>其他活动</li>
-				</ul>
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>地址</h3></li>
-					<li>国家:<span>中国</span></li>
-					<li>城市:<span>唐山</span></li>
-					<li>联系方式:<span>8 800 154-45-67</span></li>
-					<li>邮箱:<span>progress@mail.com</span><a href="#"></a></li>
-				</ul>
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>联系我们</h3></li>
-					<li><a href="#">QQ</a></li>
-					<li><a href="#">微信</a></li>
-					<li><a href="#">微博</a></li>
-					<li><a href="#">人人网</a></li>
-				</ul>
-				<div class="col-md-3 col-sm-6">
-					<h3>您的意见</h3>
-					<form action="#" method="post">
-						<div class="fr" style="width: 178px;">
-							<input type="email"value="写下您的邮箱地址" />
-							<input type="submit" value="进入留言"  />
-						</div>
-						
-					</form>	
-				</div>	
-			</div>	
-			
-		</div>
-		<div class="footer-t">
-			<div class="container">
-				<p class="col-md-12">版权所有© 2015-2016 中国尚摄工作室 技术支持：品色创意设计中心</p>
-        		<p class="col-md-12">尚摄工作室摄影隶属于唐山企业发展有限公司</p>
-			</div>
-			
-		</div>
-	</div>
-	
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.js"></script>
-    <script type="text/javascript" src="js/public.js" ></script>
-    <script type="text/javascript" src="js/rem.js" ></script>
-  </body>
+            <!--top-->
+
+            <div class="myTop row">
+                <h4 class="col-md-3">
+                    <img src="__TMPL__Public/assets/imgs/DP9.jpg" />
+                    <p><span>昵称：</span>柠檬c加冰</p>
+                </h4>
+
+                <div class="col-md-7 topWord"> 
+                    <p>
+                        个性签名：<br />
+                        是不是总觉得款式有限选择空间小，怎么也挑不到一款让自己称心如意的美甲？每天修炼时尚跟美容秘籍，怎么甘心让手的颜值拖了后腿！
+                    </p>
+                    <p>
+
+                        <span>肤质：干性</span>
+                        <span>年龄：26</span>
+                    </p>
+                </div>
+                <a href="myedit.html" class="col-md-2 myedit">
+                    编辑资料
+                </a>
+            </div>
+
+
+            <!--main-->
+
+            <!--我的申请-->
+            <div class="apply">
+                <h3>已申请</h3>
+                <div class="myapply row" href="#">
+                    <a href="chanpin.html" class="col-md-2"><img src="__TMPL__Public/assets/imgs/t7.jpg" width="90%"/></a>
+                    <div class="col-md-4 sh">
+                        <span>##SK-II肌因光蕴祛斑精华露 试用##</span>
+                        <a href="chanpin.html" class="tj" href="#" style="background: #ACAAAB;">待审核</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="apply">
+                <h3>待交报告</h3>
+                <div class="myapply row" href="#">
+                    <a href="chanpin.html" class="col-md-2"><img src="__TMPL__Public/assets/imgs/t9.jpg" width="90%"/></a>
+                    <div class="col-md-4 sh">
+                        <span>##SK-II肌因光蕴祛斑精华露 试用##</span>
+                        <a href="submitReport.html" class="tj" href="#">提交报告</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="apply">
+                <h3>我的报告</h3>
+                <div class="myapply row" href="#">
+                    <a href="#" class="col-md-2"><img src="__TMPL__Public/assets/imgs/t8.jpg" width="90%"/></a>
+                    <div href="#" class="col-md-9 sh baogao">
+                        <span>##SK-II肌因光蕴祛斑精华露 试用##</span>
+                        <a href="pinglun.html">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色...</a>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="sc">
+                <h3>我的收藏</h3>
+                <div class="row">
+                    <a href="#" class="news-top clearfix col-md-5">
+                        <p class="fl"><span style="font-size: 32px; display: block; height: 32px;">28</span><span style="display: block;">06</span></p>
+                        <h4 class="fl">蒋梦婕：她心中住着一只猛虎</h4>
+                    </a>
+                    <a href="#" class="news-top clearfix col-md-5">
+                        <p class="fl"><span style="font-size: 32px; display: block; height: 32px;">28</span><span style="display: block;">06</span></p>
+                        <h4 class="fl">蒋梦婕：她心中住着一只猛虎</h4>
+                    </a>
+                    <a href="#" class="news-top clearfix col-md-5">
+                        <p class="fl"><span style="font-size: 32px; display: block; height: 32px;">28</span><span style="display: block;">06</span></p>
+                        <h4 class="fl">蒋梦婕：她心中住着一只猛虎</h4>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <!--footer-->
+        <tc_include file='Public:footer'/>
+        <tc_include file='Public:scripts'/>
+    </body>
 </html>

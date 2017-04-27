@@ -1,4 +1,5 @@
 <?php
+
 /*
  *      _______ _     _       _     _____ __  __ ______
  *     |__   __| |   (_)     | |   / ____|  \/  |  ____|
@@ -23,18 +24,23 @@
 // +----------------------------------------------------------------------
 // | Author: Dean <zxxjjforever@163.com>
 // +----------------------------------------------------------------------
+
 namespace Portal\Controller;
-use Common\Controller\HomebaseController; 
+
+use Common\Controller\HomebaseController;
+
 /**
  * 首页
  */
 class IndexController extends HomebaseController {
-	
+
     //首页 小夏是老猫除外最帅的男人了
-	public function index() {
-    	$this->display(":index");
+    public function index() {
+        $term_id = 3;
+        $posts = sp_sql_posts('order:object_id;limit:5');
+
+        $this->assign('posts', $posts);
+        $this->display(":index");
     }
 
 }
-
-
