@@ -24,9 +24,4 @@ class ModelController extends HomebaseController{
         $this->assign('terms',$terms);
         $this->display(":model");
     }
-
-    public function detail()
-    {
-        $this->display(":detail");
-    }
 }

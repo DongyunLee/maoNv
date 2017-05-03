@@ -18,6 +18,12 @@ class UserController extends HomebaseController{
      * UserController index()
      */
     public function index() {
+        $usrinfo = $_SESSION['USR'];
+        $usr_id = $usrinfo['uid'];
+        $collects = M("usr_collection")->where("uid={$usr_id}")->select();
+
+        $this->assign('info',$usrinfo);
+        $this->assign("ids",$collects);
         $this->display(":my");
     }
 
@@ -72,8 +78,37 @@ class UserController extends HomebaseController{
     }
 
     public function logout(){
-    	session('USR',null);
+        session_unset();
+        session_destroy();
     	$this->redirect(__ROOT__."/");
+    }
+
+    public function edit()
+    {
+        if (empty($_POST)) {
+            $usrinfo = $_SESSION['USR'];
+
+            $this->assign('info',$usrinfo);
+            $this->display(":myedit");
+        }else {
+            $usr_id = $_SESSION['USR']['uid'];
+            $usr = M("usr");
+            $usr -> uid = $usr_id;
+            $usr->sex = I('post.sex');
+            $usr->nickname = I('post.nickname');
+            $usr->much = I('post.much');
+            $usr->hair = I('post.hair');
+            $usr->skin = I('post.skin');
+            $usr->age = I('post.age');
+            $usr->signature = I('post.signature');
+            if ($usr->save()) {
+                $this->success("修改成功，请重新登录",U("User/logout"));
+            }else {
+                $this->error("修改失败，请重试");
+            }
+        }
+
+
     }
 
 }

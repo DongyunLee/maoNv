@@ -25,8 +25,8 @@
 <div class="model">
     <!--<foreach name='terms' item='vo'>-->
     <php>
-        $posts = sp_sql_posts_bycatid($vo['term_id'],"limit:5;order:object_id desc");
-        $post_by_hits = sp_sql_posts_bycatid($vo['term_id'],'limit:9;order:post_hits desc');
+        $posts = sp_sql_posts('cid:'.$vo['term_id'].";limit:5;order:object_id desc");
+        $post_by_hits = sp_sql_posts("cid:".$vo['term_id'].';limit:9;order:post_hits desc');
     </php>
     <notempty name='posts' >
         <a href="#">
@@ -50,7 +50,7 @@
                     //$smeta = 'data/upload/'.$smeta;
                 </php>
                 <!--<if condition="$key neq 0">-->
-                <a href="{:U('News/detail?id='.$vo['object_id'])}" class="col-md-6 col-sm-6 col-xs-6">
+                <a href="{:U('News/detail?id='.$vo['object_id'].'&cid='.$vo['term_id'])}" class="col-md-6 col-sm-6 col-xs-6">
                     <img src="{$smeta}" width="100%"/>
                     <p>{$vo.post_title}</p>
                 </a>
@@ -63,13 +63,16 @@
 
         <div class="rank1">
             <h3>24小时热门排行</h3>
+            <php>
+
+            </php>
             <ul class="row">
                 <foreach name='post_by_hits' item='vos'>
                     <php>
                         //dump($post_by_hits);
                     </php>
                 <li class="col-md-4 col-sm-6 col-xs-12">
-                    <a href="#">
+                    <a href="{:U('News/detail?id='.$vos['object_id'])}">
                         <span>{$key+1}</span>
                     {$vos['post_title']}
                     </a>

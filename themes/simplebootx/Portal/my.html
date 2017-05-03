@@ -17,21 +17,23 @@
             <div class="myTop row">
                 <h4 class="col-md-3">
                     <img src="__TMPL__Public/assets/imgs/DP9.jpg" />
-                    <p><span>昵称：</span>柠檬c加冰</p>
+                    <p><span>昵称：</span>{$info.nickname}</p>
                 </h4>
 
-                <div class="col-md-7 topWord"> 
+                <div class="col-md-7 topWord">
                     <p>
                         个性签名：<br />
-                        是不是总觉得款式有限选择空间小，怎么也挑不到一款让自己称心如意的美甲？每天修炼时尚跟美容秘籍，怎么甘心让手的颜值拖了后腿！
+                        {$info.signature}
                     </p>
                     <p>
-
-                        <span>肤质：干性</span>
-                        <span>年龄：26</span>
+                        <php>
+                            $skin = $info['skin'] == 0?'干性':($info['skin'] == 1?'油性':'中性');
+                        </php>
+                        <span>肤质：{$skin}</span>
+                        <span>年龄：{$info.age}</span>
                     </p>
                 </div>
-                <a href="{:U('Myedit/index')}" class="col-md-2 myedit">
+                <a href="{:U('User/edit')}" class="col-md-2 myedit">
                     编辑资料
                 </a>
             </div>
@@ -78,18 +80,19 @@
             <div class="sc">
                 <h3>我的收藏</h3>
                 <div class="row">
-                    <a href="#" class="news-top clearfix col-md-5">
-                        <p class="fl"><span style="font-size: 32px; display: block; height: 32px;">28</span><span style="display: block;">06</span></p>
-                        <h4 class="fl">蒋梦婕：她心中住着一只猛虎</h4>
+                <!-- <foreach name="ids" item="vo"> -->
+                <php>
+                    $posts = sp_sql_post($vo['object_id']);
+                    $time = strtotime($posts['post_date']);
+                </php>
+                    <a href="{:U('News/detail?id=').$vo['object_id']}" class="news-top clearfix col-md-5">
+                        <p class="fl">
+                            <span style="font-size: 32px; display: block; height: 32px;">{$time|date="d",###}</span>
+                            <span style="display: block;">{$time|date="m",###}</span>
+                        </p>
+                        <h4 class="fl">{$posts.post_title|msubstr=0,25}</h4>
                     </a>
-                    <a href="#" class="news-top clearfix col-md-5">
-                        <p class="fl"><span style="font-size: 32px; display: block; height: 32px;">28</span><span style="display: block;">06</span></p>
-                        <h4 class="fl">蒋梦婕：她心中住着一只猛虎</h4>
-                    </a>
-                    <a href="#" class="news-top clearfix col-md-5">
-                        <p class="fl"><span style="font-size: 32px; display: block; height: 32px;">28</span><span style="display: block;">06</span></p>
-                        <h4 class="fl">蒋梦婕：她心中住着一只猛虎</h4>
-                    </a>
+                <!-- </foreach> -->
                 </div>
 
             </div>

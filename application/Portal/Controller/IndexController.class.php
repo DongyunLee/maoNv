@@ -36,17 +36,17 @@ class IndexController extends HomebaseController {
 
     //首页 小夏是老猫除外最帅的男人了
     public function index() {
-        $term_id = 9;
-        $posts = sp_sql_posts_bycatid(9,'order:post_hits desc;limit:5');
+        $term_id = '9,3';
+        $posts = sp_sql_posts_bycatid($term_id,'order:post_hits desc;limit:5');
 
         $this->assign('posts', $posts);
         $this->display(":index");
     }
-    
+
     /**
      * Detail()
      */
-    
+
     public function detail() {
         $id = I('get.id');
         $post = sp_sql_post($id);
@@ -59,16 +59,16 @@ class IndexController extends HomebaseController {
                 if($value['object_id']<$prev){
                     $prev = $value['object_id'];
                     $this->assign('prev',$prev);
-                }    
+                }
             }
             if ($id>$value['object_id']) {
                 if($value['object_id']>$next){
                     $next = $value['object_id'];
                     $this->assign('next',$next);
-                }    
+                }
             }
         }
-        
+
         $this->assign('post',$post);
         $this->assign('posts',$posts_limit);
         $this->display(":news-detail");
