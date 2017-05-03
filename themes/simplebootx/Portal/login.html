@@ -9,11 +9,17 @@
         <!--nav-->
         <tc_include file='Public:nav'/>
         <div class="row">
-            <form class="login col-md-5 col-sm-9 col-xs-11">
+            <form class="login col-md-5 col-sm-9 col-xs-11" action="{:U('User/login')}" method="post">
                 <div>
                     <h2>LOGIN&nbsp;&nbsp;登录</h2>
-                    <p class="clearfix"><span>用户名:</span><input class="light" type="text" placeholder="用户名由3-15个字符组成" autofocus="autofocus" required="required"/></p>
-                    <p class="clearfix"><span>密码:</span><input type="password" required="required"/></p>
+                    <p class="clearfix">
+                        <span>用户名:</span>
+                        <input name="usr" class="light" type="text" placeholder="用户名由3-15个字符组成" autofocus="autofocus" required="required"/>
+                    </p>
+                    <p class="clearfix">
+                        <span>密码:</span>
+                        <input name="pwd" type="password" required="required"/>
+                    </p>
                 </div>
                 <input type="submit" value="立即登录" />
             </form>

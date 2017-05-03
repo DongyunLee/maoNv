@@ -9,17 +9,32 @@
         <!--nav-->
         <tc_include file='Public:nav'/>
         <div class="row">
-            <form class="login col-md-5 col-sm-9 col-xs-11">
+            <form class="login col-md-5 col-sm-9 col-xs-11" action="{:U('User/register')}" method="post">
                 <div>
                     <h2>RIGISTER&nbsp;&nbsp;注册</h2>
-                    <p class="clearfix"><span>用户名:</span><input class="light" type="text" placeholder="用户名由3-15个字符组成" autofocus="autofocus" required="required"/></p>
-                    <p class="clearfix"><span>密码:</span><input type="password" placeholder="6-20个字符" required="required"/></p>
-                    <p class="clearfix"><span>确认密码:</span><input type="password" placeholder="请输入确认的密码" required="required"/></p>
-                    <p class="clearfix"><span>邮箱：</span><input type="email" required="required" placeholder="请输入正确的邮箱地址"/></p>
-                    <p class="clearfix"><span>验证码：</span><input type="text" required="required" placeholder="请输入正确的验证码"/></p>
+                    <p class="clearfix">
+                        <span>用户名:</span>
+                        <input name="usr" class="light" type="text" placeholder="用户名由3-15个字符组成" autofocus="autofocus" required="required"/>
+                    </p>
+                    <p class="clearfix">
+                        <span>密码:</span>
+                        <input name="psw" type="password" placeholder="6-20个字符" required="required"/>
+                    </p>
+                    <p class="clearfix">
+                        <span>确认密码:</span>
+                        <input name="repsw" type="password" placeholder="请输入确认的密码" required="required"/>
+                    </p>
+                    <p class="clearfix">
+                        <span>邮箱：</span>
+                        <input name="mail" type="email" required="required" placeholder="请输入正确的邮箱地址"/>
+                    </p>
+                    <p class="clearfix">
+                        <span>验证码：</span>
+                        <input type="text" name="verify" required="required" placeholder="请输入正确的验证码"/>
+                    </p>
 
                     <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="点击换一张">
-                        <img src="__TMPL__Public/assets/imgs/yz.jpg" width="30%" alt="验证码"/>
+                        {:sp_verifycode_img('length=4&font_size=14&width=100&height=34&charset=1234567890&use_noise=1&use_curve=0')}
                     </button>
                     <p></p>
                 </div>

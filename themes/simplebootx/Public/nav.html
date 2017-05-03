@@ -1,5 +1,6 @@
 {:hook('body_start')}
 <nav class="navbar navbar-default" role="navigation">
+    <php>$status = sp_is_user_login();</php>
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -12,11 +13,19 @@
             <div class="logo clearfix">
                 <a class="navbar-brand fl" href="{:U('Index/index')}">猫 女 <span style="font-size: 0.2rem;">时尚杂志</span></a>
                 <p class="fl">
+                    <php>
+                        $status = (empty($_SESSION['USR']) or !isset($_SESSION['USR']))?true:false;
+                    </php>
+                    <!-- <if condition="$status"> -->
                     <a href="{:U('User/register')}">注册</a>
                     /
                     <a href="{:U('User/login')}">登录</a>
+                    <!-- <else/> -->
+                    <a href="{:U('User/index')}">个人中心</a>
                     /
-                    <a href="{:U('User/index')}">个人中心</a></p>
+                    <a href="{:U('User/logout')}">注销登录</a>
+                    <!-- </if> -->
+                </p>
             </div>
 
         </div>
@@ -38,7 +47,7 @@
                 <li>
                     <div class="back"></div>
                     <a href="{:U('News/index')}">
-                        时尚资讯	
+                        时尚资讯
                     </a>
                 </li>
                 <li>

@@ -4,12 +4,12 @@ namespace Common\Controller;
 use Common\Controller\AppframeController;
 
 class HomebaseController extends AppframeController {
-	
+
 	public function __construct() {
 		$this->set_action_success_error_tpl();
 		parent::__construct();
 	}
-	
+
 	function _initialize() {
 		parent::_initialize();
 		defined('TMPL_PATH') or define("TMPL_PATH", C("SP_TMPL_PATH"));
@@ -34,13 +34,13 @@ class HomebaseController extends AppframeController {
 			}else{
 			}
 		}
-		
+
 		if(sp_is_user_login()){
 			$this->assign("user",sp_get_current_user());
 		}
-		
+
 	}
-	
+
 	/**
 	 * 检查用户登录
 	 */
@@ -49,9 +49,9 @@ class HomebaseController extends AppframeController {
 		if(empty($session_user)){
 			$this->error('您还没有登录！',leuu('user/login/index',array('redirect'=>base64_encode($_SERVER['HTTP_REFERER']))));
 		}
-		
+
 	}
-	
+
 	/**
 	 * 检查用户状态
 	 */
@@ -60,12 +60,12 @@ class HomebaseController extends AppframeController {
 		if($user_status==2){
 			$this->error('您还没有激活账号，请激活后再使用！',U("user/login/active"));
 		}
-		
+
 		if($user_status==0){
 			$this->error('此账号已经被禁止使用，请联系管理员！',__ROOT__."/");
 		}
 	}
-	
+
 	/**
 	 * 发送注册激活邮件
 	 */
@@ -79,10 +79,10 @@ class HomebaseController extends AppframeController {
 		$title = $options['title'];
 		$uid=session('user.id');
 		$username=session('user.user_login');
-	
+
 		$activekey=md5($uid.time().uniqid());
 		$users_model=M("Users");
-	
+
 		$result=$users_model->where(array("id"=>$uid))->save(array("user_activation_key"=>$activekey));
 		if(!$result){
 			$this->error('激活码生成失败！');
@@ -92,14 +92,14 @@ class HomebaseController extends AppframeController {
 		//邮件内容
 		$template = $options['template'];
 		$content = str_replace(array('http://#link#','#username#'), array($url,$username),$template);
-	
+
 		$send_result=sp_send_email(session('user.user_email'), $title, $content);
-	
+
 		if($send_result['error']){
 			$this->error('激活邮件发送失败，请尝试登录后，手动发送激活邮件！');
 		}
 	}
-	
+
 	/**
 	 * 加载模板和页面输出 可以返回输出内容
 	 * @access public
@@ -112,7 +112,7 @@ class HomebaseController extends AppframeController {
 	public function display($templateFile = '', $charset = '', $contentType = '', $content = '', $prefix = '') {
 		parent::display($this->parseTemplate($templateFile), $charset, $contentType,$content,$prefix);
 	}
-	
+
 	/**
 	 * 获取输出页面内容
 	 * 调用内置的模板引擎fetch方法，
@@ -127,7 +127,7 @@ class HomebaseController extends AppframeController {
 	    $templateFile = empty($content)?$this->parseTemplate($templateFile):'';
 		return parent::fetch($templateFile,$content,$prefix);
 	}
-	
+
 	/**
 	 * 自动定位模板文件
 	 * @access protected
@@ -135,7 +135,7 @@ class HomebaseController extends AppframeController {
 	 * @return string
 	 */
 	public function parseTemplate($template='') {
-		
+
 		$tmpl_path=C("SP_TMPL_PATH");
 		define("SP_TMPL_PATH", $tmpl_path);
 		if($this->theme) { // 指定模板主题
@@ -156,11 +156,11 @@ class HomebaseController extends AppframeController {
 		        cookie('think_template',$theme,864000);
 		    }
 		}
-		
+
 		$theme_suffix="";
-		
+
 		if(C('MOBILE_TPL_ENABLED') && sp_is_mobile()){//开启手机模板支持
-		    
+
 		    if (C('LANG_SWITCH_ON',null,false)){
 		        if(file_exists($tmpl_path."/".$theme."_mobile_".LANG_SET)){//优先级最高
 		            $theme_suffix  =  "_mobile_".LANG_SET;
@@ -180,15 +180,15 @@ class HomebaseController extends AppframeController {
 		        $theme_suffix = $lang_suffix;
 		    }
 		}
-		
+
 		$theme=$theme.$theme_suffix;
-		
+
 		C('SP_DEFAULT_THEME',$theme);
-		
+
 		$current_tmpl_path=$tmpl_path.$theme."/";
 		// 获取当前主题的模版路径
 		define('THEME_PATH', $current_tmpl_path);
-		
+
 		$cdn_settings=sp_get_option('cdn_settings');
 		if(!empty($cdn_settings['cdn_static_root'])){
 		    $cdn_static_root=rtrim($cdn_settings['cdn_static_root'],'/');
@@ -198,27 +198,27 @@ class HomebaseController extends AppframeController {
 		}else{
 		    C("TMPL_PARSE_STRING.__TMPL__",__ROOT__."/".$current_tmpl_path);
 		}
-		
-		
+
+
 		C('SP_VIEW_PATH',$tmpl_path);
 		C('DEFAULT_THEME',$theme);
-		
+
 		define("SP_CURRENT_THEME", $theme);
-		
+
 		if(is_file($template)) {
 			return $template;
 		}
 		$depr       =   C('TMPL_FILE_DEPR');
 		$template   =   str_replace(':', $depr, $template);
-		
+
 		// 获取当前模块
 		$module   =  MODULE_NAME;
 		if(strpos($template,'@')){ // 跨模块调用模版文件
 			list($module,$template)  =   explode('@',$template);
 		}
-		
+
 		$module =$module."/";
-		
+
 		// 分析模板文件规则
 		if('' == $template) {
 			// 如果模板文件名为空 按照默认规则定位
@@ -226,13 +226,13 @@ class HomebaseController extends AppframeController {
 		}elseif(false === strpos($template, '/')){
 			$template = CONTROLLER_NAME . $depr . $template;
 		}
-		
+
 		$file = sp_add_template_file_suffix($current_tmpl_path.$module.$template);
 		$file= str_replace("//",'/',$file);
 		if(!file_exists_case($file)) E(L('_TEMPLATE_NOT_EXIST_').':'.$file);
 		return $file;
 	}
-	
+
 	/**
 	 * 设置错误，成功跳转界面
 	 */
@@ -251,7 +251,7 @@ class HomebaseController extends AppframeController {
 		}else{
 			$tpl_path=C("SP_TMPL_PATH").$theme."/";
 		}
-		
+
 		//by ayumi手机提示模板
 		$defaultjump=THINK_PATH.'Tpl/dispatch_jump.tpl';
 		$action_success = sp_add_template_file_suffix($tpl_path.C("SP_TMPL_ACTION_SUCCESS"));
@@ -268,6 +268,6 @@ class HomebaseController extends AppframeController {
 			C("TMPL_ACTION_ERROR",$defaultjump);
 		}
 	}
-	
-	
+
+
 }

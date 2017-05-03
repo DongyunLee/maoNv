@@ -1,0 +1,21 @@
+流程
+
+1/ 研究需求/设计页面
+2/ 切图实现页面
+3/ 选择后台语言（php——开发效率极快/弱类型语言学习简单）
+4/ 选择cms模板（thinkcmf）
+*/ 下载安装thinkcmf
+5/ 研究学习thinkcmf（
+	1）基于thinkphp框架
+	2）mvc开发模式
+	3）完整的cms
+	4）面向对象
+）
+6/ 将前端页面放入模板中（
+	1》把html放入themes/simpx/portal/
+	2>将外部文件（css/js/imgs）放入thems/simpx/public/assets/
+）
+7/ 嵌套前台页面{
+	1》把html中的公共部分择出
+	2》创建控制器
+}

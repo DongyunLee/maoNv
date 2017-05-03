@@ -26,7 +26,7 @@
     <!--<foreach name='terms' item='vo'>-->
     <php>
         $posts = sp_sql_posts_bycatid($vo['term_id'],"limit:5;order:object_id desc");
-        $post_by_hits = sp_sql_posts_bycatid($vo['term_id'],'limit:10;order:post_hits desc');
+        $post_by_hits = sp_sql_posts_bycatid($vo['term_id'],'limit:9;order:post_hits desc');
     </php>
     <notempty name='posts' >
         <a href="#">

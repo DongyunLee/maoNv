@@ -21,4 +21,9 @@ class TryController extends HomebaseController{
         $this->display(":try");
     }
 
+    public function apply()
+    {
+        $this->display(":apply");
+    }
+
 }
