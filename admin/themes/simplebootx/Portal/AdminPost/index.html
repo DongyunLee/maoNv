@@ -7,12 +7,10 @@
             <li><a href="{:U('AdminPost/add',array('term'=>empty($term['term_id'])?'':$term['term_id']))}" target="_self">{:L('PORTAL_ADMINPOST_ADD')}</a></li>
         </ul>
         <form class="well form-search" method="post" action="{:U('AdminPost/index')}">
-            <!--<notempty name="term">-->
             分类： 
             <select name="term" style="width: 120px;">
                 <option value='0'>全部</option>{$taxonomys}
             </select> &nbsp;&nbsp;
-            <!--</notempty>-->
             时间：
             <input type="text" name="start_time" class="js-datetime" value="{$formget.start_time|default=''}" style="width: 120px;" autocomplete="off">-
             <input type="text" class="js-datetime" name="end_time" value="{$formget.end_time|default=''}" style="width: 120px;" autocomplete="off"> &nbsp; &nbsp;

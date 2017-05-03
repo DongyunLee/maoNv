@@ -1,204 +1,51 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>资讯详情</title>
+    <head>
+        <title>资讯详情</title>
+        <tc_include file='Public:head'/>
+        <link rel="stylesheet" href="__TMPL__Public/assets/css/login.css" />
+        <link rel="stylesheet" href="__TMPL__Public/assets/css/detail.css" />
+    </head>
+    <body>
+        <!--nav-->
+        <tc_include file='Public:nav'/>
+        <!------------------------main------------------->
+        <div class="row">
+            <div class="col-md-7 detail row">
+                <div class="col-md-8 detailL">
+                    <h2>这些超模生力军出门懒到只穿一个色，怎么就成为了全球穿衣榜样？</h2>
+                    <div class="Dtop row">
+                        <p class="col-md-4">时间：<time>2017-03-30&nbsp;16：00</time></p>
+                        <p class="col-md-4">来源:<span>猫女时尚</span></p>
+                        <p class="col-md-2 collect" id="collect">收藏文章</p>
+                    </div>
+                    {$posts}
+                    <div class="Dpage row">
+                        <a class="col-md-5" href="#">上一篇</a>
+                        <p class="col-md-1">|</p>
+                        <a class="col-md-5" href="#">下一篇</a>
+                    </div>
+                </div>
+                <div class="col-md-4 detailR">
+                    <h3>编辑推荐&nbsp;<span style="color: #E00A00;">EDITOR'S PICK</span></h3>
+                    <ul>
+                        <li><a href="#">什么？口袋其实是因为小偷发明的，牛仔裤的小口袋是用来...</a></li>
+                        <li> <a href="#">范冰冰这天穿“被子裙”？刘亦菲你的花边美得过分了！</a></li>
+                        <li> <a href="#">Gigi Hadid因为穿了套2万8的针织，被全美刷频了！</a></li>
+                        <li> <a href="#">我有一颗名叫“4D指钉甲”的安利，包你吃下它，吸睛没商量！</a></li>
+                        <li> <a href="#">种草芭 | Coachella音乐节跟我没关系</a></li>
+                        <li> <a href="#">我跟你说，这粉色被你穿得俗气真不</a></li>
+                        <li> <a href="#">Bella PK Selina？新欢旧爱谁更好！</a></li>
+                    </ul>
+                    <img src="__TMPL__Public/assets/imgs/zz.jpg" width="100%" />
+                </div>
+            </div>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/public.css" />
-    <link rel="stylesheet" href="css/login.css" />
-    <link rel="stylesheet" href="css/detail.css" />
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <!--nav-->
-    <nav class="navbar navbar-default" role="navigation">
-		  <div class="container">
-		    <!-- Brand and toggle get grouped for better mobile display -->
-		    <div class="navbar-header">
-		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		      </button>
-		      <div class="logo clearfix">
-	      	 <a class="navbar-brand fl" href="index.html">猫 女 <span style="font-size: 0.2rem;">时尚杂志</span></a>
-	   			 <p class="fl"><a href="zhuce.html">注册</a>/<a href="login.html">登录</a>/<a href="my.html">个人中心</a></p>
-	      </div>
-		     </div>
-		
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		     <ul class="nav navbar-nav navbar-right">
-	          <li>
-	          	<div class="back"></div>
-	        	<a href="index.html">
-	        	首页
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="product.html">
-	        		国际秀场
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="news.html">
-	        		时尚资讯	
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="model.html">
-	        	时装潮流
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="try.html">
-	        	试用中心
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="aboutUs.html">
-	        		关于我们
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="contact.html">
-	        		联系我们
-	        	</a>
-	        </li>
-	   
-	      </ul>
-		    </div><!-- /.navbar-collapse -->
-		  </div><!-- /.container-fluid -->
-	</nav>
-	
-	
-	<!------------------------main------------------->
-	<div class="row">
-		<div class="col-md-7 detail row">
-			<div class="col-md-8 detailL">
-				<h2>这些超模生力军出门懒到只穿一个色，怎么就成为了全球穿衣榜样？</h2>
-				<div class="Dtop row">
-					<p class="col-md-4">时间：<time>2017-03-30&nbsp;16：00</time></p>
-					<p class="col-md-4">来源:<span>猫女时尚</span></p>
-					<p class="col-md-2 collect" id="collect">收藏文章</p>
-				</div>
-				<img src="imgs/de1.jpg" width="100%" />
-				<p>最重要的事不仅说三遍，今天芭姐就带着4位时尚圈的当红Icon：Gigi、Bella、Kendall、Hailey，来说说高阶的同色穿搭法~ 凭什么我穿同色成路人，她们却成了全球穿衣榜样！想知道她们的同色穿搭小秘诀？跟着芭姐看下去你就知道~</p>
-				<img src="imgs/de2.jpg" width="100%" />
-				<p>这四位超模生力军也都是好友关系，一路见证着彼此从大热网红变成现在的时尚Icon！不仅会 穿还个个都是带货女王，毕竟姑娘们谁不想穿的像她们一样美美美呢？</p>
-				<img src="imgs/de3.jpg" width="100%" />
-				<p>而你有没有发现，她们的穿衣搭配都有同一个套路：同色！</p>
-				<h6>Bella Hadid-美不美露了曲线才知道！</h6>
-				<img src="imgs/de4.jpg" width="100%" />
-				<p>Bella Hadid凭着一张时尚圈钟爱的冷漠脸为当下最火热的模特之一，日常的穿着也备受人们关注，贴心的芭姐今天就来给你们扒一扒她的同色穿搭法~</p>
-				<img src="imgs/de5.jpg" width="100%" />
-				<p>Bella是出了名的曲线星人，穿衣必带露腹和透视两大招！通过裸露大面积的肌肤，或利用透视效果来展现曲线优势~ 同色穿搭正好提升了高级感，让各种性感媚而不妖。对身材足够自信的小仙女们可以借鉴Bella的穿法哦。</p>
-				<img src="imgs/de6.jpg" width="100%" />
-				<p>灰色吊带裙搭配同色风衣，原本十分普通的装扮，一到Bella的身上可就不一样了！大腿侧边的高开叉大胆前卫，裙装上深V和收腰的设计都十分讨巧的展示了好身材~</p>
-				<img src="imgs/de7.jpg" width="100%" />
-				<p>身穿牛仔深V连体衣出现，原本休闲阳光的牛仔元素，配上大深V也立马性感起来了，妖娆迷人的Bella不愧是“小妖精”呀~</p>
-				<img src="imgs/de8.jpg" width="100%" />
-				<p>“老司机”的同色穿搭即使不露肉同样也能突显曲线美！这套蓝色丝绒套装利用光影更加凸显身形，衣服上自带的腰封和喇叭裤腿更将比例拉伸到极致。</p>
-				<img src="imgs/de9.jpg" width="100%" />
-				<img src="imgs/de10.jpg" width="100%" />
-				<div class="Dpage row">
-					<a class="col-md-5" href="#">上一篇</a>
-			<p class="col-md-1">|</p>
-					<a class="col-md-5" href="#">下一篇</a>
-				</div>
-			</div>
-			<div class="col-md-4 detailR">
-				<h3>编辑推荐&nbsp;<span style="color: #E00A00;">EDITOR'S PICK</span></h3>
-				<ul>
-					<li><a href="#">什么？口袋其实是因为小偷发明的，牛仔裤的小口袋是用来...</a></li>
-					<li> <a href="#">范冰冰这天穿“被子裙”？刘亦菲你的花边美得过分了！</a></li>
-					<li> <a href="#">Gigi Hadid因为穿了套2万8的针织，被全美刷频了！</a></li>
-					<li> <a href="#">我有一颗名叫“4D指钉甲”的安利，包你吃下它，吸睛没商量！</a></li>
-					<li> <a href="#">种草芭 | Coachella音乐节跟我没关系</a></li>
-					<li> <a href="#">我跟你说，这粉色被你穿得俗气真不</a></li>
-					<li> <a href="#">Bella PK Selina？新欢旧爱谁更好！</a></li>
-				</ul>
-				<img src="imgs/zz.jpg" width="100%" />
-			</div>
-		</div>
-		
-		<a class="gotop" href="#">置 顶</a>
-	</div>
-	
-
-	
-	
-	<!--footer-->
-	<div class="footer-my">
-		<div class="container">
-			<div class="row" style="margin-bottom: 20px;">
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>优惠政策</h3></li>
-					<li>新会员优惠</li>
-					<li>团购优惠</li>
-					<li>优惠券抵扣活动</li>
-					<li>其他活动</li>
-				</ul>
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>地址</h3></li>
-					<li>国家:<span>中国</span></li>
-					<li>城市:<span>唐山</span></li>
-					<li>联系方式:<span>8 800 154-45-67</span></li>
-					<li>邮箱:<span>progress@mail.com</span><a href="#"></a></li>
-				</ul>
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>联系我们</h3></li>
-					<li><a href="#">QQ</a></li>
-					<li><a href="#">微信</a></li>
-					<li><a href="#">微博</a></li>
-					<li><a href="#">人人网</a></li>
-				</ul>
-				<div class="col-md-3 col-sm-6">
-					<h3>您的意见</h3>
-					<form action="#" method="post">
-						<div class="fr" style="width: 178px;">
-							<input type="email"value="写下您的邮箱地址" />
-							<input type="submit" value="进入留言"  />
-						</div>
-						
-					</form>	
-				</div>	
-			</div>	
-			
-		</div>
-		<div class="footer-t">
-			<div class="container">
-				<p class="col-md-12">版权所有© 2015-2016 中国尚摄工作室 技术支持：品色创意设计中心</p>
-        		<p class="col-md-12">尚摄工作室摄影隶属于唐山企业发展有限公司</p>
-			</div>
-			
-		</div>
-	</div>
-	
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.js"></script>
-    <script type="text/javascript" src="js/public.js" ></script>
-    <script type="text/javascript" src="js/rem.js" ></script>
-  </body>
+            <a class="gotop" href="#">置 顶</a>
+        </div>
+        <!--footer-->
+        <tc_include file='Public:footer'/>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <tc_include file='Public:scripts'/>
+    </body>
 </html>

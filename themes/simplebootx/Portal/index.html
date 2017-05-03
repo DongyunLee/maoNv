@@ -81,24 +81,18 @@
                     </p>
                 </div>
                 <div class="Img" id="Aimg" href="#">
-                    <a href="{:U('Aboutus/index')}">
-
-                    </a>
+                    <a href="{:U('Aboutus/index')}"></a>
                     <div>
                         <p>关于我们</p>
                         <p style="font-size: 12px;">点击更全面的了解我们</p>
                     </div>
-
                 </div>
-
             </div>
 
             <!--says-->
             <div class="about">
                 <div class="Img" id="Simg" href="#">
-                    <a href="{:U('Try/index')}">
-
-                    </a>
+                    <a href="{:U('Try/index')}"></a>
                     <div>
                         <p>试用中心</p>
                         <p style="font-size: 12px;">点击查看更多可试用产品</p>
@@ -120,8 +114,8 @@
             <h4>最 热 资 讯</h4>
             <!--<foreach name='posts' item='vo' >-->
             <div class="gxh">
-                <a href="#">{$vo.post_title}</a> 
-                <a href="#">{$vo.post_excerpt|msubstr="0,256"}</a>
+                <a href="{:U('News/detail?id='.$vo['object_id'])}">{$vo.post_title}</a> 
+                <a href="{:U('News/detail?id='.$vo['object_id'])}">{$vo.post_excerpt|msubstr="0,256"}</a>
             </div>
             <!--</foreach>-->
         </div>

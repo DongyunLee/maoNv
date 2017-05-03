@@ -1,209 +1,72 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>时装周详情</title>
+    <head>
+        <title>时装周详情</title>
+        <tc_include file='Public:head'/>
+        <link rel="stylesheet" href="__TMPL__Public/assets/css/login.css" />
+        <link rel="stylesheet" href="__TMPL__Public/assets/css/product-detail.css" />
+    </head>
+    <body>
+        <!--nav-->
+        <tc_include file='Public:nav'/>
+        <!--------------------------------秀场详情-------------->
+        <php>
+        $home_slides=sp_getslide("portal_product");
+        </php>
+        <div class="Pdetail">
+            <h3>{$home_slides[0]['cat_name']}</h3>
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                <!--<foreach name="home_slides" item="vo">-->
+                    <!--<if condition="$key eq 0">-->
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <!--<else/>-->
+                    <li data-target="#carousel-example-generic" data-slide-to="{$key}"></li>
+                    <!--</if>-->
+                <!--</foreach>-->
+                </ol>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/public.css" />
-    <link rel="stylesheet" href="css/login.css" />
-    <link rel="stylesheet" href="css/product-detail.css" />
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                <!--<foreach name="home_slides" item="vo">-->
+                <php>
+                    $pic = $vo['slide_pic'];
+                    $pic = "data/upload/".$pic;
+                    $name = $vo['slide_name'];
+                </php>
+                    <!--<if condition="$key eq 0">-->
+                    <div class="item active">
+                        <img src="{$pic}" alt="{$name}">
+                    </div>
+                    <!--<else/>-->
+                    <div class="item">
+                        <img src="{$pic}" alt="{$name}">
+                    </div>
+                    <!--</if>-->
+                <!--</foreach>-->
+                </div>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <!--nav-->
-    <nav class="navbar navbar-default" role="navigation">
-		  <div class="container">
-		    <!-- Brand and toggle get grouped for better mobile display -->
-		    <div class="navbar-header">
-		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		      </button>
-		      <div class="logo clearfix">
-	      	 <a class="navbar-brand fl" href="index.html">猫 女 <span style="font-size: 0.2rem;">时尚杂志</span></a>
-	   			 <p class="fl"><a href="zhuce.html">注册</a>/<a href="login.html">登录</a>/<a href="my.html">个人中心</a></p>
-	      </div>
-		     </div>
-		
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		     <ul class="nav navbar-nav navbar-right">
-	          <li>
-	          	<div class="back"></div>
-	        	<a href="index.html">
-	        	首页
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="product.html">
-	        		国际秀场
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="news.html">
-	        		时尚资讯	
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="model.html">
-	        	时装潮流
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="try.html">
-	        	试用中心
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="aboutUs.html">
-	        		关于我们
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="contact.html">
-	        		联系我们
-	        	</a>
-	        </li>
-	   
-	      </ul>
-		    </div><!-- /.navbar-collapse -->
-		  </div><!-- /.container-fluid -->
-	</nav>
-	
-	<!--------------------------------秀场详情-------------->
-	
-	<div class="Pdetail">
-		<h3>2017秋冬时装周</h3>
-		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-		  <!-- Indicators -->
-		  <ol class="carousel-indicators">
-		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-		     <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-		    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
-		     <li data-target="#carousel-example-generic" data-slide-to="5"></li>
-		
-		  </ol>
-		
-		  <!-- Wrapper for slides -->
-		  <div class="carousel-inner" role="listbox">
-		    <div class="item active">
-		      <img src="imgs/pd1.jpg" alt="5555.">
-		      
-		    </div>
-		    <div class="item">
-		      <img src="imgs/pd2.jpg" alt="...">
-		      
-		    </div>
-		    <div class="item">
-		      <img src="imgs/pd3.jpg" alt="...">
-		      
-		    </div>
-		    <div class="item">
-		      <img src="imgs/pd4.jpg" alt="...">
-		      
-		    </div>
-		    <div class="item">
-		      <img src="imgs/pd5.jpg" alt="...">
-		      
-		    </div>
-		    <div class="item">
-		      <img src="imgs/pd6.jpg" alt="...">
-		      
-		    </div>
-		    
-		    
-		  </div>
-		
-		  <!-- Controls -->
-		  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-		    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-		    <span class="sr-only">Previous</span>
-		  </a>
-		  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-		    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-		    <span class="sr-only">Next</span>
-		  </a>
-		</div>
-		
-		<h4 class="kd"><span></span><strong>Vika Gazinskaya2017秋冬RTW时装发布秀看点</strong><span></span></h4>
-		<p>2017年3月10日，巴黎 By Amy Verner 不要期望这一季VikaGazinskaya有固定主题或者灵感来源。这位俄罗斯设计师把一间时髦的酒店套间作为她的卫星秀场，她解释道她在没有具体的灵感出发点的情况下——除了抱有从1970年代到1980年代早期（和1990年代截然不同，她认为那个年代已经达到了饱和点）汲取灵感的态度之外，如何开始构建她的秋冬系列。“对我而言时尚可以是很简单的东西，”她说。“当我想到重要的时尚设计的时候，我会想到那些设计精美的款式。” 为了做到那一点，她带来了这份作品——无论你喜欢她的复古风格设计与否，它都展示出了她能够成功地通过本质上的构造而不是印花或者表面上的细节来执行一项创意。并不难挑选出其中的款式：对入门者来说，那件日本羊毛材质经典灰色大衣的夸张翻领和放低的纽扣设计让它独树一帜，设计师还开玩笑地称它为拉斯柯尔尼科夫（以陀思妥耶夫斯基的《罪与罚》中的主角为名）。另外一件不错的款式：那件仿皮棕色半长外套。你猜得到吗？Gazinskaya是一位坚定的素食者，所以她在俄罗斯找到了一种“环保的”替代品，它和真皮看起来相差无几，且显然容易操作——因为它无处不有。作为单色点睛设计，工业绿色是笔者会选择的颜色，而古粉色则出人意料地通用百搭。它们的共存性证明了Gazinskaya的方向性直觉。这也说明了她的设计变得更成熟了。因为，过往的系列带来的是艺术气息浓厚的设计，和盛装打扮的穿衣方式势不两立，而现在的设计虽然仍然不守常规但是有着令人信服的办公室着装风格（参看那件斜肩设计的，饰有腰带的韦奇伍德蓝色裙装）。这样的设计从商业的角度来说讨巧而又不至于冷落了那些喜欢她标新立异的设计风格的顾客。而Gazinskaya也为这些客户推出了机洗马海毛制成的仿羊羔毛大衣设计。 翻译：李东株</p>
-	</div>
-	
-	
-	<!--footer-->
-	<div class="footer-my">
-		<div class="container">
-			<div class="row" style="margin-bottom: 20px;">
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>优惠政策</h3></li>
-					<li>新会员优惠</li>
-					<li>团购优惠</li>
-					<li>优惠券抵扣活动</li>
-					<li>其他活动</li>
-				</ul>
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>地址</h3></li>
-					<li>国家:<span>中国</span></li>
-					<li>城市:<span>唐山</span></li>
-					<li>联系方式:<span>8 800 154-45-67</span></li>
-					<li>邮箱:<span>progress@mail.com</span><a href="#"></a></li>
-				</ul>
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>联系我们</h3></li>
-					<li><a href="#">QQ</a></li>
-					<li><a href="#">微信</a></li>
-					<li><a href="#">微博</a></li>
-					<li><a href="#">人人网</a></li>
-				</ul>
-				<div class="col-md-3 col-sm-6">
-					<h3>您的意见</h3>
-					<form action="#" method="post">
-						<div class="fr" style="width: 178px;">
-							<input type="email"value="写下您的邮箱地址" />
-							<input type="submit" value="进入留言"  />
-						</div>
-						
-					</form>	
-				</div>	
-			</div>	
-			
-		</div>
-		<div class="footer-t">
-			<div class="container">
-				<p class="col-md-12">版权所有© 2015-2016 中国尚摄工作室 技术支持：品色创意设计中心</p>
-        		<p class="col-md-12">尚摄工作室摄影隶属于唐山企业发展有限公司</p>
-			</div>
-			
-		</div>
-	</div>
-	
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.js"></script>
-    <script type="text/javascript" src="js/public.js" ></script>
-    <script type="text/javascript" src="js/rem.js" ></script>
-  </body>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+            <h4 class="kd"><span></span>
+                <strong>{$posts.post_title}</strong><span></span>
+            </h4>
+            {$posts.post_content}
+        </div>
+
+
+        <!--footer-->
+        <tc_include file='Public:footer'/>
+        <tc_include file='Public:scripts'/>
+    </body>
 </html>
