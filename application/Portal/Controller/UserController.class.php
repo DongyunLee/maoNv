@@ -18,13 +18,25 @@ class UserController extends HomebaseController{
      * UserController index()
      */
     public function index() {
-        $usrinfo = $_SESSION['USR'];
-        $usr_id = $usrinfo['uid'];
-        $collects = M("usr_collection")->where("uid={$usr_id}")->select();
+        // $usrinfo = $_SESSION['USR'];
+        // $usr_id = $usrinfo['uid'];
+        // $collects = M("usr_collection")->where("uid={$usr_id}")->select();
+        //
+        // $this->assign('info',$usrinfo);
+        // $this->assign("ids",$collects);
+        // $this->display(":my");
+        $id=I("get.id",0,'intval');
 
-        $this->assign('info',$usrinfo);
-        $this->assign("ids",$collects);
-        $this->display(":my");
+		$users_model=M("Users");
+
+		$user=$users_model->where(array("id"=>$id))->find();
+
+		if(empty($user)){
+			$this->error("查无此人！");
+		}
+
+		$this->assign($user);
+		$this->display(":index");
     }
 
     public function register() {
