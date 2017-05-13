@@ -5,3 +5,4 @@
 /data/runtime/
 .idea
 /nbproject
+/data/conf/db.php
