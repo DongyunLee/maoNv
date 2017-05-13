@@ -19,9 +19,9 @@ class UserController extends HomebaseController{
      */
     public function index() {
         // $usrinfo = $_SESSION['USR'];
-        // $usr_id = $usrinfo['uid'];
-        // $collects = M("usr_collection")->where("uid={$usr_id}")->select();
-        //
+        // $usr_id = $usrinfo['id'];
+        // $collects = M("usr_collection")->where("id={$usr_id}")->select();
+        
         // $this->assign('info',$usrinfo);
         // $this->assign("ids",$collects);
         // $this->display(":my");
@@ -34,35 +34,31 @@ class UserController extends HomebaseController{
 		if(empty($user)){
 			$this->error("查无此人！");
 		}
-
-		$this->assign($user);
-		$this->display(":index");
+        dump($user);
+		$this->assign('info',$user);
+		$this->display(":my");
     }
 
     public function register() {
         if (empty($_POST))    return $this->display(":zhuce");
 
-        $usrModel = M("usr");
+        $usrModel = M("users");
         $usrArray = $usrModel->select();
 
-        $data['usr'] = I("post.usr");
+        $data['user_login'] = I("post.usr");
         $pwd = I("post.psw");
         $repsw = I("post.repsw");
         $data['mail'] = I("post.mail");
         $verify = I("post.verify");
 
-        foreach ($usrArray as $key => $value) {
-            if (in_array($data['usr'],$value)) {
-                $relay = true;break;
-            }
-        }
+        $relay = $usrModel->where("user_login='{$data['user_login']}'")->find();
 
-        if ($relay == true)
+        if ($relay)
             die("<script>alert('用户名已存在');history.go(-1)</script>");
 
         if ($repsw !== $pwd)
             die("<script>alert('两次密码输入不一致，请重新输入!');history.go(-1)</script>");
-        $data['pwd'] = md5($pwd);
+        $data['user_pass'] = sp_password($pwd);
         if (!sp_check_verify_code($verify))
             die("<script>alert('验证码错误！');history.go(-1)</script>");
 
@@ -76,13 +72,14 @@ class UserController extends HomebaseController{
 
     public function login() {
         if (empty($_POST))    return $this->display(":login");
-        $usrModel = M("usr");
+        $usrModel = M("users");
         $usr = I("post.usr");
         $pwd = I("post.pwd");
-        $usrInfo = $usrModel->where("usr='{$usr}'")->find();
+        $usrInfo = $usrModel->where("user_login='{$usr}'")->find();
+
         if (!$usrInfo)
             die("<script>alert('用户名不存在');history.go(-1);</script>");
-        if ($usrInfo['pwd'] != md5($pwd))
+        if ($usrInfo['user_pass'] != sp_password($pwd))
             die("<script>alert('密码不正确');history.go(-1);</script>");
 
         $_SESSION['USR'] = $usrInfo;

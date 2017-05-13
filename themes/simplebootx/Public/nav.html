@@ -15,13 +15,14 @@
                 <p class="fl">
                     <php>
                         $status = (empty($_SESSION['USR']) or !isset($_SESSION['USR']))?true:false;
+                        $uid = $_SESSION['USR']['id'];
                     </php>
                     <!-- <if condition="$status"> -->
                     <a href="{:U('User/register')}">注册</a>
                     /
                     <a href="{:U('User/login')}">登录</a>
                     <!-- <else/> -->
-                    <a href="{:U('User/index')}">个人中心</a>
+                    <a href="{:U('User/index?id='.$uid)}">个人中心</a>
                     /
                     <a href="{:U('User/logout')}">注销登录</a>
                     <!-- </if> -->
