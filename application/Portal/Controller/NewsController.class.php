@@ -10,7 +10,7 @@ use Common\Controller\HomebaseController;
 
 /**
  * NewsController
- * @author Ye Weijie <your.name at your.org>
+ * @author Ye Weijie 
  */
 class NewsController extends HomebaseController{
 
