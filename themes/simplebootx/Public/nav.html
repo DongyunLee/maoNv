@@ -14,11 +14,13 @@
                 <a class="navbar-brand fl" href="{:U('Index/index')}">猫 女 <span style="font-size: 0.2rem;">时尚杂志</span></a>
                 <p class="fl">
                     <php>
+                        /*
                         $status = (empty($_SESSION['USR']) or !isset($_SESSION['USR']))?true:false;
                         $uid = $_SESSION['USR']['id'];
-                        $userInfo = 
+                        */
+                        $status = sp_is_user_login();
                     </php>
-                    <!-- <if condition="$status"> -->
+                    <!-- <if condition="!$status"> -->
                     <a href="{:U('User/register')}">注册</a>
                     /
                     <a href="{:U('User/login')}">登录</a>

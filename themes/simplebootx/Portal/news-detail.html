@@ -1,65 +1,76 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-    <head>
-        <title>时尚资讯详情</title>
-        <tc_include file='Public:head'/>
-        <link rel="stylesheet" href="__TMPL__Public/assets/css/login.css" />
-        <link rel="stylesheet" href="__TMPL__Public/assets/css/detail.css" />
-    </head>
-    <body>
-        <!--nav-->
-        <tc_include file='Public:nav'/>
-        <!-- ----------------------main----------------- -->
-        <php>
-            $time = strtotime($post['post_date']);
-        </php>
-        <div class="row">
-            <div class="col-md-7 detail row">
-                <div class="col-md-8 detailL">
-                    <h2>{$post.post_title}</h2>
-                    <div class="Dtop row">
-                        <p class="col-md-4">时间：<br/><time>{$time|date="Y-m-d H：i",###}</time></p>
-                        <p class="col-md-4">来源:<br/><span>{$post.post_source}</span></p>
-                        <p class="col-md-3 collect" id="collect" onclick="collect({$post['id']})">收藏文章</p>
-                    </div>
-                    <div class="Dtop row">{$post.post_content}</div>
-                    <div class="Dpage row">
-                        <notempty name="prev">
+
+<head>
+    <title>时尚资讯详情</title>
+    <tc_include file='Public:head' />
+    <link rel="stylesheet" href="__TMPL__Public/assets/css/login.css" />
+    <link rel="stylesheet" href="__TMPL__Public/assets/css/detail.css" />
+</head>
+
+<body>
+
+    <!--nav-->
+    <tc_include file='Public:nav' />
+    <!-- ----------------------main----------------- -->
+    <php>
+        $time = strtotime($post['post_date']);
+    </php>
+    <div class="row">
+        <div class="col-md-7 detail row">
+            <div class="col-md-8 detailL">
+                <h2>{$post.post_title}</h2>
+                <div class="Dtop row">
+                    <p class="col-md-4">时间：<br/>
+                        <time>{$time|date="Y-m-d H：i",###}</time>
+                    </p>
+                    <p class="col-md-4">来源:<br/><span>{$post.post_source}</span></p>
+                    <form action="{:U('user/favorite/do_favorite',array('id'=>$post['id']))}" method="post">
+                        <input type="hidden" name="title" value="{$post.post_title}">
+                        <input type="hidden" name="url" value="{:U('News/detail',array('id'=>$post['id']))}">
+                        <input type="hidden" name="key" value="{:sp_get_favorite_key('posts',$post['id'])}">
+                        <input type="submit" value="收藏文章" class="js-favorite-btn col-md-3 collect">
+                    </form>
+                </div>
+                <div class="Dtop row">{$post.post_content}</div>
+                <div class="Dpage row">
+                    <notempty name="prev">
                         <a class="col-md-5" href="{:U('News/detail?id='.$prev.'&cid='.$cid)}">上一篇</a>
                         <else/>
                         <span class="col-md-5">没有更多了</span>
-                        </notempty>
-                        <p class="col-md-1">|</p>
-                        <notempty name='next'>
+                    </notempty>
+                    <p class="col-md-1">|</p>
+                    <notempty name='next'>
                         <a class="col-md-5" href="{:U('News/detail?id='.$next.'&cid='.$cid)}">下一篇</a>
                         <else/>
-                        <span class="col-md-5" >没有更多了</span>
-                        </notempty>
-                    </div>
+                        <span class="col-md-5">没有更多了</span>
+                    </notempty>
                 </div>
-                <div class="col-md-4 detailR">
-                    <h3>编辑推荐&nbsp;<span style="color: #E00A00;">EDITOR'S PICK</span></h3>
-                    <ul>
-                        <foreach name="posts" item="vo">
+            </div>
+            <div class="col-md-4 detailR">
+                <h3>编辑推荐&nbsp;<span style="color: #E00A00;">EDITOR'S PICK</span></h3>
+                <ul>
+                    <foreach name="posts" item="vo">
                         <li>
                             <a href="{:U('News/detail?id='.$vo['object_id'])}">{$vo.post_title|msubstr="0,512"}</a>
                         </li>
-                        </foreach>
-                    </ul>
-                    <img src="__TMPL__Public/assets/imgs/zz.jpg" width="100%" />
-                </div>
+                    </foreach>
+                </ul>
+                <img src="__TMPL__Public/assets/imgs/zz.jpg" width="100%" />
             </div>
-            <a class="gotop" href="#">置 顶</a>
         </div>
-        <!--footer-->
-        <tc_include file='Public:footer'/>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <tc_include file='Public:scripts'/>
-        <script type="text/javascript">
-            function collect(id) {
-                var $url="{:U('News/collect?id=')}"+id;
-                window.location.href=$url;
-            }
-        </script>
-    </body>
+        <a class="gotop" href="#">置 顶</a>
+    </div>
+    <!--footer-->
+    <tc_include file='Public:footer' />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <tc_include file='Public:scripts' />
+    <script type="text/javascript">
+        function collect(id) {
+            var $url = "{:U('News/collect?id=')}" + id;
+            window.location.href = $url;
+        }
+    </script>
+</body>
+
 </html>
