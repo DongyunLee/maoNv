@@ -10,7 +10,7 @@ use Common\Controller\HomebaseController;
 
 /**
  * NewsController
- * @author Ye Weijie <your.name at your.org>
+ * @author Ye Weijie 
  */
 class NewsController extends HomebaseController{
 
@@ -56,8 +56,8 @@ class NewsController extends HomebaseController{
     public function collect()
     {
         $id = I("get.id");
-        if (!isset($_SESSION['USR']))    $this->error("请先登录",U('User/login'));
-        $usr_id = intval($_SESSION['USR']['uid']);
+        if (!isset($_SESSION['user']))    $this->error("请先登录",U('User/login'));
+        $usr_id = intval($_SESSION['user']['uid']);
 
         $collect = M("usr_collection");
         // var_dump($collect->select());die;

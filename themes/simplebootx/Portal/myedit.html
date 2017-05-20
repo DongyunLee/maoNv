@@ -15,7 +15,7 @@
     <div class="myTop row">
         <h4 class="col-md-3">
             <img src="__TMPL__Public/assets/imgs/DP9.jpg" />
-            <p><span>昵称：</span>{$info.nickname}</p>
+            <p><span>昵称：</span>{$info.user_nicename}</p>
         </h4>
 
         <div class="col-md-7 topWord">
@@ -28,7 +28,7 @@
                     $skin = $info['skin'] == 0?'干性':($info['skin'] == 1?'油性':'中性');
                 </php>
                 <span>肤质：{$skin}</span>
-                <span>年龄：{$info.age}</span>
+                <span>年龄：{$info.birthday}</span>
             </p>
         </div>
     </div>
@@ -50,7 +50,7 @@
                 </h6>
                 <h6>
                     <span>昵 称：</span>
-                    <input type="text" name="nickname" value="{$info.nickname}" />
+                    <input type="text" name="nickname" value="{$info.user_nicename}" />
                 </h6>
                 <h6>
                     <span>月 薪：</span>
@@ -84,7 +84,7 @@
                 </h6>
                 <h6>
                     <span>年 龄：</span>
-                    <input type="number" name="age" value="{$info['age']}" />
+                    <input type="number" name="age" value="{$info['birthday']}" />
                 </h6>
                 <h6>
                     <span>手机号 ：</span>
