@@ -46,77 +46,35 @@
                 <!------------------------正在试用---------------------------->
                 <div class="trying row ">
                     <ul class="Tmain row">
+                        <foreach name="posts" item="vo">
                         <li class="col-md-12 row">
-                            <div class="Timg col-md-4 col-sm-4" ><img src="__TMPL__Public/assets/imgs/t1.jpg" width="100%"/></div>
+                            <div class="Timg col-md-4 col-sm-4" >
+                                <php>
+                                    $smeta = json_decode($vo['smeta'],true);
+                                    $smeta = $smeta['photo'][0]['url'];
+                                </php>
+                                <img src="{$smeta}" width="100%"/>
+                            </div>
                             <div class="col-md-8 col-sm-4">
-                                <h3>Neom香氛蜡烛</h3>
-                                <p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
+                                <h3>{$vo.post_title}</h3>
+                                <p>离试用截止时间：
+                                    <php>
+                                        $gotime = strtotime($vo['post_date']);
+                                        $thesetime = $gotime-time();
+                                        echo round($thesetime/3600);
+                                    </php>
+                                    小时
+                                </p>
                                 <div class="Tnum row">
                                     <p class="col-md-4 col-xs-4">试用数：
-                                        <span>10</span></p>
-                                    <p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
-                                    <p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
+                                        <span>{$vo.post_excerpt}</span></p>
+                                    <p class="col-md-4 col-xs-4">申请数：<span>{$vo.post_hits}</span></p>
+                                    <p class="col-md-4 col-xs-4">规格：<span>{$vo.post_source}</span></p>
                                 </div>
-                                <a class="Tbtn container" href="{:U('Try/apply')}">申请试用</a>
-                            </div>
-
-                        </li>
-                        <li class="col-md-12 row">
-                            <div class="Timg col-md-4 col-sm-4" ><img src="__TMPL__Public/assets/imgs/t2.jpg" width="100%"/></div>
-                            <div class="col-md-8 col-sm-4">
-                                <h3>Neom香氛蜡烛</h3>
-                                <p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
-                                <div class="Tnum row">
-                                    <p class="col-md-4 col-xs-4">试用数：
-                                        <span>10</span></p>
-                                    <p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
-                                    <p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
-                                </div>
-                                <a class="Tbtn container" href="#">申请试用</a>
+                                <a class="Tbtn container" href="{:U('Try/apply?id='.$vo['object_id'])}">申请试用</a>
                             </div>
                         </li>
-                        <li class="col-md-12 row">
-                            <div class="Timg col-md-4 col-sm-4" ><img src="__TMPL__Public/assets/imgs/t3.jpg" width="100%"/></div>
-                            <div class="col-md-8 col-sm-4">
-                                <h3>Neom香氛蜡烛</h3>
-                                <p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
-                                <div class="Tnum row">
-                                    <p class="col-md-4 col-xs-4">试用数：
-                                        <span>10</span></p>
-                                    <p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
-                                    <p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
-                                </div>
-                                <a class="Tbtn container" href="#">申请试用</a>
-                            </div>
-                        </li>
-                        <li class="col-md-12 row">
-                            <div class="Timg col-md-4 col-sm-4" ><img src="__TMPL__Public/assets/imgs/t4.jpg" width="100%"/></div>
-                            <div class="col-md-8 col-sm-4">
-                                <h3>Neom香氛蜡烛</h3>
-                                <p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
-                                <div class="Tnum row">
-                                    <p class="col-md-4 col-xs-4">试用数：
-                                        <span>10</span></p>
-                                    <p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
-                                    <p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
-                                </div>
-                                <a class="Tbtn container" href="#">申请试用</a>
-                            </div>
-                        </li>
-                        <li class="col-md-12 row">
-                            <div class="Timg col-md-4 col-sm-4" ><img src="__TMPL__Public/assets/imgs/t5.jpg" width="100%"/></div>
-                            <div class="col-md-8 col-sm-4">
-                                <h3>Neom香氛蜡烛</h3>
-                                <p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
-                                <div class="Tnum row">
-                                    <p class="col-md-4 col-xs-4">试用数：
-                                        <span>10</span></p>
-                                    <p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
-                                    <p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
-                                </div>
-                                <a class="Tbtn container" href="#">申请试用</a>
-                            </div>
-                        </li>
+                        </foreach>
                     </ul>
                 </div>
 

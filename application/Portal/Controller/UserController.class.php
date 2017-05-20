@@ -22,6 +22,16 @@ class UserController extends HomebaseController{
         $usr_id = $usrinfo['uid'];
         $collects = M("usr_collection")->where("uid={$usr_id}")->select();
 
+        // 获取未通过试用信息
+        $notry = M("comments")->where("status = 0")->select();
+        // 获取已通过试用信息
+        $try = sp_get_comments("field:*;order:createtime desc;");
+        // 获取报告
+        $report = M("report")->where('uid='.$usr_id)->order("id desc")->select();
+
+        $this->assign('noentry',$notry);
+        $this->assign('report',$report);
+        $this->assign('product',$try);
         $this->assign('info',$usrinfo);
         $this->assign("ids",$collects);
         $this->display(":my");
@@ -100,6 +110,8 @@ class UserController extends HomebaseController{
             $usr->hair = I('post.hair');
             $usr->skin = I('post.skin');
             $usr->age = I('post.age');
+            $usr->addr = I('post.addr');
+            $usr->tel = I('post.tel');
             $usr->signature = I('post.signature');
             if ($usr->save()) {
                 $this->success("修改成功，请重新登录",U("User/logout"));
@@ -107,8 +119,36 @@ class UserController extends HomebaseController{
                 $this->error("修改失败，请重试");
             }
         }
+    }
 
+    public function submit()
+    {
+        if (empty($_POST)) {
+            $id = I("get.id");
+            $tid = M("comments")->field("id,post_id,uid")->where("id = {$id}")->select();
 
+            $this->assign("id",$id);
+            $this->assign("tid",$tid);
+            $this->display(":submitReport");
+        }else {
+            $reportModel = M("report");
+            $reportModel->pid = I("post.pid");
+            $reportModel->content = I("post.content");
+            $reportModel->uid = session("USR.uid");
+            $reportModel->time = time();
+            $result = $reportModel->add();
+            if($result)    $this->success("提交成功",U('User/index'));
+            if(!$result)    $this->error("提交失败，请稍后重试");
+        }
+    }
+
+    public function pinglun()
+    {
+        $id = I("get.id");
+        $report = M("report")->find($id);
+
+        $this->assign("report",$report);
+        $this->display(":pinglun");
     }
 
 }

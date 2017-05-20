@@ -3,8 +3,8 @@
   <head>
     <title>申请试用</title>
     <tc_include file="Public:head"/>
-    <link rel="stylesheet" href="css/try.css" />
-    <link  rel="stylesheet" href="css/apply.css"/>
+    <link rel="stylesheet" href="__TMPL__Public/assets/css/try.css" />
+    <link  rel="stylesheet" href="__TMPL__Public/assets/css/apply.css"/>
   </head>
   <body>
     <!--nav-->
@@ -12,13 +12,13 @@
 
 		<!--banner-->
 		<div class="banner">
-			<img src="imgs/sy.jpg" width="100%"/>
+			<img src="__TMPL__Public/assets/imgs/sy.jpg" width="100%"/>
 			<div class="shadow"></div>
 			<p class="bannerWord">
 				<span>试用中心</span>
 				<br />
-	      <span style="font-size: 0.5rem;">积 极 参 加 我 们 的 试 用 活 动 ，你 将 成 为 我 们 的 优 质 用 户，获 得 更 多 试 用 机 会</span>
-	     </p>
+                <span style="font-size: 0.5rem;">积 极 参 加 我 们 的 试 用 活 动 ，你 将 成 为 我 们 的 优 质 用 户，获 得 更 多 试 用 机 会</span>
+            </p>
 		</div>
 
 
@@ -47,100 +47,57 @@
 
 				<ul class="Tmain row">
 				<li class="col-md-12 row">
-					<div class="Timg col-md-7 col-sm-7" ><img src="imgs/apply1.jpg" width="100%"/></div>
+					<div class="Timg col-md-7 col-sm-7" ><img src="__TMPL__Public/assets/imgs/apply1.jpg" width="100%"/></div>
 					<div class="col-md-5 col-sm-5">
-						<h3>Neom香氛蜡烛</h3>
-						<p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
+						<h3>{$posts['post_title']}</h3>
+						<p>离试用截止时间：
+                            <span>
+                                <php>
+                                    $gotime = strtotime($posts['post_date']);
+                                    $thesetime = $gotime-time();
+                                    echo round($thesetime/3600);
+                                </php>
+                            </span>小时
+                        </p>
 						<div class="Tnum row">
 							<p class="col-md-4 col-xs-4">试用数：
-								<span>10</span></p>
-							<p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
-							<p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
+								<span>{$posts.post_excerpt}</span></p>
+							<p class="col-md-4 col-xs-4">申请数：<span>{$posts.post_hits}</span></p>
+							<p class="col-md-4 col-xs-4">规格：<span>{$posts.post_source}</span></p>
 						</div>
-						<a class="Tbtn container" href="#">申请试用</a>
+						<a class="Tbtn container" href="{:U('Try/apply1?id='.$posts['id'])}">申请试用</a>
 					</div>
 				</li>
 			</ul>
-
-			<div class="Bintro">
-				<h3>品牌介绍</h3>
-				<ul>
-					<li>产品名称：Neom香氛蜡烛 （西西里柠檬及鲜罗勒）</li>
-					<li>所属品牌：Neom</li>
-					<li>官网链接：</li>
-				</ul>
-			</div>
-			<div class="Pintro">
-				<h3>产品介绍</h3>
-				<p>Neom致力于提供使用者美好的精油体验，不只是找到令人无力抗拒的香气，更重要的是能透过精油本身的自然力量带来芳疗效果，并且创造一个转换心情的场景。清新苏活 FEEL REFRESHED</p>
-				<p>西西里柠檬及鲜罗勒</p>
-				<p>SICILIAN LEMON & FRESH BASIL</p>
-				<img src="imgs/apply2.jpg" width="80%"/>
-				<p>香氛介绍：</p>
-				<p>在西西里岛的柠檬园中，一颗颗阳光晒过的柠檬，在完美正熟之际从树上采收。搭配干净、清新的罗勒，打造出一款纯净又充满活力的香氛。</p>
-				<p>芳疗好处：</p>
-				<p>
-					高浓度的纯柠檬精油，吸上一口，可以让累坏的忙碌脑袋立即振作起来，刺激思考，罗勒早已是公认提神醒脑、集中注意力的圣品。这款配方最适合早上起床时、或晚上出门前，让精神振奋的良方。
-
-				</p>
-			</div>
+            {$posts.post_content}
 
 		<!--申请用户-->
 
-		<div class="urser1">
+		<!-- <div class="urser1">
 			<h3>申请成功用户</h3>
-			<p><span>雷阳</span><span>cathycathycathy</span> <span>chloecheng</span></p>
-		</div>
+			<p>
+                <span>雷阳</span>
+                <span>cathycathycathy</span>
+                <span>chloecheng</span>
+            </p>
+		</div> -->
 		<div class="urser2" >
 			<h3>已申请用户</h3>
 			<div class="recom row">
-						<div class="row">
-							<div class="col-md-7 col-sm-7 col-xs-12 row">
-								<div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="imgs/n10.jpg" /></div>
-									<div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
-										<p>calals</p>
-										<p>肤质：<span>干性</span>年龄：<span>26</span></p>
-									</div>
-							</div>
-							<time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
-
-
+				<div class="row">
+					<div class="col-md-7 col-sm-7 col-xs-12 row">
+						<div class="col-md-3 col-sm-4 col-xs-4 Rimg">
+                            <img src="__TMPL__Public/assets/imgs/n10.jpg" />
+                        </div>
+						<div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
+							<p>calals</p>
+							<p>肤质：<span>干性</span>年龄：<span>26</span></p>
 						</div>
-
-						<p class="Rword">喜欢香薰蜡烛 喜欢芭莎时尚，一定好好试用宣传</p>
 					</div>
-					<div class="recom row">
-						<div class="row">
-							<div class="col-md-7 col-sm-7 col-xs-12 row">
-								<div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="imgs/n10.jpg" /></div>
-									<div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
-										<p>calals</p>
-										<p>肤质：<span>干性</span>年龄：<span>26</span></p>
-									</div>
-							</div>
-							<time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
-
-
-						</div>
-
-						<p class="Rword">喜欢香薰蜡烛 喜欢芭莎时尚，一定好好试用宣传</p>
-					</div>
-					<div class="recom row">
-						<div class="row">
-							<div class="col-md-7 col-sm-7 col-xs-12 row">
-								<div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="imgs/n10.jpg" /></div>
-									<div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
-										<p>calals</p>
-										<p>肤质：<span>干性</span>年龄：<span>26</span></p>
-									</div>
-							</div>
-							<time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
-
-
-						</div>
-
-						<p class="Rword">喜欢香薰蜡烛 喜欢芭莎时尚，一定好好试用宣传</p>
-					</div>
+					<time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
+				</div>
+				<p class="Rword">喜欢香薰蜡烛 喜欢芭莎时尚，一定好好试用宣传</p>
+			</div>
 		</div>
 
 		</div>

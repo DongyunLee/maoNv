@@ -1,187 +1,100 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>提交报告</title>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/public.css" />
-    <link rel="stylesheet" href="css/contact.css" />
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <tc_include file="Public:head"/>
+    <link rel="stylesheet" href="__TMPL__Public/assets/css/contact.css" />
   </head>
   <body>
     <!--nav-->
-    <nav class="navbar navbar-default" role="navigation" style="border-bottom: 2px solid #101010;">
-		  <div class="container">
-		    <!-- Brand and toggle get grouped for better mobile display -->
-		    <div class="navbar-header">
-		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		      </button>
-		      <div class="logo clearfix">
-	      	 <a class="navbar-brand fl" href="index.html">猫 女 <span style="font-size: 0.2rem;">时尚杂志</span></a>
-	   			 <p class="fl"><a href="zhuce.html">注册</a>/<a href="login.html">登录</a>/<a href="my.html">个人中心</a></p>
-	      </div>
-		    </div>
-		
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		     <ul class="nav navbar-nav navbar-right">
-	          <li>
-	          	<div class="back"></div>
-	        	<a href="index.html">
-	        	首页
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="product.html">
-	        		国际秀场
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="news.html">
-	        		时尚资讯	
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="model.html">
-	        	时装潮流
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="try.html">
-	        	试用中心
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="aboutUs.html">
-	        		关于我们
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="contact.html">
-	        		联系我们
-	        	</a>
-	        </li>
-	   
-	      </ul>
-		    </div><!-- /.navbar-collapse -->
-		  </div><!-- /.container-fluid -->
-	</nav>
-	
-		
-	
-	
+    <tc_include file="Public:nav"/>
 	<!--main-->
-	
-		<div class="main container" >
-			
-		
-				<div class="main-l">
-					<h3>提交报告</h3>
-					<form class="form-horizontal" role="form">
-						<div class="form-group">
-					    <label for="inputName3" class="col-sm-2 control-label">产品名称：</label>
-					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="inputName3" placeholder="试用产品名称">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="inputCity3" class="col-sm-2 control-label">报告标题：</label>
-					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="inputCity3" placeholder="填写报告标题" >
-					    </div>
-					  </div>
-					 
-					  <div class="form-group">
-					    <label for="inputPassword3" class="col-sm-2 control-label">用后体验：</label>
-					    <div class="col-sm-10">
-					      <textarea placeholder="请留下您的用后体验"></textarea>
-					    </div>
-					  </div>
-					 			<button type="submit" class="btn btn-default">提交报告</button>
-					      <button type="reset" class="btn btn-default">重置</button>
-	
-					</form>
-				</div>
-				
-		
-			
+	<div class="main container" >
+		<div class="main-l">
+			<h3>提交报告</h3>
+            <php>
+                $posts = sp_sql_post($tid[0]['post_id']);
+            </php>
+			<form class="form-horizontal" role="form" action="" method="post">
+				<div class="form-group">
+                <input type="hidden" name="pid" value="{$posts.id}">
+			    <label for="inputName3" class="col-sm-2 control-label">产品名称：</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="inputName3" placeholder="{$posts.post_title}" readonly>
+			    </div>
+			  </div>
+                <div class="form-group">
+    			    <label for="inputPassword3" class="col-sm-2 control-label">用后体验：</label>
+    			    <div class="col-sm-10">
+    			      <textarea name="content" placeholder="请留下您的用后体验"></textarea>
+                      <script type="text/plain" id="content" name="content">请您留下您的用户体验</script>
+    			    </div>
+                </div>
+		 			<button type="submit" class="btn btn-default">提交报告</button>
+                    <button type="reset" class="btn btn-default">重置</button>
+			</form>
+		</div>
+	</div>
 
-	</div>
-	
 	<!--footer-->
-	<div class="footer-my">
-		<div class="container">
-			<div class="row" style="margin-bottom: 20px;">
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>优惠政策</h3></li>
-					<li>新会员优惠</li>
-					<li>团购优惠</li>
-					<li>优惠券抵扣活动</li>
-					<li>其他活动</li>
-				</ul>
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>地址</h3></li>
-					<li>国家:<span>中国</span></li>
-					<li>城市:<span>唐山</span></li>
-					<li>联系方式:<span>8 800 154-45-67</span></li>
-					<li>邮箱:<span>progress@mail.com</span><a href="#"></a></li>
-				</ul>
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>联系我们</h3></li>
-					<li><a href="#">QQ</a></li>
-					<li><a href="#">微信</a></li>
-					<li><a href="#">微博</a></li>
-					<li><a href="#">人人网</a></li>
-				</ul>
-				<div class="col-md-3 col-sm-6">
-					<h3>您的意见</h3>
-					<form action="#" method="post">
-						<div class="fr" style="width: 178px;">
-							<input type="email"value="写下您的邮箱地址" />
-							<input type="submit" value="进入留言"  />
-						</div>
-						
-					</form>	
-				</div>	
-			</div>	
-			
-		</div>
-		<div class="footer-t">
-			<div class="container">
-				<p class="col-md-12">版权所有© 2015-2016 中国尚摄工作室 技术支持：品色创意设计中心</p>
-        		<p class="col-md-12">尚摄工作室摄影隶属于唐山企业发展有限公司</p>
-			</div>
-			
-		</div>
-	</div>
-	
+    <tc_include file="Public:footer"/>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.js"></script>
-    <script type="text/javascript" src="js/public.js" ></script>
-    <script type="text/javascript" src="js/rem.js" ></script>
+    <tc_include file="Public:scripts"/>
+    <script type="text/javascript">
+		//编辑器路径定义
+		var editorURL = GV.WEB_ROOT;
+	</script>
+	<script type="text/javascript" src="__PUBLIC__/js/ueditor/ueditor.config.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/ueditor/ueditor.all.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$(".js-ajax-close-btn").on('click', function(e) {
+				e.preventDefault();
+				Wind.use("artDialog", function() {
+					art.dialog({
+						id : "question",
+						icon : "question",
+						fixed : true,
+						lock : true,
+						background : "#CCCCCC",
+						opacity : 0,
+						content : "您确定需要关闭当前页面嘛？",
+						ok : function() {
+							setCookie("refersh_time", 1);
+							window.close();
+							return true;
+						}
+					});
+				});
+			});
+			/////---------------------
+			Wind.use('validate', 'ajaxForm', 'artDialog', function() {
+				//javascript
+
+				//编辑器
+				editorcontent = new baidu.editor.ui.Editor();
+				editorcontent.render('content');
+				try {
+					editorcontent.sync();
+				} catch (err) {
+				}
+				//增加编辑器验证规则
+				jQuery.validator.addMethod('editorcontent', function() {
+					try {
+						editorcontent.sync();
+					} catch (err) {
+					}
+					return editorcontent.hasContents();
+				});
+				var form = $('form.js-ajax-forms');
+				//ie处理placeholder提交问题
+				if ($.browser && $.browser.msie) {
+					form.find('[placeholder]').each(function() {
+						var input = $(this);
+						if (input.val() == input.attr('placeholder')) {
+							input.val('');
+						}
+					});
+				}
   </body>
 </html>

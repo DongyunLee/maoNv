@@ -1,203 +1,86 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>用户评价</title>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/public.css" />
-    <link rel="stylesheet" href="css/try.css" />
-    <link rel="stylesheet" href="css/pinglun.css" />
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <tc_include file="Public:head"/>
+    <link rel="stylesheet" href="__TMPL__Public/assets/css/try.css" />
+    <link rel="stylesheet" href="__TMPL__Public/assets/css/pinglun.css" />
   </head>
   <body>
     <!--nav-->
-    <nav class="navbar navbar-default" role="navigation">
-		  <div class="container">
-		    <!-- Brand and toggle get grouped for better mobile display -->
-		    <div class="navbar-header">
-		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		      </button>
-		      <div class="logo clearfix">
-	      	 <a class="navbar-brand fl" href="index.html">猫 女 <span style="font-size: 0.2rem;">时尚杂志</span></a>
-	   			 <p class="fl"><a href="zhuce.html">注册</a>/<a href="login.html">登录</a>/<a href="my.html">个人中心</a></p>
-	      </div>
-		     </div>
-		
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		     <ul class="nav navbar-nav navbar-right">
-	          <li>
-	          	<div class="back"></div>
-	        	<a href="index.html">
-	        	首页
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="product.html">
-	        		国际秀场
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="news.html">
-	        		时尚资讯	
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="model.html">
-	        	时装潮流
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="try.html">
-	        	试用中心
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="aboutUs.html">
-	        		关于我们
-	        	</a>
-	        </li>
-	        <li>
-	        	<div class="back"></div>
-	        	<a href="contact.html">
-	        		联系我们
-	        	</a>
-	        </li>
-	   
-	      </ul>
-		    </div><!-- /.navbar-collapse -->
-		  </div><!-- /.container-fluid -->
-	</nav>
+    <tc_include file="Public:nav"/>
 	<ul class="Tmain row ">
 				<li class="row pinglun col-md-6 col-sm-10 col-xs-11">
 				<h3>当前点评产品：</h3>
+                <php>$posts = sp_sql_post($report['pid']);</php>
+                <php>
+                    $smeta = json_decode($posts['smeta'],true);
+                    $smeta = $smeta['photo'][0]['url'];
+                </php>
 					<div class="row">
-						<div class="Timg col-md-4 col-sm-4" ><a href="chanpin.html"><img src="imgs/t6.jpg" width="100%"/></a></div>
+						<div class="Timg col-md-4 col-sm-4" >
+                            <a href="chanpin.html">
+                                <img src="{$smeta}" width="100%"/>
+                            </a>
+                        </div>
 						<div class="col-md-8 col-sm-4">
-							<h3>Neom香氛蜡烛</h3>
-							<p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
+							<h3>{$posts.post_title}</h3>
+							<p>离试用截止时间：
+                                <php>
+                                    $gotime = strtotime($posts['post_date']);
+                                    $thesetime = $gotime-time();
+                                    echo round($thesetime/3600);
+                                </php>
+                                小时</p>
 							<div class="Tnum row">
 								<p class="col-md-4 col-xs-4">试用数：
-									<span>10</span></p>
-								<p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
-								<p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
+									<span>{$posts.post_excerpt}</span></p>
+								<p class="col-md-4 col-xs-4">申请数：<span>{$posts.post_hits}</span></p>
+								<p class="col-md-4 col-xs-4">规格：<span>{$posts.post_source}</span></p>
 							</div>
-							
+
 						</div>
 					</div>
-					
+
 				<!-----评论1------>
 					<div class="recom row">
-						<h3 class="RTitle" >＃SK-II肌因光蕴祛斑精华露 试用＃</h3>
+						<h3 class="RTitle" >＃{$posts.post_title} 试用＃</h3>
+                        <php>
+                            $usr = session('USR');
+                            dump($usr);
+                        </php>
 						<div class="row">
 							<div class="col-md-7 col-sm-7 col-xs-12 row">
-								<div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="imgs/n10.jpg" /></div>
-									<div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
-										<p>calals</p>
-										<p>肤质：<span>干性</span>年龄：<span>26</span></p>
-									</div>
+								<div class="col-md-3 col-sm-4 col-xs-4 Rimg">
+                                    <img src="__TMPL__Public/assets/imgs/n10.jpg" />
+                                </div>
+								<div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
+									<p>{$usr.nickname}</p>
+									<p>肤质：<span>干性</span>年龄：<span>{$usr.age}</span></p>
+								</div>
 							</div>
-							<time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
-							
+                            <notempty name="report['time']">
+                                <time class="col-md-3 col-sm-3 col-xs-8">{$report.time|date="Y-m-d H：s",###}</time>
+                            </notempty>
 						</div>
-						
 						<div class="pinglun1">
-								<p>2月13的今天终于收到了阿玛尼的试用套装！超级开心的！！！从知道申请成功这次就一直期待着，还好还好终于收到啦！先po一张全家福</p>	
-								<img src="imgs/cp1.jpg" width="90%" />
-								<p>阿玛尼黑钥匙赋活水赋活水的气味非常迷人，清香又仿佛有种来自大自然的气息这款水的质地介于半浓稠之间，扑在脸上，吸收很快，个人感觉还有一定亮肤功效</p>
-								<img src="imgs/cp2.jpg" width="90%" />
-								<p>阿玛尼蕴能奂颜净彻滋润洁面霜这款洁面霜质地非常浓厚，气味也是阿玛尼专属的打泡很好，清洁力度很好，洗脸时候感觉非常舒服</p>
-							
+							{$report.content}
 						</div>
-						
-						
-				</div>
-				
-					
-					
+
+	                </div>
 				</li>
 
-		<div class="go-back col-md-2 col-sm-6 col-xs-6">
+		<!-- <div class="go-back col-md-2 col-sm-6 col-xs-6">
 			<a href="#">上一篇</a>
 			|
 			<a href="#">下一篇</a>
-		</div>
+		</div> -->
 			</ul>
-	
-	
+
+
 	<!--footer-->
-	<div class="footer-my">
-		<div class="container">
-			<div class="row" style="margin-bottom: 20px;">
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>优惠政策</h3></li>
-					<li>新会员优惠</li>
-					<li>团购优惠</li>
-					<li>优惠券抵扣活动</li>
-					<li>其他活动</li>
-				</ul>
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>地址</h3></li>
-					<li>国家:<span>中国</span></li>
-					<li>城市:<span>唐山</span></li>
-					<li>联系方式:<span>8 800 154-45-67</span></li>
-					<li>邮箱:<span>progress@mail.com</span><a href="#"></a></li>
-				</ul>
-				<ul class="col-md-3 col-sm-6">
-					<li><h3>联系我们</h3></li>
-					<li><a href="#">QQ</a></li>
-					<li><a href="#">微信</a></li>
-					<li><a href="#">微博</a></li>
-					<li><a href="#">人人网</a></li>
-				</ul>
-				<div class="col-md-3 col-sm-6">
-					<h3>您的意见</h3>
-					<form action="#" method="post">
-						<div class="fr" style="width: 178px;">
-							<input type="email"value="写下您的邮箱地址" />
-							<input type="submit" value="进入留言"  />
-						</div>
-						
-					</form>	
-				</div>	
-			</div>	
-			
-		</div>
-		<div class="footer-t">
-			<div class="container">
-				<p class="col-md-12">版权所有© 2015-2016 中国尚摄工作室 技术支持：品色创意设计中心</p>
-        		<p class="col-md-12">尚摄工作室摄影隶属于唐山企业发展有限公司</p>
-			</div>
-			
-		</div>
-	</div>
-	
+	<tc_include file="Public:footer"/>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.js"></script>
-    <script type="text/javascript" src="js/public.js" ></script>
-    <script type="text/javascript" src="js/rem.js" ></script>
+    <tc_include file="Public:scripts"/>
   </body>
 </html>
