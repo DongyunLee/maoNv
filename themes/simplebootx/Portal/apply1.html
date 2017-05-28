@@ -1,47 +1,52 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-  <head>
-    <title>试用中心</title>
-    <tc_include file="Public:head"/>
-    <link rel="stylesheet" href="__TMPL__Public/assets/css/try.css" />
-  </head>
-  <body>
-    <!--nav-->
-    <tc_include file="Public:nav"/>
+
+<head>
+	<title>试用中心</title>
+	<tc_include file="Public:head" />
+	<link rel="stylesheet" href="__TMPL__Public/assets/css/try.css" />
+</head>
+
+<body>
+	<!--nav-->
+	<tc_include file="Public:nav" />
 	<!--main-->
-    <php>$posts = sp_sql_post($id);</php>
-		<div class="try container">
+	<php>$posts = sp_sql_post($id);</php>
+	<div class="try container">
 
-			<!--top-->
-			<ul class="Ttop2 row">
-				<li class="col-md-12 col-sm-12 col-xs-12"><h2>试用流程</h2></li>
-				<li class="col-md-3 col-sm-6 col-xs-12" style="color: #080808;">1.注册登录猫女官方网站</li>
-				<li class="col-md-3 col-sm-6 col-xs-12">2.申请试用填写地址</li>
-				<li class="col-md-3 col-sm-6 col-xs-12">3.审核通过免费试用</li>
-				<li class="col-md-3 col-sm-6 col-xs-12">4.提交试用报告</li>
-			</ul>
-			<!--申请步骤一-->
-			<div class="row apply1">
-				<dl class="col-md-4">
-                    <php>
-                        $smeta = json_decode($posts['smeta'],true);
-                        $smeta = $smeta['photo'][0]['url'];
-                    </php>
-					<dt>正在申请试用的产品</dt>
-					<dd><img src="{$smeta}" width="90%"/></dd>
-					<dt>{$posts.post_title}</dt>
-				</dl>
-                {:Comments("posts",$posts['id'])}
-			</div>
-
+		<!--top-->
+		<ul class="Ttop2 row">
+			<li class="col-md-12 col-sm-12 col-xs-12">
+				<h2>试用流程</h2>
+			</li>
+			<li class="col-md-3 col-sm-6 col-xs-12" style="color: #080808;">1.注册登录猫女官方网站</li>
+			<li class="col-md-3 col-sm-6 col-xs-12">2.申请试用填写地址</li>
+			<li class="col-md-3 col-sm-6 col-xs-12">3.审核通过免费试用</li>
+			<li class="col-md-3 col-sm-6 col-xs-12">4.提交试用报告</li>
+		</ul>
+		<!--申请步骤一-->
+		<div class="row apply1">
+			<dl class="col-md-4">
+				<php>
+					$smeta = json_decode($posts['smeta'],true); $smeta = $smeta['photo'][0]['url'];
+				</php>
+				<dt>正在申请试用的产品</dt>
+				<dd><img src="{$smeta}" width="90%" /></dd>
+				<dt>{$posts.post_title}</dt>
+			</dl>
+			{:Comments("posts",$posts['id'])}
+			<!--<button type="button">111</button>-->
 		</div>
+
+	</div>
 
 
 
 	<!--footer-->
-	<tc_include file="footer"/>
+	<tc_include file="footer" />
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <tc_include file="scripts"/>
-  </body>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<tc_include file="scripts" />
+</body>
+
 </html>

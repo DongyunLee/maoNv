@@ -52,15 +52,17 @@
                 <ul class="Tmain row">
                     <foreach name="posts_now" item="vo">
                         <li class="col-md-12 row">
+                            <php>
+                                $smeta = empty($vo['smeta'])?'__TMPL__Public/assets/imgs/t6.jpg':'data/upload/'.$vo['smeta'];
+                            </php>
                             <div class="Timg col-md-4 col-sm-4">
-                                <img src="data/upload/{$vo.smeta}" width="100%" />
+                                <img src="{$smeta}" width="100%" />
                             </div>
                             <div class="col-md-8 col-sm-4">
                                 <h3>{$vo.name}</h3>
                                 <p>离试用截止时间：
                                     <php>
-                                        $thesetime = $vo['date']-time(); 
-                                        echo round($thesetime/3600);
+                                        $thesetime = $vo['date']-time(); echo round($thesetime/3600);
                                     </php>
                                     小时
                                 </p>
@@ -70,7 +72,7 @@
                                     <p class="col-md-4 col-xs-4">申请数：<span>{$vo.r_num}</span></p>
                                     <p class="col-md-4 col-xs-4">规格：<span>{$vo.price}</span></p>
                                 </div>
-                                <a class="Tbtn container" href="{:U('Try/apply?id='.$vo['object_id'])}">申请试用</a>
+                                <a class="Tbtn container" href="{:U('Try/apply?id='.$vo['pid'])}">申请试用</a>
                             </div>
                         </li>
                     </foreach>
@@ -83,42 +85,55 @@
             <div class="past">
                 <ul class="Tmain row col-md-11">
                     <foreach name="posts_old" item="vo">
-                    <li class="col-md-12 row">
-                        <div class="row">
-                            <div class="Timg col-md-4 col-sm-4"><img src="__TMPL__Public/assets/imgs/t6.jpg" width="100%" /></div>
-                            <div class="col-md-8 col-sm-4">
-                                <h3>Neom香氛蜡烛</h3>
-                                <p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>
-                                <div class="Tnum row">
-                                    <p class="col-md-4 col-xs-4">试用数：
-                                        <span>10</span></p>
-                                    <p class="col-md-4 col-xs-4">申请数：<span>1600</span></p>
-                                    <p class="col-md-4 col-xs-4">规格：<span>430元</span></p>
-                                </div>
-                                <a class="Tbtn container" href="submitReport.html">提交报告</a>
-                            </div>
-                        </div>
-
-
-                        <!-----评论1------>
-                        <div class="recom row">
+                        <li class="col-md-12 row">
                             <div class="row">
-                                <div class="col-md-7 col-sm-7 col-xs-12 row">
-                                    <div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="__TMPL__Public/assets/imgs/n10.jpg" /></div>
-                                    <div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
-                                        <p>calals</p>
-                                        <p>肤质：<span>干性</span>年龄：<span>26</span></p>
-                                    </div>
+                                <php>
+                                    $smeta = empty($report['smeta'])?'__TMPL__Public/assets/imgs/t6.jpg':'data/upload/'.$report['smeta'];
+                                </php>
+                                <div class="Timg col-md-4 col-sm-4">
+                                    <img src="{$smeta}" width="100%" />
                                 </div>
-                                <time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
-                                <p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;"><img src="__TMPL__Public/assets/imgs/pa1.png" width="100%" /></p>
-
+                                <div class="col-md-8 col-sm-4">
+                                    <h3>{$vo.name}</h3>
+                                    <!--<p>离试用截止时间：<span>07</span>天<span>10</span>小时</p>-->
+                                    <div class="Tnum row">
+                                        <p class="col-md-4 col-xs-4">试用数：
+                                            <span>{$vo.num}</span></p>
+                                        <p class="col-md-4 col-xs-4">申请数：<span>{$vo.r_num}</span></p>
+                                        <p class="col-md-4 col-xs-4">规格：<span>{$vo.price}元</span></p>
+                                    </div>
+                                    <a class="Tbtn container" href="{:U('Try/apply?id='.$vo['pid'])}">查看详情</a>
+                                </div>
                             </div>
 
-                            <a class="RTitle" href="pinglun.html">＃SK-II肌因光蕴祛斑精华露 试用＃</a>
-                            <p class="Rword">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色的，类似乳液质地，好吸收，不是特别粘...</p>
-                        </div>
-                    </li>
+                            <php>$report = $r_list[$key];</php>
+                            <notempty name="report">
+                                <!-----评论1------>
+                                <div class="recom row">
+                                    <div class="row">
+                                        <div class="col-md-7 col-sm-7 col-xs-12 row">
+                                            <div class="col-md-3 col-sm-4 col-xs-4 Rimg">
+                                                <img src="__TMPL__Public/assets/imgs/n10.jpg" />
+                                            </div>
+                                            <div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
+                                                <p>{$report.usr}</p>
+                                                <p>肤质：<span>{$report.skin}</span>年龄：<span>{$report.age}</span></p>
+                                            </div>
+                                        </div>
+                                        <time class="col-md-3 col-sm-3 col-xs-8">
+                                            {$report.date|date="Y-m-d H:i",###}
+                                        </time>
+                                        <p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;"><img src="__TMPL__Public/assets/imgs/pa1.png" width="100%" /></p>
+
+                                    </div>
+
+                                    <a class="RTitle" href="{:U('Try/reply?id='.$report['id'])}">
+                                    ＃{$vo.name} 试用＃
+                                    </a>
+                                    <p class="Rword">{$report['report']|msubstr=0,120}</p>
+                                </div>
+                            </notempty>
+                        </li>
                     </foreach>
                 </ul>
             </div>
@@ -143,7 +158,9 @@
                                     </div>
                                 </div>
                                 <time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
-                                <p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;"><img src="__TMPL__Public/assets/imgs/pa1.png" width="100%" /></p>
+                                <p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;">
+                                    <img src="__TMPL__Public/assets/imgs/pa1.png" width="100%" />
+                                </p>
 
                             </div>
 
