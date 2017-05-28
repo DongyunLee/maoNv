@@ -23,18 +23,24 @@ class TryController extends HomebaseController
         // 正在试用
         $now = time();
         $Report = M("report");
+        $apply = M("apply");
         
         $data1['date'] = ['egt',$now];
-        $data2['date'] = ['elt',$now];
+        $data1['num'] = ['gt',0];
+        $data2['date'] = ['lt',$now];
+        $data2['num'] = ['elt',0];
+        $data2['_logic'] = 'or';
+        
         $post_now = M("product")->where($data1)->order('pid desc')->select();
         foreach ($post_now as $key => $value) {
-            $post_now[$key]['r_num'] = $Report->where("cg_report.pid = ".$value['pid'])->count();
+            $post_now[$key]['r_num'] = $apply->where("pid = ".$value['pid'])->count();
         }
+        
         // 往期试用
         $post_old = M("product")->where($data2)->order('pid desc')->select();
         $r_list = array();
         foreach ($post_old as $key => $value) {
-            $post_old[$key]['r_num'] = $Report->where("cg_report.pid = ".$value['pid'])->count();
+            $post_old[$key]['r_num'] = $apply->where("pid = ".$value['pid'])->count();
             $r_list[$key] = $Report
             ->join('__USR__ ON __USR__.uid=__REPORT__.uid')
             ->join('__PRODUCT__ ON __PRODUCT__.pid=__REPORT__.pid')
@@ -42,7 +48,15 @@ class TryController extends HomebaseController
             ->order('id desc')
             ->find();
         }
-
+        
+        //试用报告
+        $report_list = $Report
+            ->join('__USR__ ON __USR__.uid=__REPORT__.uid')
+            ->join('__PRODUCT__ ON __PRODUCT__.pid=__REPORT__.pid')
+            ->order('time desc')
+            ->select();
+        
+        $this->assign("re", $report_list);
         $this->assign("r_list", $r_list);
         $this->assign("posts_now", $post_now);
         $this->assign("posts_old", $post_old);
@@ -57,35 +71,94 @@ class TryController extends HomebaseController
         ->join("__PRODUCT__ ON __PRODUCT__.pid=__REPORT__.pid")
         ->where("cg_report.id={$id}")
         ->find();
-        $report['r_num'] = M("report")->
-        $this->assign("report",$report);
+        $pid = $report['pid'];
+        $report['r_num'] = M("apply")->where("pid={$pid}")->count();
+
+        $this->assign("report", $report);
         $this->display(":pinglun");
     }
 
     public function apply()
     {
+        // 产品信息
         $id = I("get.id");
-        $posts = sp_sql_post($id);
+        $pro = M("product")->where("pid={$id}")->find();
+        $pro['r_num'] = M("apply")->where("pid={$id}")->count();
 
-        $this->assign('posts', $posts);
+        // 申请成功用户
+        $ok_user = M("apply")
+        ->join("__USR__ ON __USR__.uid=__APPLY__.uid")
+        ->where("status=1 AND pid={$id}")
+        ->order("modified_time desc")
+        ->getField("nickname", true);
+
+        // 已申请用户
+        $apply_user = M("apply")
+        ->join("__USR__ ON __USR__.uid=__APPLY__.uid")
+        ->order("create_time desc")
+        ->where("pid={$id}")
+        ->select();
+
+        $this->assign('posts', $pro);
+        $this->assign('ok', $ok_user);
+        $this->assign('list', $apply_user);
         $this->display(":apply");
-    }
-
-    public function apply2()
-    {
-        $id = I("get.id");
-
-        $this->assign("id", $id);
-        $this->display(":apply1");
     }
 
     public function apply1()
     {
         $id = I("get.id");
         $usr = session('USR');
+        $product = M("product")->where("pid={$id}")->getField('name,smeta', ':');
+        $pro['name'] = key($product);
+        $pro['smeta'] = 'data/upload/'.$product[$pro['name']];
 
         $this->assign('usr', $usr);
         $this->assign("id", $id);
+        $this->assign("pro", $pro);
+        $this->display(":apply1");
+    }
+
+    public function apply2()
+    {
+        $id = I("get.id");
+        $apply = M("apply")
+        ->join("__USR__ ON __USR__.uid=__APPLY__.uid")
+        ->join("__PRODUCT__ ON __PRODUCT__.pid=__APPLY__.pid")
+        ->where("aid={$id}")
+        ->find();
+
+        $this->assign("id", $id);
+        $this->assign("apply",$apply);
         $this->display(":apply2");
+    }
+
+    public function sub_reply()
+    {
+        $apply = I("post");
+        $apply['uid'] = session("user")['id'];
+        $apply['create_time'] = time();
+        $apply['modified_time'] = $apply['create_time'];
+        // dump($apply);die;
+        $result = M("apply")->add($apply);
+        if ($result) {
+            $this->success("宣言发表完成，请确认您的收货地址", U("Try/apply2?id={$result}"));
+        } else {
+            $this->error("系统故障，请将问题反馈给我们，或者稍后再试");
+        }
+    }
+
+    public function sub_addr()
+    {
+        $action = I("post.action");
+        $id = I("post.aid");
+        $address = json_encode(I("post"),JSON_UNESCAPED_UNICODE);
+        // dump($post);die;
+        $apply = M("apply");
+        $apply->aid = $id;
+        $apply->addr = $address;
+        $result = $apply->save();
+        return $result;;
+        
     }
 }

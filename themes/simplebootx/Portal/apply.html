@@ -1,111 +1,127 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-  <head>
-    <title>申请试用</title>
-    <tc_include file="Public:head"/>
-    <link rel="stylesheet" href="__TMPL__Public/assets/css/try.css" />
-    <link  rel="stylesheet" href="__TMPL__Public/assets/css/apply.css"/>
-  </head>
-  <body>
-    <!--nav-->
-    <tc_include file="Public:nav"/>
 
-		<!--banner-->
-		<div class="banner">
-			<img src="__TMPL__Public/assets/imgs/sy.jpg" width="100%"/>
-			<div class="shadow"></div>
-			<p class="bannerWord">
-				<span>试用中心</span>
-				<br />
-                <span style="font-size: 0.5rem;">积 极 参 加 我 们 的 试 用 活 动 ，你 将 成 为 我 们 的 优 质 用 户，获 得 更 多 试 用 机 会</span>
-            </p>
-		</div>
+<head>
+	<title>申请试用</title>
+	<tc_include file="Public:head" />
+	<link rel="stylesheet" href="__TMPL__Public/assets/css/try.css" />
+	<link rel="stylesheet" href="__TMPL__Public/assets/css/apply.css" />
+</head>
+
+<body>
+	<!--nav-->
+	<tc_include file="Public:nav" />
+
+	<!--banner-->
+	<div class="banner">
+		<img src="__TMPL__Public/assets/imgs/sy.jpg" width="100%" />
+		<div class="shadow"></div>
+		<p class="bannerWord">
+			<span>试用中心</span>
+			<br />
+			<span style="font-size: 0.5rem;">积 极 参 加 我 们 的 试 用 活 动 ，你 将 成 为 我 们 的 优 质 用 户，获 得 更 多 试 用 机 会</span>
+		</p>
+	</div>
 
 
 	<!--main-->
 
-		<div class="try container">
+	<div class="try container">
 
-			<!--top-->
-			<ul class="Ttop1 row">
-				<li class="col-md-3 col-sm-12 col-xs-12">试用中心</li>
-				<li class="col-md-3 col-sm-4 col-xs-4 btn1 org" >正在试用</li>
-				<li class="col-md-3 col-sm-4 col-xs-4 btn2" >往期试用</li>
-				<li class="col-md-3 col-sm-4 col-xs-4 btn3" >试用报告</li>
-			</ul>
-			<ul class="Ttop2 row">
-				<li class="col-md-12 col-sm-12 col-xs-12"><h2>试用流程</h2></li>
-				<li class="col-md-3 col-sm-6 col-xs-12">1.注册登录猫女官方网站</li>
-				<li class="col-md-3 col-sm-6 col-xs-12">2.申请试用填写地址</li>
-				<li class="col-md-3 col-sm-6 col-xs-12">3.审核通过免费试用</li>
-				<li class="col-md-3 col-sm-6 col-xs-12">4.提交试用报告</li>
-			</ul>
+		<!--top-->
+		<ul class="Ttop1 row">
+			<li class="col-md-3 col-sm-12 col-xs-12">试用中心</li>
+			<li class="col-md-3 col-sm-4 col-xs-4 btn1 org">正在试用</li>
+			<li class="col-md-3 col-sm-4 col-xs-4 btn2">往期试用</li>
+			<li class="col-md-3 col-sm-4 col-xs-4 btn3">试用报告</li>
+		</ul>
+		<ul class="Ttop2 row">
+			<li class="col-md-12 col-sm-12 col-xs-12">
+				<h2>试用流程</h2>
+			</li>
+			<li class="col-md-3 col-sm-6 col-xs-12">1.注册登录猫女官方网站</li>
+			<li class="col-md-3 col-sm-6 col-xs-12">2.申请试用填写地址</li>
+			<li class="col-md-3 col-sm-6 col-xs-12">3.审核通过免费试用</li>
+			<li class="col-md-3 col-sm-6 col-xs-12">4.提交试用报告</li>
+		</ul>
 
-
-
-
-
-				<ul class="Tmain row">
-				<li class="col-md-12 row">
-					<div class="Timg col-md-7 col-sm-7" ><img src="__TMPL__Public/assets/imgs/apply1.jpg" width="100%"/></div>
-					<div class="col-md-5 col-sm-5">
-						<h3>{$posts['post_title']}</h3>
-						<p>离试用截止时间：
-                            <span>
-                                <php>
-                                    $gotime = strtotime($posts['post_date']);
-                                    $thesetime = $gotime-time();
-                                    echo round($thesetime/3600);
-                                </php>
-                            </span>小时
-                        </p>
-						<div class="Tnum row">
-							<p class="col-md-4 col-xs-4">试用数：
-								<span>{$posts.post_excerpt}</span></p>
-							<p class="col-md-4 col-xs-4">申请数：<span>{$posts.post_hits}</span></p>
-							<p class="col-md-4 col-xs-4">规格：<span>{$posts.post_source}</span></p>
-						</div>
-						<a class="Tbtn container" href="{:U('Try/apply1?id='.$posts['id'])}">申请试用</a>
+		<ul class="Tmain row">
+			<li class="col-md-12 row">
+				<php>
+					$smeta = empty($posts['smeta'])?'__TMPL__Public/assets/imgs/apply1.jpg':'data/upload/'.$posts['smeta'];
+				</php>
+				<div class="Timg col-md-7 col-sm-7">
+					<img src="{$smeta}" width="100%" />
+				</div>
+				<div class="col-md-5 col-sm-5">
+					<h3>{$posts.name}</h3>
+					<p>离试用截止时间：
+						<span>
+							<php>
+								$thesetime = $posts['date']-time();
+								echo round($thesetime/3600);
+							</php>
+						</span>小时
+					</p>
+					<div class="Tnum row">
+						<p class="col-md-4 col-xs-4">试用数：
+							<span>{$posts.num}</span></p>
+						<p class="col-md-4 col-xs-4">申请数：<span>{$posts.r_num}</span></p>
+						<p class="col-md-4 col-xs-4">规格：<span>{$posts.price}元</span></p>
 					</div>
-				</li>
-			</ul>
-            {$posts.post_content}
+					<a class="Tbtn container" href="{:U('Try/apply1?id='.$posts['pid'])}">申请试用</a>
+				</div>
+			</li>
+		</ul>
+		{$posts.post_content}
 
 		<!--申请用户-->
-
-		<!-- <div class="urser1">
-			<h3>申请成功用户</h3>
-			<p>
-                <span>雷阳</span>
-                <span>cathycathycathy</span>
-                <span>chloecheng</span>
-            </p>
-		</div> -->
-		<div class="urser2" >
-			<h3>已申请用户</h3>
-			<div class="recom row">
-				<div class="row">
-					<div class="col-md-7 col-sm-7 col-xs-12 row">
-						<div class="col-md-3 col-sm-4 col-xs-4 Rimg">
-                            <img src="__TMPL__Public/assets/imgs/n10.jpg" />
-                        </div>
-						<div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
-							<p>calals</p>
-							<p>肤质：<span>干性</span>年龄：<span>26</span></p>
-						</div>
-					</div>
-					<time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
-				</div>
-				<p class="Rword">喜欢香薰蜡烛 喜欢芭莎时尚，一定好好试用宣传</p>
+		<notempty name="ok">
+			<div class="urser1">
+				<h3>申请成功用户</h3>
+				<p>
+					<foreach name="ok" item="vo">
+						<span>{$vo}</span>
+					</foreach>
+				</p>
 			</div>
+		</notempty>
+		<div class="urser2">
+			<h3>已申请用户</h3>
+			<foreach name="list" item="vo">
+				<div class="recom row">
+					<div class="row">
+						<div class="col-md-7 col-sm-7 col-xs-12 row">
+							<div class="col-md-3 col-sm-4 col-xs-4 Rimg">
+								<img src="__TMPL__Public/assets/imgs/n10.jpg" />
+							</div>
+							<div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
+								<p>{$vo.nickname}</p>
+								<p>
+									<php>
+										$skin = $vo['skin'] == 0?'干性':($vo['skin'] == 1?'油性':'中性');
+									</php>
+									肤质：<span>{$skin}</span> 年龄：
+									<span>{$vo.age}</span>
+								</p>
+							</div>
+						</div>
+						<time class="col-md-3 col-sm-3 col-xs-8">
+							{$vo.create_time|date="Y-m-d H:i",###}
+						</time>
+					</div>
+					<p class="Rword">{$vo.msg}</p>
+				</div>
+			</foreach>
 		</div>
 
-		</div>
+	</div>
 
 	<!--footer-->
-	<tc_include file="Public:footer"/>
+	<tc_include file="Public:footer" />
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <tc_include file="Public:scripts"/>
-  </body>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<tc_include file="Public:scripts" />
+</body>
+
 </html>

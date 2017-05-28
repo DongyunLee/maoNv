@@ -11,7 +11,6 @@
 	<!--nav-->
 	<tc_include file="Public:nav" />
 	<!--main-->
-	<php>$posts = sp_sql_post($id);</php>
 	<div class="try container">
 
 		<!--top-->
@@ -27,14 +26,22 @@
 		<!--申请步骤一-->
 		<div class="row apply1">
 			<dl class="col-md-4">
-				<php>
-					$smeta = json_decode($posts['smeta'],true); $smeta = $smeta['photo'][0]['url'];
-				</php>
 				<dt>正在申请试用的产品</dt>
-				<dd><img src="{$smeta}" width="90%" /></dd>
-				<dt>{$posts.post_title}</dt>
+				<dd><img src="{$pro.smeta}" width="90%" /></dd>
+				<dt>{$pro.name}</dt>
 			</dl>
-			{:Comments("posts",$posts['id'])}
+			<form class="col-md-8" action="{:U('Try/sub_reply')}" method="post">
+				<h4>申请宣言</h4>
+				<div class="control-group">
+					<textarea class="form-control comment-postbox" placeholder="申请宣言至少15字，最多150字" style="min-height:90px;" name="post[msg]"></textarea>
+				</div>
+
+				<div class="control-group">
+					<php>$pid = I("get.id");</php>
+					<input type="hidden" name="post[pid]" value="{$pid}">
+					<input type="submit" class="js-ajax-submit" value="下一步" />
+				</div>
+			</form>
 			<!--<button type="button">111</button>-->
 		</div>
 

@@ -116,8 +116,14 @@
                                                 <img src="__TMPL__Public/assets/imgs/n10.jpg" />
                                             </div>
                                             <div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
-                                                <p>{$report.usr}</p>
-                                                <p>肤质：<span>{$report.skin}</span>年龄：<span>{$report.age}</span></p>
+                                                <p>{$report.nickname}</p>
+                                                <p>
+                                                    <php>
+                                                        $skin = $vo['skin'] == 0?'干性':($vo['skin'] == 1?'油性':'中性');
+                                                    </php>
+                                                    肤质：<span>{$skin}</span> 年龄：
+                                                    <span>{$report.age}</span>
+                                                </p>
                                             </div>
                                         </div>
                                         <time class="col-md-3 col-sm-3 col-xs-8">
@@ -139,111 +145,73 @@
             </div>
 
 
-            <!-------------------------试用报告--------------------->
+            <!--试用报告-->
             <div class="report">
-
                 <ul class="Tmain row col-md-11">
-                    <li class="col-md-12 row">
-
-
-
-                        <!-----评论1------>
-                        <div class="recom row">
-                            <div class="row">
-                                <div class="col-md-7 col-sm-7 col-xs-12 row">
-                                    <div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="__TMPL__Public/assets/imgs/n10.jpg" /></div>
-                                    <div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
-                                        <p>calals</p>
-                                        <p>肤质：<span>干性</span>年龄：<span>26</span></p>
+                    <foreach name="re" item="vo">
+                        <li class="col-md-12 row">
+                            <!-----评论1------>
+                            <div class="recom row">
+                                <div class="row">
+                                    <div class="col-md-7 col-sm-7 col-xs-12 row">
+                                        <div class="col-md-3 col-sm-4 col-xs-4 Rimg">
+                                            <img src="__TMPL__Public/assets/imgs/n10.jpg" />
+                                        </div>
+                                        <div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
+                                            <p>{$vo.nickname}</p>
+                                            <p>
+                                                <php>
+                                                    $skin = ($vo['skin'] == 0)?'干性':($vo['skin'] == 1?'油性':'中性');
+                                                </php>
+                                                肤质：<span>{$skin}</span> 年龄：
+                                                <span>{$vo.age}</span>
+                                            </p>
+                                        </div>
                                     </div>
+                                    <time class="col-md-3 col-sm-3 col-xs-8">
+                                        {$vo.time|date="Y-m-d H:i",###}
+                                    </time>
+                                    <p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;">
+                                        <img src="__TMPL__Public/assets/imgs/pa1.png" width="100%" />
+                                    </p>
+
                                 </div>
-                                <time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
-                                <p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;">
-                                    <img src="__TMPL__Public/assets/imgs/pa1.png" width="100%" />
-                                </p>
-
-                            </div>
-
-                            <h3 style="font-weight: bolder;">＃SK-II肌因光蕴祛斑精华露 试用＃</h3>
-
-                            <a href="pinglun.html" class="Rword Bword">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色的，类似乳液质地，好吸收，不是特别粘...</a>
-                            <div class="row">
-                                <div class="col-xs-6 col-md-3">
-                                    <a href="pinglun.html" class="thumbnail">
+                                <a href="{:U('Try/reply?id='.$vo['id'])}" class="Rword Bword">
+                                    <h3 style="font-weight: bolder;">＃{$vo.name} 试用＃</h3>
+                                </a>
+                                <p>{$vo.report|msubstr=0,120}</p>
+                                <!--<div class="row">
+                                    <div class="col-xs-6 col-md-3">
+                                        <a href="{:U('Try/reply?id='.$vo['id'])}" class="thumbnail">
                                             <img src="__TMPL__Public/assets/imgs/re1.jpg" >
                                         </a>
-
-                                </div>
-
+                                    </div>
+                                </div>-->
                             </div>
-                        </div>
 
-                        <!--试用产品-->
-                        <div class="pro row">
-                            <a href="#" class="col-md-8 col-sm-8 row">
-                                    <img src="__TMPL__Public/assets/imgs/t5.jpg" class="col-md-3 col-sm-3"/>
+                            <!--试用产品-->
+                            <div class="pro row">
+                                <a href="{:U('Try/apply?id='.$vo['pid'])}" class="col-md-8 col-sm-8 row">
+                                    <php>
+                                        $smeta = empty($vo['smeta'])?'__TMPL__Public/assets/imgs/t6.jpg':'data/upload/'.$vo['smeta'];
+                                    </php>
+                                    <img src="{$smeta}" class="col-md-3 col-sm-3" />
                                     <h3 class="col-md-6 col-sm-6">
                                         <p>试用产品：</p>
-                                        <p>SK-II肌因光蕴祛斑精华露</p>
+                                        <p>{$vo.name}</p>
                                     </h3>
                                 </a>
-                            <p class="col-md-4 col-sm-4">心水指数：<span>5</span>分</p>
-                        </div>
-                    </li>
-                    <li class="col-md-12 row">
-
-
-
-                        <!-----评论1------>
-                        <div class="recom row">
-                            <div class="row">
-                                <div class="col-md-7 col-sm-7 col-xs-12 row">
-                                    <div class="col-md-3 col-sm-4 col-xs-4 Rimg"><img src="__TMPL__Public/assets/imgs/n10.jpg" /></div>
-                                    <div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
-                                        <p>calals</p>
-                                        <p>肤质：<span>干性</span>年龄：<span>26</span></p>
-                                    </div>
-                                </div>
-                                <time class="col-md-3 col-sm-3 col-xs-8">2017-02-12 14：00</time>
-                                <p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;"><img src="__TMPL__Public/assets/imgs/pa1.png" width="100%" /></p>
-
+                                <p class="col-md-4 col-sm-4">心水指数：<span>5</span>分</p>
                             </div>
-
-                            <h3 style="font-weight: bolder;">＃SK-II肌因光蕴祛斑精华露 试用＃</h3>
-
-                            <a href="#" class="Rword Bword">Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色的，类似乳液质地，好吸收，不是特别粘...</a>
-                            <div class="row">
-                                <div class="col-xs-6 col-md-3">
-                                    <a href="#" class="thumbnail">
-                                            <img src="__TMPL__Public/assets/imgs/re1.jpg" >
-                                        </a>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!--试用产品-->
-                        <div class="pro row">
-                            <a href="#" class="col-md-8 col-sm-8 col-xs-8 row">
-                                    <img src="__TMPL__Public/assets/imgs/t5.jpg" class="col-md-3 col-sm-3 col-xs-3"/>
-                                    <h3 class="col-md-6 col-sm-6 col-xs-6">
-                                        <p>试用产品：</p>
-                                        <p>SK-II肌因光蕴祛斑精华露</p>
-                                    </h3>
-                                </a>
-                            <p class="col-md-4 col-sm-4 col-xs-4">心水指数：<span>5</span>分</p>
-                        </div>
-                    </li>
-
-
+                        </li>
+                    </foreach>
                 </ul>
 
             </div>
 
         </div>
 
-        <!-------------------------------------------------------------右侧------------------------------>
+        <!--右侧-->
         <ul class="Tword col-md-3">
             <li>
                 <h3><img src="__TMPL__Public/assets/imgs/tr1.jpg" /></h3>

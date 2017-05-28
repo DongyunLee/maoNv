@@ -11,27 +11,29 @@
 <body>
 	<!--nav-->
 	<tc_include file="Public:nav" />
+	<php>
+		$smeta = empty($report['smeta'])?'__TMPL__Public/assets/imgs/t6.jpg':'data/upload/'.$report['smeta'];
+	</php>
 	<ul class="Tmain row ">
 		<li class="row pinglun col-md-6 col-sm-10 col-xs-11">
 			<h3>当前点评产品：</h3>
 			<div class="row">
 				<div class="Timg col-md-4 col-sm-4">
 					<a href="chanpin.html">
-						<img src="data/upload{$report.smeta}" width="100%"/>
+						<img src="{$smeta}" width="100%"/>
 					</a>
 				</div>
 				<div class="col-md-8 col-sm-4">
 					<h3>{$report.name}</h3>
 					<p>截止时间：
 						<php>
-							echo date("Y-m-d H:i:s",$report['date']);
+							echo date("Y-m-d H:i",$report['date']);
 						</php>
 					</p>
 					<div class="Tnum row">
-						<p class="col-md-4 col-xs-4">试用数：
-							<span>{$report.num}</span></p>
-						<p class="col-md-4 col-xs-4">申请数：<span>{$posts.post_hits}</span></p>
-						<p class="col-md-4 col-xs-4">规格：<span>{$report.price}</span></p>
+						<p class="col-md-4 col-xs-4">试用数：<span>{$report.num}</span></p>
+						<p class="col-md-4 col-xs-4">申请数：<span>{$report.r_num}</span></p>
+						<p class="col-md-4 col-xs-4">规格：<span>{$report.price}元</span></p>
 					</div>
 
 				</div>
@@ -40,25 +42,30 @@
 			<!-----评论1------>
 			<div class="recom row">
 				<h3 class="RTitle">＃{$posts.post_title} 试用＃</h3>
-				<php>
-					$usr = session('USR'); dump($usr);
-				</php>
 				<div class="row">
 					<div class="col-md-7 col-sm-7 col-xs-12 row">
 						<div class="col-md-3 col-sm-4 col-xs-4 Rimg">
 							<img src="__TMPL__Public/assets/imgs/n10.jpg" />
 						</div>
 						<div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
-							<p>{$usr.nickname}</p>
-							<p>肤质：<span>干性</span>年龄：<span>{$usr.age}</span></p>
+							<p>{$report.usr}</p>
+							<p>
+								<php>
+									$skin = $report['skin'] == 0?'干性':($report['skin'] == 1?'油性':'中性');
+								</php>
+								肤质：<span>{$skin}</span> 
+								年龄：<span>{$report.age}</span>
+							</p>
 						</div>
 					</div>
 					<notempty name="report['time']">
-						<time class="col-md-3 col-sm-3 col-xs-8">{$report.time|date="Y-m-d H：s",###}</time>
+						<time class="col-md-3 col-sm-3 col-xs-8">
+							{$report.time|date="Y-m-d H：i",###}
+						</time>
 					</notempty>
 				</div>
 				<div class="pinglun1">
-					{$report.content}
+					{$report.report}
 				</div>
 
 			</div>

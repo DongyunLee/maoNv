@@ -11,11 +11,9 @@
 	<!--nav-->
 	<tc_include file="Public:nav" />
 	<!--main-->
-	<php>$posts = sp_sql_post($id);</php>
 	<div class="try container">
 
 		<!--top-->
-
 		<ul class="Ttop2 row">
 			<li class="col-md-12 col-sm-12 col-xs-12">
 				<h2>试用流程</h2>
@@ -29,53 +27,63 @@
 		<!--申请步骤二-->
 		<div class="row apply1">
 			<dl class="col-md-4">
-				<php>
-					$smeta = json_decode($posts['smeta'],true); $smeta = $smeta['photo'][0]['url'];
-				</php>
 				<dt>正在申请试用的产品</dt>
-				<dd><img src="{$smeta}" width="90%" /></dd>
-				<dt>{$posts.post_title}</dt>
+				<dd><img src="data/upload/{$apply.smeta}" width="90%" /></dd>
+				<dt>{$apply.name}</dt>
 			</dl>
-			<form action="#" method="get" class="col-md-8 Aaddress">
+			<form id="form" action="#" method="get" class="col-md-8 Aaddress">
 				<h5>填写有效收获地址</h5>
-				<p><span>姓名:</span><input type="text" value="{$usr.nickname}" readonly/></p>
-				<p><span>手机号:</span><input type="tel" placeholder="{$usr.tel}" readonly/></p>
+				<php>$id = I("get.id");</php>
+				<input type="hidden" name="aid" value="{$id}">
+				<p>
+					<span>姓名:</span>
+					<input type="hidden" id="o_n" value="{$apply.nickname}">
+					<input name="post[usr]" id="n_n" type="text" value="{$apply.nickname}" />
+				</p>
+				<p>
+					<span>手机号:</span>
+					<input type="hidden" id="o_t" value="{$apply.tel}">
+					<input name="post[phone]" id="n_t" type="tel" value="{$apply.tel}" />
+				</p>
 				<p>
 					<span>详细地址：</span>
-					<textarea placeholder="{$usr.addr}" readonly></textarea>
+					<input type="hidden" name="post[address]" id="o_a" value="{$apply.addr}">
+					<textarea name="post[address]" id="n_a" style="float: left;">{$apply.addr}</textarea>
 				</p>
-				<code>如需修改，请前往个人中心</code><br>
 				<!-- <input type="submit" value="提交申请" id="sub" /> -->
 				<!--<a class="btn btn-success" href="{:U('Try/apply2?id='.$posts['id'])}">提交申请</a>-->
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">提交申请</button>
 
-				<!--<button type="button">11</button>-->
 				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
 								<!--<h4 class="modal-title" id="exampleModalLabel">New message</h4>-->
 							</div>
 							<div class="modal-body" style="text-align: center;">
-								<p>是否将此地址更新到个人中心？</p>
+								<p>是否同时更新个人中心的收货地址？</p>
 							</div>
 							<div class="modal-footer">
-								<button type="submit" class="btn btn-default" data-dismiss="modal">是</button>
-								<!--<button type="button" class="btn btn-default" data-dismiss="modal">否</button>-->
-								<a class="btn btn-success" href="{:U('Try/apply2?id='.$posts['id'])}">否，直接提交申请</a>
+								<button type="button" id="btn1" class="btn btn-success" data-dismiss="modal">
+									是
+								</button>
+								<button type="button" id="btn2" onclick="sub_form()" class="btn btn-default" data-dismiss="modal">
+									否，直接提交申请
+								</button>
+								<!--<a class="btn btn-default" href="{:U('Try/apply2?id='.$posts['id'])}">否，直接提交申请</a>-->
 							</div>
 						</div>
 					</div>
 				</div>
 			</form>
 
-
-
 			<!--弹出层-->
 			<!-- <div class="tc">
-						<p>您已成功提交申请,请耐心等待!</p>
-					</div> -->
+				<p>您已成功提交申请,请耐心等待!</p>
+			</div> -->
 		</div>
 
 	</div>
@@ -90,15 +98,56 @@
 
 		var showArea = function () {
 
-			Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +
-
-				Gid('s_city').value + " - 县/区" +
-
-				Gid('s_county').value + "</h3>"
+			Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" + Gid('s_city').value + " - 县/区" + Gid('s_county').value + "</h3>"
 
 		}
 
 		Gid('s_county').setAttribute('onchange', 'showArea()');
+	</script>
+	<script>
+		$(function () {
+			var o_n = $("#o_n").val();
+			var n_n = $("#n_n").val();
+			var o_t = $("#o_t").val();
+			var n_t = $("#n_t").val();
+			var o_a = $("#o_a").val();
+			var n_a = $("#n_a").val();
+
+			$("#btn1").click(function () {
+				var data = $("#form input").map(function () {
+					return ($(this).attr("name") + '=' + $(this).val());
+				}).get().join("&");
+				data = data + "&action=update";
+				$.ajax({
+					url: "{:U('Try/sub_addr')}",
+					method: "Post",
+					data: data,
+					success: function (msg) {
+						console.log(msg);
+					},
+					error: function (err) {
+						console.error(err);
+					}
+				});
+			});
+			$("#btn2").click(function () {
+				var data = $("#form input").map(function () {
+					return ($(this).attr("name") + '=' + $(this).val());
+				}).get().join("&");
+				data = data + "&action=submit";
+				$.ajax({
+					url: "{:U('Try/sub_addr')}",
+					method: "Post",
+					data: data,
+					success: function (msg) {
+						console.log(msg);
+					},
+					error: function (err) {
+						console.error(err);
+					}
+				});
+			});
+		});
 	</script>
 </body>
 

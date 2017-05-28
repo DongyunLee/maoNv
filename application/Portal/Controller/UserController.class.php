@@ -293,13 +293,4 @@ class UserController extends HomebaseController
             if(!$result)    $this->error("提交失败，请稍后重试");
         }
     }
-
-    public function pinglun()
-    {
-        $id = I("get.id");
-        $report = M("report")->find($id);
-
-        $this->assign("report",$report);
-        $this->display(":pinglun");
-    }
 }
