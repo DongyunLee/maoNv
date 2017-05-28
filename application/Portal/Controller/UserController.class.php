@@ -20,9 +20,9 @@ class UserController extends HomebaseController
      */
     public function index()
     {
-        
-        // $usrinfo = $_SESSION['USR'];
-        // $usr_id = $usrinfo['id'];
+        // dump(session());die;
+        $usrinfo = session('user');
+        $usr_id = $usrinfo['id'];
         // $collects = M("usr_collection")->where("id={$usr_id}")->select();
         
         // $this->assign('info',$usrinfo);
@@ -32,7 +32,6 @@ class UserController extends HomebaseController
 
         $users_model=M("Users");
 
-<<<<<<< HEAD
         // 获取未通过试用信息
         $notry = M("comments")->where("status = 0")->select();
         // 获取已通过试用信息
@@ -45,14 +44,12 @@ class UserController extends HomebaseController
         $this->assign('product',$try);
         $this->assign('info',$usrinfo);
         $this->assign("ids",$collects);
-=======
         $user=$users_model->where(array("id"=>$id))->find();
 
         if (empty($user)) {
             $this->error("查无此人！");
         }
         $this->assign('info', $user);
->>>>>>> b7dcba8b40bb33e4e463e47950ff943ed196df3c
         $this->display(":my");
     }
 
@@ -263,13 +260,10 @@ class UserController extends HomebaseController
             $usr->much = I('post.much');
             $usr->hair = I('post.hair');
             $usr->skin = I('post.skin');
-<<<<<<< HEAD
             $usr->age = I('post.age');
             $usr->addr = I('post.addr');
             $usr->tel = I('post.tel');
-=======
             $usr->birthday = I('post.age');
->>>>>>> b7dcba8b40bb33e4e463e47950ff943ed196df3c
             $usr->signature = I('post.signature');
             if ($usr->save()) {
                 $this->success("修改成功，请重新登录", U("User/logout"));
@@ -277,7 +271,6 @@ class UserController extends HomebaseController
                 $this->error("修改失败，请重试");
             }
         }
-<<<<<<< HEAD
     }
 
     public function submit()
@@ -308,7 +301,5 @@ class UserController extends HomebaseController
 
         $this->assign("report",$report);
         $this->display(":pinglun");
-=======
->>>>>>> b7dcba8b40bb33e4e463e47950ff943ed196df3c
     }
 }
