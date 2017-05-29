@@ -53,16 +53,8 @@
                     <foreach name="posts_now" item="vo">
                         <li class="col-md-12 row">
                             <php>
-                                if(empty($vo['smeta'])){
-                                    $smeta = '__TMPL__Public/assets/imgs/t6.jpg';
-                                }else{
-                                    $http = mb_substr($vo['smeta'],0,4);
-                                    if($http!='http'){
-                                        $smeta = 'data/upload/'.$vo['smeta'];
-                                    }else{
-                                        $smeta = $vo['smeta'];
-                                    }
-                                }
+                                if(empty($vo['smeta'])){ $smeta = '__TMPL__Public/assets/imgs/t6.jpg'; }else{ $http = mb_substr($vo['smeta'],0,4); if($http!='http'){
+                                $smeta = 'data/upload/'.$vo['smeta']; }else{ $smeta = $vo['smeta']; } }
                             </php>
                             <div class="Timg col-md-4 col-sm-4">
                                 <img src="{$smeta}" width="100%" />
@@ -97,7 +89,8 @@
                         <li class="col-md-12 row">
                             <div class="row">
                                 <php>
-                                    $smeta = empty($report['smeta'])?'__TMPL__Public/assets/imgs/t6.jpg':'data/upload/'.$report['smeta'];
+                                    if(empty($vo['smeta'])){ $smeta = '__TMPL__Public/assets/imgs/t6.jpg'; }else{ $http = mb_substr($vo['smeta'],0,4); if($http!='http'){
+                                    $smeta = 'data/upload/'.$vo['smeta']; }else{ $smeta = $vo['smeta']; } }
                                 </php>
                                 <div class="Timg col-md-4 col-sm-4">
                                     <img src="{$smeta}" width="100%" />
@@ -207,7 +200,8 @@
                             <div class="pro row">
                                 <a href="{:U('Try/product?id='.$vo['pid'])}" class="col-md-8 col-sm-8 row">
                                     <php>
-                                        $smeta = empty($vo['smeta'])?'__TMPL__Public/assets/imgs/t6.jpg':'data/upload/'.$vo['smeta'];
+                                        if(empty($vo['smeta'])){ $smeta = '__TMPL__Public/assets/imgs/t6.jpg'; }else{ $http = mb_substr($vo['smeta'],0,4); if($http!='http'){
+                                        $smeta = 'data/upload/'.$vo['smeta']; }else{ $smeta = $vo['smeta']; } }
                                     </php>
                                     <img src="{$smeta}" class="col-md-3 col-sm-3" />
                                     <h3 class="col-md-6 col-sm-6">
