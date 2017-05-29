@@ -129,8 +129,9 @@
                                         <time class="col-md-3 col-sm-3 col-xs-8">
                                             {$report.date|date="Y-m-d H:i",###}
                                         </time>
-                                        <p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;"><img src="__TMPL__Public/assets/imgs/pa1.png" width="100%" /></p>
-
+                                        <p class="col-md-2 col-sm-2 col-xs-3" style="text-align: right;">
+                                            <img src="__TMPL__Public/assets/imgs/pa1.png" width="100%" />
+                                        </p>
                                     </div>
 
                                     <a class="RTitle" href="{:U('Try/reply?id='.$report['id'])}">
@@ -158,7 +159,11 @@
                                             <img src="__TMPL__Public/assets/imgs/n10.jpg" />
                                         </div>
                                         <div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
+                                            <!--<empty name="vo.nickname">-->
+                                            <p>{$vo.usr}</p>
+                                            <!--<else />-->
                                             <p>{$vo.nickname}</p>
+                                            <!--</empty>-->
                                             <p>
                                                 <php>
                                                     $skin = ($vo['skin'] == 0)?'干性':($vo['skin'] == 1?'油性':'中性');
@@ -191,7 +196,7 @@
 
                             <!--试用产品-->
                             <div class="pro row">
-                                <a href="{:U('Try/apply?id='.$vo['pid'])}" class="col-md-8 col-sm-8 row">
+                                <a href="{:U('Try/product?id='.$vo['pid'])}" class="col-md-8 col-sm-8 row">
                                     <php>
                                         $smeta = empty($vo['smeta'])?'__TMPL__Public/assets/imgs/t6.jpg':'data/upload/'.$vo['smeta'];
                                     </php>

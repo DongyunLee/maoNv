@@ -1,74 +1,79 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-    <head>
-        <title>个人中心</title>
-        <tc_include file='Public:head'/>
-        <link rel="stylesheet" href="__TMPL__Public/assets/css/my.css" />
-    </head>
-    <body>
-        <!--nav-->
-        <tc_include file='Public:nav'/>
-        <!--main-->
-        <div class="my container">
+
+<head>
+    <title>个人中心</title>
+    <tc_include file='Public:head' />
+    <link rel="stylesheet" href="__TMPL__Public/assets/css/my.css" />
+</head>
+
+<body>
+    <!--nav-->
+    <tc_include file='Public:nav' />
+    <!--main-->
+    <div class="my container">
 
 
-            <!--top-->
+        <!--top-->
 
-            <div class="myTop row">
-                <h4 class="col-md-3">
-                    <img src="__TMPL__Public/assets/imgs/DP9.jpg" />
-                    <p><span>昵称：</span>{$info.user_nicename}</p>
-                </h4>
+        <div class="myTop row">
+            <h4 class="col-md-3">
+                <img src="__TMPL__Public/assets/imgs/DP9.jpg" />
+                <!--<empty name="info.nickname">-->
+                <p>
+                    <span>用户名：</span>
+                    <p>{$info.usr}</p>
+                </p>
+                <!--<else />-->
+                <p><span>昵称：</span>{$info.nickname}</p>
+                <!--</empty>-->
+            </h4>
 
-                <div class="col-md-7 topWord">
-                    <p>
-                        个性签名：<br />
-                        {$info.signature}
-                    </p>
-                    <p>
-                        <php>
-                            $skin = $info['skin'] == 0?'干性':($info['skin'] == 1?'油性':'中性');
-                        </php>
-                        <span>肤质：{$skin}</span>
-                        <span>年龄：{$info.birthday}</span>
-                    </p>
-                </div>
-                <a href="{:U('User/edit')}" class="col-md-2 myedit">
-                    编辑资料
-                </a>
+            <div class="col-md-7 topWord">
+                <p>
+                    个性签名：<br /> {$info.signature}
+                </p>
+                <p>
+                    <php>
+                        $skin = $info['skin'] == 0?'干性':($info['skin'] == 1?'油性':'中性');
+                    </php>
+                    <span>肤质：{$skin}</span>
+                    <span>年龄：{$info.age}</span>
+                </p>
             </div>
+            <a href="{:U('User/edit')}" class="col-md-2 myedit">
+                编辑资料
+            </a>
+        </div>
 
 
-            <!--main-->
+        <!--main-->
 
-            <!--我的申请-->
-            <div class="apply">
-                <h3>已申请</h3>
-                <foreach name="noentry" item="vo">
-                <php>$posts = sp_sql_post($vo['post_id']);</php>
+        <!--我的申请-->
+        <div class="apply">
+            <h3>已申请</h3>
+            <foreach name="noentry" item="vo">
                 <php>
-                    $smeta = json_decode($posts['smeta'],true);
-                    $smeta = $smeta['photo'][0]['url'];
+                    $smeta = empty($vo['smeta'])?'__TMPL__Public/assets/imgs/t6.jpg':'data/upload/'.$vo['smeta'];
                 </php>
                 <div class="myapply row" href="#">
-                    <a href="chanpin.html" class="col-md-2">
+                    <a href="{:U('Try/product?id='.$vo['pid'])}" class="col-md-2">
                         <img src="{$smeta}" width="90%"/>
                     </a>
                     <div class="col-md-4 sh">
-                        <span>##{$posts.post_title} 试用##</span>
+                        <span>##{$vo.name} 试用##</span>
                         <a>{$vo.content}</a>
                         <span class="tj" style="background: #ACAAAB;">待审核</span>
                     </div>
                 </div>
-                </foreach>
-            </div>
-            <div class="apply">
-                <h3>待交报告</h3>
-                <foreach name="product" item="vo">
+            </foreach>
+        </div>
+        <div class="apply">
+            <h3>待交报告</h3>
+            <foreach name="product" item="vo">
                 <php>$posts = sp_sql_post($vo['post_id']);</php>
                 <php>
-                    $smeta = json_decode($posts['smeta'],true);
-                    $smeta = $smeta['photo'][0]['url'];
+                    $smeta = json_decode($posts['smeta'],true); $smeta = $smeta['photo'][0]['url'];
                 </php>
                 <div class="myapply row">
                     <a href="chanpin.html" class="col-md-2">
@@ -80,15 +85,13 @@
                         <a class="tj" href="{:U('User/submit?id='.$vo['id'])}">提交报告</a>
                     </div>
                 </div>
-                </foreach>
-            </div>
-            <div class="apply">
-                <h3>我的报告</h3>
-                <foreach name="report" item="vo">
+            </foreach>
+        </div>
+        <div class="apply">
+            <h3>我的报告</h3>
+            <foreach name="report" item="vo">
                 <php>
-                    $posts = sp_sql_post($vo['pid']);
-                    $smeta = json_decode($posts['smeta'],true);
-                    $smeta = $smeta['photo'][0]['url'];
+                    $posts = sp_sql_post($vo['pid']); $smeta = json_decode($posts['smeta'],true); $smeta = $smeta['photo'][0]['url'];
                 </php>
                 <div class="myapply row" href="#">
                     <a href="#" class="col-md-2">
@@ -101,32 +104,32 @@
                         </a>
                     </div>
                 </div>
-                </foreach>
-            </div>
+            </foreach>
+        </div>
 
 
-            <div class="sc">
-                <h3>我的收藏</h3>
-                <div class="row">
+        <div class="sc">
+            <h3>我的收藏</h3>
+            <div class="row">
                 <!-- <foreach name="ids" item="vo"> -->
                 <php>
-                    $posts = sp_sql_post($vo['object_id']);
-                    $time = strtotime($posts['post_date']);
+                    $posts = sp_sql_post($vo['object_id']); $time = strtotime($posts['post_date']);
                 </php>
-                    <a href="{:U('News/detail?id=').$vo['object_id']}" class="news-top clearfix col-md-5">
-                        <p class="fl">
-                            <span style="font-size: 32px; display: block; height: 32px;">{$time|date="d",###}</span>
-                            <span style="display: block;">{$time|date="m",###}</span>
-                        </p>
-                        <h4 class="fl">{$posts.post_title|msubstr=0,25}</h4>
-                    </a>
+                <a href="{:U('News/detail?id=').$vo['object_id']}" class="news-top clearfix col-md-5">
+                    <p class="fl">
+                        <span style="font-size: 32px; display: block; height: 32px;">{$time|date="d",###}</span>
+                        <span style="display: block;">{$time|date="m",###}</span>
+                    </p>
+                    <h4 class="fl">{$posts.post_title|msubstr=0,25}</h4>
+                </a>
                 <!-- </foreach> -->
-                </div>
-
             </div>
+
         </div>
-        <!--footer-->
-        <tc_include file='Public:footer'/>
-        <tc_include file='Public:scripts'/>
-    </body>
+    </div>
+    <!--footer-->
+    <tc_include file='Public:footer' />
+    <tc_include file='Public:scripts' />
+</body>
+
 </html>

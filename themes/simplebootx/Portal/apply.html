@@ -76,16 +76,16 @@
 		{$posts.post_content}
 
 		<!--申请用户-->
-		<notempty name="ok">
-			<div class="urser1">
-				<h3>申请成功用户</h3>
-				<p>
-					<foreach name="ok" item="vo">
-						<span>{$vo}</span>
-					</foreach>
-				</p>
-			</div>
-		</notempty>
+		<!--<notempty name="ok">-->
+		<div class="urser1">
+			<h3>申请成功用户</h3>
+			<p>
+				<foreach name="ok" item="vo">
+					<span>{$vo}</span>
+				</foreach>
+			</p>
+		</div>
+		<!--</notempty>-->
 		<div class="urser2">
 			<h3>已申请用户</h3>
 			<foreach name="list" item="vo">

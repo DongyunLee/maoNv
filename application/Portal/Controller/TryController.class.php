@@ -77,6 +77,34 @@ class TryController extends HomebaseController
         $this->assign("report", $report);
         $this->display(":pinglun");
     }
+    
+    public function product()
+    {
+        $id = I("get.id");
+        $pro = M("product")->where("pid={$id}")->find();
+        $pro['r_num'] = M("apply")->where("pid={$id}")->count();
+
+        // 申请成功用户
+        $ok_user = M("apply")
+        ->join("__USR__ ON __USR__.uid=__APPLY__.uid")
+        ->where("status=1 AND pid={$id}")
+        ->order("modified_time desc")
+        #->fetchSql()
+        ->getField("usr", true);
+        // echo($ok_user);die;
+
+        // 已申请用户
+        $apply_user = M("apply")
+        ->join("__USR__ ON __USR__.uid=__APPLY__.uid")
+        ->order("create_time desc")
+        ->where("pid={$id}")
+        ->select();
+
+        $this->assign("pro",$pro);
+        $this->assign('ok', $ok_user);
+        $this->assign('list', $apply_user);
+        $this->display(":chanpin");
+    }
 
     public function apply()
     {
@@ -108,6 +136,10 @@ class TryController extends HomebaseController
     public function apply1()
     {
         $id = I("get.id");
+        // dump(session());die;
+        if (session('USR') === Null) {
+            return $this->error("请先登录！",U("User/login"));
+        }
         $usr = session('USR');
         $product = M("product")->where("pid={$id}")->getField('name,smeta', ':');
         $pro['name'] = key($product);

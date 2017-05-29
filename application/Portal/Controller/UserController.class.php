@@ -20,31 +20,31 @@ class UserController extends HomebaseController
      */
     public function index()
     {
-        // dump(session());die;
-        $usrinfo = session('user');
-        $usr_id = $usrinfo['id'];
-        // $collects = M("usr_collection")->where("id={$usr_id}")->select();
-        
-        // $this->assign('info',$usrinfo);
-        // $this->assign("ids",$collects);
-        // $this->display(":my");
+        $usrinfo = session('USR');
+        dump($usrinfo);
+        $usr_id = $usrinfo['uid'];
+        // dump($usr_id);die;
         $id=sp_get_current_userid();
 
-        $users_model=M("Users");
+        $user=M("usr");
 
-        // 获取未通过试用信息
-        $notry = M("comments")->where("status = 0")->select();
-        // 获取已通过试用信息
-        $try = sp_get_comments("field:*;order:createtime desc;");
+        // 获取试用申请
+        $notry = M("apply")
+        ->join("__PRODUCT__ ON __PRODUCT__.pid=__APPLY__.pid")
+        ->where("uid={$usr_id}")
+        ->select();
+        
+        // 获取未提交报告
+        $try = M("apply")->where("status = 1 AND uid={$usr_id} AND id IS null")->select();
         // 获取报告
         $report = M("report")->where('uid='.$usr_id)->order("id desc")->select();
 
-        $this->assign('noentry',$notry);
-        $this->assign('report',$report);
-        $this->assign('product',$try);
-        $this->assign('info',$usrinfo);
-        $this->assign("ids",$collects);
-        $user=$users_model->where(array("id"=>$id))->find();
+        $this->assign('noentry', $notry);
+        $this->assign('report', $report);
+        $this->assign('product', $try);
+        $this->assign('info', $usrinfo);
+        $this->assign("ids", $collects);
+        $user=$user->where(array("id"=>$id))->find();
 
         if (empty($user)) {
             $this->error("查无此人！");
@@ -101,12 +101,14 @@ class UserController extends HomebaseController
      */
     public function login()
     {
-        //用户登录
-        if (empty($_POST)) {
+        $info = I("post");
+        // 用户登录
+        if ($info == null) {
+            // dump($_SERVER);die;
             $redirect=$_SERVER['HTTP_REFERER'];
             session('login_http_referer', $redirect);
             
-            if (sp_is_user_login()) { //已经登录时直接跳到首页
+            if (session('USR') !== null) { //已经登录时直接跳到首页
                 redirect(__ROOT__."/");
             } else {
                 return $this->display(":login");
@@ -114,134 +116,26 @@ class UserController extends HomebaseController
         }
         
         //登录验证
-        $users_model = M("users");
-        $rules = array(
-                //array(验证字段,验证规则,错误提示,验证条件,附加规则,验证时间)
-                array('usr', 'require', '用户名不能为空！', 1 ),
-                array('pwd','require','密码不能为空！',1),
-        
-        );
-        if ($users_model->validate($rules)->create()===false) {
-            $this->error($users_model->getError());
-        }
-        
-        $username=I('post.usr');
-        $password=I('post.pwd');
-        $where = array("user_status"=>1);
-        $where['user_login']=$username;
-        $result = $users_model->where($where)->find();
-        $ucenter_syn=C("UCENTER_ENABLED");
-        
-        $ucenter_old_user_login=false;
-         
-        $ucenter_login_ok=false;
-        if ($ucenter_syn) {
-            cookie("thinkcmf_auth", "");
-            include UC_CLIENT_ROOT."client.php";
-            list($uc_uid, $username, $password, $email)=uc_user_login($username, $password);
-             
-            if ($uc_uid>0) {
-                if (!$result) {
-                    $data=array(
-                        'user_login' => $username,
-                        'user_email' => $email,
-                        'user_pass' => sp_password($password),
-                        'last_login_ip' => get_client_ip(0, true),
-                        'create_time' => time(),
-                        'last_login_time' => time(),
-                        'user_status' => '1',
-                        'user_type'=>2,
-                    );
-                    $id= $users_model->add($data);
-                    $data['id']=$id;
-                    $result=$data;
-                }
-            } else {
-                switch ($uc_uid) {
-                    case "-1"://用户不存在，或者被删除
-                        if ($result) {//本应用已经有这个用户
-                            if (sp_compare_password($password, $result['user_pass'])) {
-                                //本应用已经有这个用户,且密码正确，同步用户
-                                $uc_uid2=uc_user_register($username, $password, $result['user_email']);
-                                if ($uc_uid2<0) {
-                                    $uc_register_errors=array(
-                                        "-1"=>"用户名不合法",
-                                        "-2"=>"包含不允许注册的词语",
-                                        "-3"=>"用户名已经存在",
-                                        "-4"=>"Email格式有误",
-                                        "-5"=>"Email不允许注册",
-                                        "-6"=>"该Email已经被注册",
-                                    );
-                                    $this->error("同步用户失败--".$uc_register_errors[$uc_uid2]);
-                                }
-                                $uc_uid=$uc_uid2;
-                            } else {
-                                $this->error("密码错误！");
-                            }
-                        }
-        
-                        break;
-                    case -2://密码错
-                        if ($result) {//本应用已经有这个用户
-                            if (sp_compare_password($password, $result['user_pass'])) {//本应用已经有这个用户,且密码正确，同步用户
-                                $uc_user_edit_status=uc_user_edit($username, "", $password, "", 1);
-                                if ($uc_user_edit_status<=0) {
-                                    $this->error("登录错误！");
-                                }
-                                list($uc_uid2)=uc_get_user($username);
-                                $uc_uid=$uc_uid2;
-                                $ucenter_old_user_login=true;
-                            } else {
-                                $this->error("密码错误！");
-                            }
-                        } else {
-                            $this->error("密码错误！");
-                        }
-                         
-                        break;
-                }
-            }
-            $ucenter_login_ok=true;
-            echo uc_user_synlogin($uc_uid);
-        }
-        //exit();
-        if (!empty($result)) {
-            if (sp_compare_password($password, $result['user_pass'])|| $ucenter_login_ok) {
-                session('user', $result);
-                //写入此次登录信息
-                $data = array(
-                    'last_login_time' => date("Y-m-d H:i:s"),
-                    'last_login_ip' => get_client_ip(0, true),
-                );
-                $users_model->where("id=".$result["id"])->save($data);
-
-                $redirect=__ROOT__."/";
-                session('login_http_referer', '');
-                $ucenter_old_user_login_msg="";
-        
-                /*if ($ucenter_old_user_login) {
-                    // $ucenter_old_user_login_msg="老用户请在跳转后，再次登陆";
-                }*/
-        
-                $this->success("登录验证成功！", $redirect);
-            } else {
-                $this->error("密码错误！");
-            }
-        } else {
-            $this->error("用户名不存在或已被拉黑！");
-        }
+        $users = M("usr");
+        $is_usr = $users->where("usr=\"{$info['usr']}\"")->find();
+        if(!$is_usr)    return $this->error("用户名不存在！");
+        if($is_usr['pwd'] !== md5($info['pwd']))    return $this->error("密码错误");
+        session('USR',$is_usr);
+        $this->success("登录成功",session('login_http_referer'));
+        // dump(session());
     }
 
     public function logout()
     {
         $ucenter_syn=C("UCENTER_ENABLED");
-    	$login_success=false;
-    	if($ucenter_syn){
-    		include UC_CLIENT_ROOT."client.php";
-    		echo uc_user_synlogout();
-    	}
-    	session("user",null);//只有前台用户退出
-    	redirect(__ROOT__."/");
+        $login_success=false;
+        if ($ucenter_syn) {
+            include UC_CLIENT_ROOT."client.php";
+            echo uc_user_synlogout();
+        }
+        session("USR", null);//只有前台用户退出
+        $this->success("注销成功！",__ROOT__."/");
+        // redirect();
     }
 
     public function edit()
@@ -279,18 +173,22 @@ class UserController extends HomebaseController
             $id = I("get.id");
             $tid = M("comments")->field("id,post_id,uid")->where("id = {$id}")->select();
 
-            $this->assign("id",$id);
-            $this->assign("tid",$tid);
+            $this->assign("id", $id);
+            $this->assign("tid", $tid);
             $this->display(":submitReport");
-        }else {
+        } else {
             $reportModel = M("report");
             $reportModel->pid = I("post.pid");
             $reportModel->content = I("post.content");
             $reportModel->uid = session("USR.uid");
             $reportModel->time = time();
             $result = $reportModel->add();
-            if($result)    $this->success("提交成功",U('User/index'));
-            if(!$result)    $this->error("提交失败，请稍后重试");
+            if ($result) {
+                $this->success("提交成功", U('User/index'));
+            }
+            if (!$result) {
+                $this->error("提交失败，请稍后重试");
+            }
         }
     }
 }
