@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-CN">
 
 <head>
 	<title>用户评价</title>
@@ -12,7 +12,8 @@
 	<!--nav-->
 	<tc_include file="Public:nav" />
 	<php>
-		$smeta = empty($report['smeta'])?'__TMPL__Public/assets/imgs/t6.jpg':'data/upload/'.$report['smeta'];
+		if(empty($report['smeta'])){ $smeta = '__TMPL__Public/assets/imgs/t6.jpg'; }else{ $http = mb_substr($report['smeta'],0,4);
+		if($http!='http'){ $smeta = 'data/upload/'.$report['smeta']; }else{ $smeta = $report['smeta']; } }
 	</php>
 	<ul class="Tmain row ">
 		<li class="row pinglun col-md-6 col-sm-10 col-xs-11">
@@ -41,7 +42,7 @@
 
 			<!-----评论1------>
 			<div class="recom row">
-				<h3 class="RTitle">＃{$posts.post_title} 试用＃</h3>
+				<h3 class="RTitle">＃{$report.name} 试用＃</h3>
 				<div class="row">
 					<div class="col-md-7 col-sm-7 col-xs-12 row">
 						<div class="col-md-3 col-sm-4 col-xs-4 Rimg">
@@ -53,8 +54,8 @@
 								<php>
 									$skin = $report['skin'] == 0?'干性':($report['skin'] == 1?'油性':'中性');
 								</php>
-								肤质：<span>{$skin}</span> 
-								年龄：<span>{$report.age}</span>
+								肤质：<span>{$skin}</span> 年龄：
+								<span>{$report.age}</span>
 							</p>
 						</div>
 					</div>

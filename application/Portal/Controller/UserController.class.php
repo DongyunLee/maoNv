@@ -21,10 +21,8 @@ class UserController extends HomebaseController
     public function index()
     {
         $usrinfo = session('USR');
-        dump($usrinfo);
         $usr_id = $usrinfo['uid'];
-        // dump($usr_id);die;
-        $id=sp_get_current_userid();
+        $id=$usr_id['uid'];
 
         $user=M("usr");
 
@@ -35,21 +33,28 @@ class UserController extends HomebaseController
         ->select();
         
         // 获取未提交报告
-        $try = M("apply")->where("status = 1 AND uid={$usr_id} AND id IS null")->select();
+        $try = M("apply")
+        ->join("__PRODUCT__ ON __PRODUCT__.pid=__APPLY__.pid")
+        ->where("status = 1 AND uid={$usr_id} AND id IS null")
+        ->select();
+        
         // 获取报告
-        $report = M("report")->where('uid='.$usr_id)->order("id desc")->select();
-
+        $report = M("report")
+        ->join("__PRODUCT__ ON __PRODUCT__.pid=__REPORT__.pid")
+        ->where('uid='.$usr_id)
+        ->order("id desc")
+        ->select();
+        
         $this->assign('noentry', $notry);
         $this->assign('report', $report);
         $this->assign('product', $try);
         $this->assign('info', $usrinfo);
         $this->assign("ids", $collects);
-        $user=$user->where(array("id"=>$id))->find();
 
         if (empty($user)) {
             $this->error("查无此人！");
         }
-        $this->assign('info', $user);
+        $this->assign('info', $usrinfo);
         $this->display(":my");
     }
 
@@ -118,10 +123,14 @@ class UserController extends HomebaseController
         //登录验证
         $users = M("usr");
         $is_usr = $users->where("usr=\"{$info['usr']}\"")->find();
-        if(!$is_usr)    return $this->error("用户名不存在！");
-        if($is_usr['pwd'] !== md5($info['pwd']))    return $this->error("密码错误");
-        session('USR',$is_usr);
-        $this->success("登录成功",session('login_http_referer'));
+        if (!$is_usr) {
+            return $this->error("用户名不存在！");
+        }
+        if ($is_usr['pwd'] !== md5($info['pwd'])) {
+            return $this->error("密码错误");
+        }
+        session('USR', $is_usr);
+        $this->success("登录成功", session('login_http_referer'));
         // dump(session());
     }
 
@@ -134,59 +143,74 @@ class UserController extends HomebaseController
             echo uc_user_synlogout();
         }
         session("USR", null);//只有前台用户退出
-        $this->success("注销成功！",__ROOT__."/");
-        // redirect();
+        // $this->success("注销成功！", __ROOT__."/");
+        redirect(__ROOT__."/");
     }
 
     public function edit()
     {
         if (empty($_POST)) {
-            $usrinfo = $_SESSION['user'];
-
+            $usrinfo = session("USR");
+            $uid = $usrinfo['uid'];
+            $address = M("usr")->where("uid={$uid}")->getField("addr");
+            $address = json_decode($address, true);
+            
             $this->assign('info', $usrinfo);
-            $this->display(":myedit");
+            $this->assign('addr', $address);
+            return $this->display(":myedit");
+        }
+            $usr_id = session("USR")['uid'];
+            $usr = M("usr");
+            $data = I("post");
+        if ($usr->where("uid = {$usr_id}")->save($data)) {
+            $this->success("修改成功，请重新登录", U("User/logout"));
         } else {
-            $usr_id = $_SESSION['user']['id'];
-            $usr = M("users");
-            $usr->id = $usr_id;
-            $usr->sex = I('post.sex');
-            $usr->user_nicename = I('post.nickname');
-            $usr->much = I('post.much');
-            $usr->hair = I('post.hair');
-            $usr->skin = I('post.skin');
-            $usr->age = I('post.age');
-            $usr->addr = I('post.addr');
-            $usr->tel = I('post.tel');
-            $usr->birthday = I('post.age');
-            $usr->signature = I('post.signature');
-            if ($usr->save()) {
-                $this->success("修改成功，请重新登录", U("User/logout"));
-            } else {
-                $this->error("修改失败，请重试");
-            }
+            $this->error("修改失败，请重试");
+        }
+    }
+
+    public function sub_addr()
+    {
+        $data['addr'] = json_encode(I("post"), JSON_UNESCAPED_UNICODE);
+        $uid = session("USR")['uid'];
+        $result = M("usr")->where("uid = {$uid}")->save($data);
+        if ($result !== false) {
+            $this->success("修改成功！");
+        } else {
+            $this->error("修改失败");
         }
     }
 
     public function submit()
     {
         if (empty($_POST)) {
-            $id = I("get.id");
-            $tid = M("comments")->field("id,post_id,uid")->where("id = {$id}")->select();
+            $aid = I("get.id");
+            $apply = M("apply")
+            ->join("__USR__ ON __USR__.uid=__APPLY__.uid")
+            ->join("__PRODUCT__ ON __PRODUCT__.pid=__APPLY__.pid")
+            ->where("aid = {$aid}")
+            ->find();
 
-            $this->assign("id", $id);
-            $this->assign("tid", $tid);
+            $this->assign("posts", $apply);
             $this->display(":submitReport");
         } else {
             $reportModel = M("report");
-            $reportModel->pid = I("post.pid");
-            $reportModel->content = I("post.content");
-            $reportModel->uid = session("USR.uid");
-            $reportModel->time = time();
-            $result = $reportModel->add();
-            if ($result) {
-                $this->success("提交成功", U('User/index'));
-            }
-            if (!$result) {
+            $data = I("post");
+            $data['time'] = time();
+            // dump($data);die;
+            $result = $reportModel->add($data);
+            if ($result !== false) {
+                $apply = M("apply");
+                $aid =  I("post.aid");
+                $map['id'] = $result;
+                $res = $apply->where("aid={$aid}")->save($map);
+
+                if ($res !== false) {
+                    $this->success("提交成功", U('User/index'));
+                }else{
+                    $this->error("提交失败，请稍后重试");
+                }
+            } else {
                 $this->error("提交失败，请稍后重试");
             }
         }

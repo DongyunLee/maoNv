@@ -28,7 +28,11 @@
 		<div class="row apply1">
 			<dl class="col-md-4">
 				<dt>正在申请试用的产品</dt>
-				<dd><img src="data/upload/{$apply.smeta}" width="90%" /></dd>
+				<php>
+					if(empty($apply['smeta'])){ $smeta = '__TMPL__Public/assets/imgs/t6.jpg'; }else{ $http = mb_substr($apply['smeta'],0,4); if($http!='http'){
+					$smeta = 'data/upload/'.$apply['smeta']; }else{ $smeta = $apply['smeta']; } }
+				</php>
+				<dd><img src="{$smeta}" width="90%" /></dd>
 				<dt>{$apply.name}</dt>
 			</dl>
 			<form id="form" action="#" method="get" class="col-md-8 Aaddress">
@@ -37,18 +41,18 @@
 				<input type="hidden" name="aid" value="{$id}">
 				<p>
 					<span>姓名:</span>
-					<input type="hidden" id="o_n" value="{$apply.nickname}">
-					<input name="post[usr]" id="n_n" type="text" value="{$apply.nickname}" />
+					<input type="hidden" id="o_n" value="{$addr.name}">
+					<input name="post[usr]" id="n_n" type="text" value="{$addr.usr}" />
 				</p>
 				<p>
 					<span>手机号:</span>
-					<input type="hidden" id="o_t" value="{$apply.tel}">
-					<input name="post[phone]" id="n_t" type="tel" value="{$apply.tel}" />
+					<input type="hidden" id="o_t" value="{$addr.tel}">
+					<input name="post[phone]" id="n_t" type="tel" value="{$addr.phone}" />
 				</p>
 				<p>
 					<span>详细地址：</span>
-					<input type="hidden" name="post[address]" id="o_a" value="{$apply.addr}">
-					<textarea name="post[address]" id="n_a" style="float: left;">{$apply.addr}</textarea>
+					<input type="hidden" name="post[address]" id="o_a" value="{$addr.address}">
+					<textarea name="post[address]" id="n_a" style="float: left;">{$addr.address}</textarea>
 				</p>
 				<!-- <input type="submit" value="提交申请" id="sub" /> -->
 				<!--<a class="btn btn-success" href="{:U('Try/apply2?id='.$posts['id'])}">提交申请</a>-->
@@ -106,13 +110,6 @@
 	</script>
 	<script>
 		$(function () {
-			var o_n = $("#o_n").val();
-			var n_n = $("#n_n").val();
-			var o_t = $("#o_t").val();
-			var n_t = $("#n_t").val();
-			var o_a = $("#o_a").val();
-			var n_a = $("#n_a").val();
-
 			$("#btn1").click(function () {
 				var data = $("#form input").map(function () {
 					return ($(this).attr("name") + '=' + $(this).val());
@@ -123,7 +120,12 @@
 					method: "Post",
 					data: data,
 					success: function (msg) {
-						console.log(msg);
+						if(msg.status != 0){
+							alert(msg.info);
+							window.location.href="{:U('Try/index')}";
+						}else{
+							alert(msg.info);
+						}
 					},
 					error: function (err) {
 						console.error(err);
@@ -140,7 +142,12 @@
 					method: "Post",
 					data: data,
 					success: function (msg) {
-						console.log(msg);
+						if(msg.status != undefined && msg.status != Null){
+							alert(msg.info);
+							window.location.href="{:U('Try/index')}";
+						}else{
+							alert(msg.info);
+						}
 					},
 					error: function (err) {
 						console.error(err);

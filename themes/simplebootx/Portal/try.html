@@ -44,16 +44,25 @@
             <li class="col-md-3 col-sm-6 col-xs-12">4.提交试用报告</li>
         </ul>
 
-        <!--------------------------------------左侧----------------------------------------------------->
+        <!--左侧-->
 
         <div class="col-md-9">
-            <!------------------------正在试用---------------------------->
+            <!--正在试用-->
             <div class="trying row ">
                 <ul class="Tmain row">
                     <foreach name="posts_now" item="vo">
                         <li class="col-md-12 row">
                             <php>
-                                $smeta = empty($vo['smeta'])?'__TMPL__Public/assets/imgs/t6.jpg':'data/upload/'.$vo['smeta'];
+                                if(empty($vo['smeta'])){
+                                    $smeta = '__TMPL__Public/assets/imgs/t6.jpg';
+                                }else{
+                                    $http = mb_substr($vo['smeta'],0,4);
+                                    if($http!='http'){
+                                        $smeta = 'data/upload/'.$vo['smeta'];
+                                    }else{
+                                        $smeta = $vo['smeta'];
+                                    }
+                                }
                             </php>
                             <div class="Timg col-md-4 col-sm-4">
                                 <img src="{$smeta}" width="100%" />

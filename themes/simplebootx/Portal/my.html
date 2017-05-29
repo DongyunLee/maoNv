@@ -45,8 +45,6 @@
                 编辑资料
             </a>
         </div>
-
-
         <!--main-->
 
         <!--我的申请-->
@@ -54,7 +52,8 @@
             <h3>已申请</h3>
             <foreach name="noentry" item="vo">
                 <php>
-                    $smeta = empty($vo['smeta'])?'__TMPL__Public/assets/imgs/t6.jpg':'data/upload/'.$vo['smeta'];
+                    if(empty($vo['smeta'])){ $smeta = '__TMPL__Public/assets/imgs/t6.jpg'; }else{ $http = mb_substr($vo['smeta'],0,4); if($http!='http'){
+                    $smeta = 'data/upload/'.$vo['smeta']; }else{ $smeta = $vo['smeta']; } }
                 </php>
                 <div class="myapply row" href="#">
                     <a href="{:U('Try/product?id='.$vo['pid'])}" class="col-md-2">
@@ -62,7 +61,7 @@
                     </a>
                     <div class="col-md-4 sh">
                         <span>##{$vo.name} 试用##</span>
-                        <a>{$vo.content}</a>
+                        <a>{$vo.msg}</a>
                         <span class="tj" style="background: #ACAAAB;">待审核</span>
                     </div>
                 </div>
@@ -71,18 +70,18 @@
         <div class="apply">
             <h3>待交报告</h3>
             <foreach name="product" item="vo">
-                <php>$posts = sp_sql_post($vo['post_id']);</php>
-                <php>
-                    $smeta = json_decode($posts['smeta'],true); $smeta = $smeta['photo'][0]['url'];
-                </php>
                 <div class="myapply row">
-                    <a href="chanpin.html" class="col-md-2">
+                    <php>
+                        if(empty($vo['smeta'])){ $smeta = '__TMPL__Public/assets/imgs/t6.jpg'; }else{ $http = mb_substr($vo['smeta'],0,4); if($http!='http'){
+                        $smeta = 'data/upload/'.$vo['smeta']; }else{ $smeta = $vo['smeta']; } }
+                    </php>
+                    <a href="{:U('Try/product?id='.$vo['pid'])}" class="col-md-2">
                         <img src="{$smeta}" width="90%"/>
                     </a>
                     <div class="col-md-4 sh">
-                        <span>##{$posts.post_title} 试用##</span>
-                        <a>{$vo.content}</a>
-                        <a class="tj" href="{:U('User/submit?id='.$vo['id'])}">提交报告</a>
+                        <span>##{$vo.name} 试用##</span>
+                        <!--<a>{$vo.content|htmlspecialchars_decode}</a>-->
+                        <a class="tj" href="{:U('User/submit?id='.$vo['aid'])}">提交报告</a>
                     </div>
                 </div>
             </foreach>
@@ -90,18 +89,15 @@
         <div class="apply">
             <h3>我的报告</h3>
             <foreach name="report" item="vo">
-                <php>
-                    $posts = sp_sql_post($vo['pid']); $smeta = json_decode($posts['smeta'],true); $smeta = $smeta['photo'][0]['url'];
-                </php>
                 <div class="myapply row" href="#">
                     <a href="#" class="col-md-2">
                         <img src="{$smeta}" width="90%"/>
                     </a>
                     <div href="#" class="col-md-9 sh baogao">
-                        <span>##{$posts.post_title} 试用##</span>
-                        <a href="{:U('User/pinglun?id='.$vo['id'])}">
-                            {$vo['content']|msubstr=0,120}
+                        <a href="{:U('Try/reply?id='.$vo['id'])}">
+                            <span>##{$vo.name} 试用##</span>
                         </a>
+                        <p>{$vo['content']|msubstr=0,120|htmlspecialchars_decode}</p>
                     </div>
                 </div>
             </foreach>

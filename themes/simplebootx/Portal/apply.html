@@ -48,7 +48,8 @@
 		<ul class="Tmain row">
 			<li class="col-md-12 row">
 				<php>
-					$smeta = empty($posts['smeta'])?'__TMPL__Public/assets/imgs/apply1.jpg':'data/upload/'.$posts['smeta'];
+					if(empty($posts['smeta'])){ $smeta = '__TMPL__Public/assets/imgs/t6.jpg'; }else{ $http = mb_substr($posts['smeta'],0,4); if($http!='http'){
+					$smeta = 'data/upload/'.$posts['smeta']; }else{ $smeta = $posts['smeta']; } }
 				</php>
 				<div class="Timg col-md-7 col-sm-7">
 					<img src="{$smeta}" width="100%" />

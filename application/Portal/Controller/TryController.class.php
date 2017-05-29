@@ -100,7 +100,7 @@ class TryController extends HomebaseController
         ->where("pid={$id}")
         ->select();
 
-        $this->assign("pro",$pro);
+        $this->assign("pro", $pro);
         $this->assign('ok', $ok_user);
         $this->assign('list', $apply_user);
         $this->display(":chanpin");
@@ -137,13 +137,20 @@ class TryController extends HomebaseController
     {
         $id = I("get.id");
         // dump(session());die;
-        if (session('USR') === Null) {
-            return $this->error("请先登录！",U("User/login"));
+        if (session('USR') === null) {
+            return $this->error("请先登录！", U("User/login"));
         }
         $usr = session('USR');
+
         $product = M("product")->where("pid={$id}")->getField('name,smeta', ':');
         $pro['name'] = key($product);
-        $pro['smeta'] = 'data/upload/'.$product[$pro['name']];
+        $pro['smeta'] = $product[$pro['name']];
+
+        $isset = M("apply")->where("pid={$id} AND uid={$usr['uid']} AND addr IS NOT null")->find();
+        // dump(!$isset);
+        if ($isset) {
+            return $this->error("您已经申请过了，请耐心等待审核");
+        }
 
         $this->assign('usr', $usr);
         $this->assign("id", $id);
@@ -160,37 +167,67 @@ class TryController extends HomebaseController
         ->where("aid={$id}")
         ->find();
 
+        $uid = $apply['uid'];
+        $addr = M("usr")->where("uid={$uid}")->getField("addr");
+        $address = json_decode($addr,true);
+
         $this->assign("id", $id);
-        $this->assign("apply",$apply);
+        $this->assign("apply", $apply);
+        $this->assign("addr",$address);
         $this->display(":apply2");
     }
 
     public function sub_reply()
     {
         $apply = I("post");
-        $apply['uid'] = session("user")['id'];
+        $apply['uid'] = session("USR")['uid'];
         $apply['create_time'] = time();
         $apply['modified_time'] = $apply['create_time'];
         // dump($apply);die;
-        $result = M("apply")->add($apply);
-        if ($result) {
-            $this->success("宣言发表完成，请确认您的收货地址", U("Try/apply2?id={$result}"));
+        
+        $res = M("apply")
+        ->where("pid={$apply['pid']} AND uid={$apply['uid']}")
+        ->getField("aid");
+        if (!empty($res)) {
+            $result = M("apply")->where("aid={$res}")->save($apply);
+            if ($result !== false) {
+                $aid = $res;
+            }
         } else {
+            $aid = M("apply")->add($apply);
+        }
+        
+        if ($result === false) {
             $this->error("系统故障，请将问题反馈给我们，或者稍后再试");
         }
+        redirect(U("Try/apply2?id={$aid}"));
     }
 
     public function sub_addr()
     {
         $action = I("post.action");
         $id = I("post.aid");
-        $address = json_encode(I("post"),JSON_UNESCAPED_UNICODE);
-        // dump($post);die;
+        // dump(I('post'));die;
+        $address = json_encode(I("post"), JSON_UNESCAPED_UNICODE);
+        
         $apply = M("apply");
         $apply->aid = $id;
         $apply->addr = $address;
         $result = $apply->save();
-        return $result;;
+
+        if ($action=='update') {
+            $uid = session("USR")['uid'];
+            $data['addr'] = $address;
+            $res = M("usr")->where("uid={$uid}")->save($data);
+            if ($res === false) {
+                $this->error("更新到个人中心时失败，请稍后重试");
+            }
+        }
+        if ($result !== false) {
+            $this->success("申请成功");
+        }else {
+            $this->error("申请失败");
+        }
         
     }
 }

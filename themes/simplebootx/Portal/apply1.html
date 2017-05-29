@@ -27,7 +27,13 @@
 		<div class="row apply1">
 			<dl class="col-md-4">
 				<dt>正在申请试用的产品</dt>
-				<dd><img src="{$pro.smeta}" width="90%" /></dd>
+				<php>
+					if(empty($pro['smeta'])){ $smeta = '__TMPL__Public/assets/imgs/t6.jpg'; }else{ $http = mb_substr($pro['smeta'],0,4); if($http!='http'){
+					$smeta = 'data/upload/'.$pro['smeta']; }else{ $smeta = $pro['smeta']; } }
+				</php>
+				<dd>
+					<img src="{$smeta}" width="90%" />
+				</dd>
 				<dt>{$pro.name}</dt>
 			</dl>
 			<form class="col-md-8" action="{:U('Try/sub_reply')}" method="post">
