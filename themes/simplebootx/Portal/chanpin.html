@@ -31,7 +31,8 @@
 			<li class="col-md-12 row">
 				<div class="Timg col-md-7 col-sm-7">
 					<php>
-						$smeta = empty($pro['smeta'])?'__TMPL__Public/assets/imgs/apply1.jpg':'data/upload/'.$pro['smeta'];
+						if(empty($pro['smeta'])){ $smeta = '__TMPL__Public/assets/imgs/t6.jpg'; }else{ $http = mb_substr($pro['smeta'],0,4); if($http!='http'){
+						$smeta = 'data/upload/'.$pro['smeta']; }else{ $smeta = $pro['smeta']; } }
 					</php>
 					<img src="{$smeta}" width="100%" />
 				</div>

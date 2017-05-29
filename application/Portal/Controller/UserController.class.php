@@ -69,25 +69,25 @@ class UserController extends HomebaseController
             return $this->display(":zhuce");
         }
 
-        $usrModel = M("users");
+        $usrModel = M("usr");
         $usrArray = $usrModel->select();
 
-        $data['user_login'] = I("post.usr");
-        $pwd = I("post.psw");
+        $data['usr'] = I("post.usr");
+        $data['pwd'] = I("post.psw");
         $repsw = I("post.repsw");
         $data['mail'] = I("post.mail");
         $verify = I("post.verify");
 
-        $relay = $usrModel->where("user_login='{$data['user_login']}'")->find();
+        $relay = $usrModel->where("usr=\"{$data['usr']}\"")->find();
 
         if ($relay) {
             die("<script>alert('用户名已存在');history.go(-1)</script>");
         }
 
-        if ($repsw !== $pwd) {
+        if ($repsw !== $data['pwd']) {
             die("<script>alert('两次密码输入不一致，请重新输入!');history.go(-1)</script>");
         }
-        $data['user_pass'] = sp_password($pwd);
+        $data['pwd'] = md5($data['pwd']);
         if (!sp_check_verify_code($verify)) {
             die("<script>alert('验证码错误！');history.go(-1)</script>");
         }
@@ -95,7 +95,7 @@ class UserController extends HomebaseController
         if ($usrModel->data($data)->add()) {
             echo "<script>alert('注册成功');window.location.href='".U('User/login')."'</script>";
         } else {
-            echo "<script>alert('注册失败，请过会儿重试');history.go(-1);</script>";
+            echo "<script>alert('注册失败，请重试');history.go(-1);</script>";
         }
     }
 

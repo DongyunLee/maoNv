@@ -12,4 +12,10 @@
 
 #20170503 <br/>
 除了试用中心外，都已实现(#消息/通知还没有)<hr/>
-#申请成功后数量减一
+#
+
+
+#2017-05-30 06:15
+<!--Series of TryController.class.php is complete-->
+# backend shenHe & update-pro
+# frontend collection;

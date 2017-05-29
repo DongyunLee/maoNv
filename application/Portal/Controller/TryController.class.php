@@ -37,7 +37,7 @@ class TryController extends HomebaseController
         }
         
         // 往期试用
-        $post_old = M("product")->where($data2)->order('pid desc')->select();
+        $post_old = M("product")->where($data2)->order('date desc')->select();
         $r_list = array();
         foreach ($post_old as $key => $value) {
             $post_old[$key]['r_num'] = $apply->where("pid = ".$value['pid'])->count();
@@ -90,7 +90,7 @@ class TryController extends HomebaseController
         ->where("status=1 AND pid={$id}")
         ->order("modified_time desc")
         #->fetchSql()
-        ->getField("usr", true);
+        ->getField("nickname", true);
         // echo($ok_user);die;
 
         // 已申请用户
@@ -149,7 +149,7 @@ class TryController extends HomebaseController
         $isset = M("apply")->where("pid={$id} AND uid={$usr['uid']} AND addr IS NOT null")->find();
         // dump(!$isset);
         if ($isset) {
-            return $this->error("您已经申请过了，请耐心等待审核");
+            return $this->error("您已经申请过了，请耐心等待审核",U('Try/index'));
         }
 
         $this->assign('usr', $usr);
