@@ -17,5 +17,5 @@
 
 #2017-05-30 06:15
 <!--Series of TryController.class.php is complete-->
-# backend shenHe & update-pro
-# frontend collection;
+# 后台申请审核和产品修改
+# 前台的收藏功能;
