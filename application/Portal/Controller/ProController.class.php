@@ -72,6 +72,36 @@ class ProController extends AdminbaseController
         
     }
 
+    /**
+     * 显示修改产品的页面
+     *
+     * @return void
+     */
+    public function edit()
+    {
+        $pid = I("get.pid");
+        $proModel = M("product");
+        $pro = $proModel->where("pid={$pid}")->find();
+        // dump($pro);
+
+        $this->assign("pro",$pro);
+        $this->display();
+    }
+
+    public function edit_post()
+    {
+        $pid = I("post.pid");
+        $data = I("post");
+        $data['date'] = strtotime($data['date']);
+        $pro = M("product");
+        $result = $pro->where("pid={$pid}")->save($data);
+        if ($result) {
+            $this->success("修改成功！");
+        } else {
+            $this->error("修改失败，请稍后再试");
+        }
+    }
+
     public function delete()
     {
         $id = (I('post.ids')!==Null)?implode(',',I('post.ids')):I('get.id');
@@ -89,13 +119,5 @@ class ProController extends AdminbaseController
         
     }
 
-    public function edit()
-    {
-        echo 2;
-    }
     
-    public function menu()
-    {
-        $this->display();
-    }
 }

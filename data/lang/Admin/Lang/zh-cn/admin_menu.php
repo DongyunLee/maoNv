@@ -41,7 +41,6 @@ return array (
   'ADMIN_PLUGIN_TOGGLE' => '插件启用切换',
   'ADMIN_PLUGIN_UNINSTALL' => '插件卸载',
   'ADMIN_PLUGIN_UPDATE' => '插件更新',
-  'ADMIN_PRO_INDEX' => '产品管理',
   'ADMIN_RBAC_AUTHORIZE_POST' => '提交设置',
   'ADMIN_RBAC_INDEX' => '角色管理',
   'ADMIN_RBAC_ROLEADD_POST' => '提交添加',
