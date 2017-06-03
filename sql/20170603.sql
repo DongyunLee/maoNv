@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2017-05-28 17:20:56
+-- Generation Time: 2017-06-03 22:34:59
 -- 服务器版本： 10.1.23-MariaDB-8
 -- PHP Version: 7.0.19-1
 
@@ -34,6 +34,32 @@ CREATE TABLE `cg_ad` (
   `ad_content` text COMMENT '广告内容',
   `status` int(2) NOT NULL DEFAULT '1' COMMENT '状态，1显示，0不显示'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `cg_apply`
+--
+
+CREATE TABLE `cg_apply` (
+  `aid` int(11) NOT NULL,
+  `uid` int(11) NOT NULL COMMENT '用户表主键',
+  `pid` int(11) NOT NULL COMMENT '产品表主键',
+  `addr` varchar(1000) DEFAULT NULL COMMENT '收货地址（json[usr,phone,address]）',
+  `msg` varchar(453) NOT NULL COMMENT '申请宣言',
+  `create_time` int(11) NOT NULL COMMENT '申请时间',
+  `modified_time` int(11) NOT NULL COMMENT '审核时间',
+  `status` tinyint(1) DEFAULT '0' COMMENT '审核状态（0：未审核；1：通过；2：未通过）',
+  `id` int(11) DEFAULT NULL COMMENT '报告外键'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='申请信息表';
+
+--
+-- 转存表中的数据 `cg_apply`
+--
+
+INSERT INTO `cg_apply` (`aid`, `uid`, `pid`, `addr`, `msg`, `create_time`, `modified_time`, `status`, `id`) VALUES
+(2, 3, 149, '{\"usr\":\"叶子\",\"phone\":\"15732052193\",\"address\":\"{\"}', '支持猫女～希望猫女越办越好～～', 1496084903, 1496084903, 0, NULL),
+(4, 9, 149, '{\"usr\":\"乱世1\",\"phone\":\"17600514619\",\"address\":\"中关村\"}', '喜欢猫女～喜欢欧舒丹的美好～', 1496090090, 1496090090, 1, 6);
 
 -- --------------------------------------------------------
 
@@ -92,7 +118,7 @@ INSERT INTO `cg_auth_rule` (`id`, `module`, `type`, `name`, `param`, `title`, `s
 (1, 'Admin', 'admin_url', 'admin/content/default', NULL, '内容管理', 1, ''),
 (2, 'Api', 'admin_url', 'api/guestbookadmin/index', NULL, '所有留言', 1, ''),
 (3, 'Api', 'admin_url', 'api/guestbookadmin/delete', NULL, '删除网站留言', 1, ''),
-(4, 'Comment', 'admin_url', 'comment/commentadmin/index', NULL, '试用申请', 1, ''),
+(4, 'Comment', 'admin_url', 'comment/commentadmin/index', NULL, '评论', 1, ''),
 (5, 'Comment', 'admin_url', 'comment/commentadmin/delete', NULL, '删除评论', 1, ''),
 (6, 'Comment', 'admin_url', 'comment/commentadmin/check', NULL, '评论审核', 1, ''),
 (7, 'Portal', 'admin_url', 'portal/adminpost/index', NULL, '文章管理', 1, ''),
@@ -262,7 +288,8 @@ INSERT INTO `cg_auth_rule` (`id`, `module`, `type`, `name`, `param`, `title`, `s
 (173, 'Admin', 'admin_url', 'admin/menu/getactions', NULL, '导入新菜单', 1, ''),
 (174, 'Portal', 'admin_url', 'portal/newsmanager/index', NULL, '资讯管理', 1, ''),
 (175, 'Admin', 'admin_url', 'admin/pro/menu', NULL, '产品管理', 1, ''),
-(176, 'Portal', 'admin_url', 'portal/pro/index', NULL, '产品管理', 1, '');
+(176, 'Portal', 'admin_url', 'portal/pro/index', NULL, '产品管理', 1, ''),
+(177, 'Portal', 'admin_url', 'portal/apply/index', NULL, '试用审核', 1, '');
 
 -- --------------------------------------------------------
 
@@ -391,7 +418,7 @@ INSERT INTO `cg_menu` (`id`, `parentid`, `app`, `model`, `action`, `data`, `type
 (1, 0, 'Admin', 'Content', 'default', '', 0, 1, '内容管理', 'th', '', 99),
 (2, 1, 'Api', 'Guestbookadmin', 'index', '', 1, 1, '所有留言', '', '', 0),
 (3, 2, 'Api', 'Guestbookadmin', 'delete', '', 1, 0, '删除网站留言', '', '', 0),
-(4, 188, 'Comment', 'Commentadmin', 'index', '', 1, 1, '试用申请', '', '', 10),
+(4, 1, 'Comment', 'Commentadmin', 'index', '', 1, 0, '评论', '', '', 10),
 (5, 4, 'Comment', 'Commentadmin', 'delete', '', 1, 0, '删除评论', '', '', 0),
 (6, 4, 'Comment', 'Commentadmin', 'check', '', 1, 0, '评论审核', '', '', 0),
 (7, 1, 'Portal', 'AdminPost', 'index', '', 1, 1, '文章管理', '', '', 1),
@@ -559,7 +586,8 @@ INSERT INTO `cg_menu` (`id`, `parentid`, `app`, `model`, `action`, `data`, `type
 (177, 100, 'Admin', 'Menu', 'getactions', '', 1, 0, '导入新菜单', '', '', 0),
 (187, 0, 'Portal', 'Newsmanager', 'index', '', 1, 0, '资讯管理', 'ils', '', 999),
 (188, 0, 'Admin', 'Pro', 'menu', '', 0, 1, '产品管理', 'pie-chart', '产品管理', 10),
-(189, 188, 'Portal', 'Pro', 'index', '', 1, 1, '产品管理', '', '产品列表，及对产品进行的增删改', 0);
+(189, 188, 'Portal', 'Pro', 'index', '', 1, 1, '产品管理', '', '产品列表，及对产品进行的增删改', 0),
+(190, 188, 'Portal', 'Apply', 'index', '', 1, 1, '试用审核', '', '试用申请的审核', 0);
 
 -- --------------------------------------------------------
 
@@ -852,9 +880,10 @@ CREATE TABLE `cg_product` (
 --
 
 INSERT INTO `cg_product` (`pid`, `name`, `content`, `num`, `date`, `price`, `smeta`) VALUES
-(1, '产品1', '正文', 40, 1495907589, 25, '/admin/20170528/111.jpg'),
+(1, '产品1', '&lt;p&gt;\r\n									正文								&lt;/p&gt;', 40, 1495907589, 25, 'portal/20170530/592d3a967a87f.jpg'),
 (147, '产品2', '&lt;p&gt;产品2的介绍&lt;/p&gt;', 20, 1496088540, 10, 'portal/20170528/5929dd5aab91d.jpg'),
-(148, '111', '&lt;p&gt;111&lt;/p&gt;', 111, 1495916413, 111, '');
+(148, '111', '&lt;p&gt;111&lt;/p&gt;', 0, 1497016413, 111, ''),
+(149, '欧舒丹赋颜御龄紧致眼霜 ', '&lt;p&gt;&lt;span style=&quot;font-family: 宋体;line-height: 1.42857&quot;&gt;这是一款全新密集呵护脆弱眼周肌肤的紧致眼霜。&lt;/span&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family:宋体&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-family:宋体&quot;&gt;醇厚且易推开的乳油霜质地，蕴含蜡菊焕活精华和乳木果精萃。有效平滑并减少眼部皱纹、细纹和鱼尾纹。柔化老化迹象，改善眼部倦痕，密集滋养，为眼部的娇嫩肌肤带来舒适感受，明亮双眸，尽显青春神采。&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;', 20, 1496160000, 3925, 'http://new-img1.bazaar.net.cn/bazaar/trypic/try/14951821242.jpg');
 
 -- --------------------------------------------------------
 
@@ -866,7 +895,7 @@ CREATE TABLE `cg_report` (
   `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL COMMENT '用户外键',
   `pid` int(11) NOT NULL COMMENT '产品外键',
-  `content` text NOT NULL,
+  `report` text NOT NULL,
   `time` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='报告';
 
@@ -874,10 +903,8 @@ CREATE TABLE `cg_report` (
 -- 转存表中的数据 `cg_report`
 --
 
-INSERT INTO `cg_report` (`id`, `uid`, `pid`, `content`, `time`) VALUES
-(1, 9, 1, '好啊', NULL),
-(2, 9, 147, '222', NULL),
-(3, 9, 1, 'Word妈！居然被芭姐翻了牌子！！试用报告走起来~拿到手立马就拆开看了，30ml的容量，小瓶子沉沉的好有质感从前都是用补水精华，第一次用祛斑精华，因为有辐射斑的困扰，面对电脑时间越长辐射斑越严重，精华露拿到手后每天早晚洗完脸都用，精华露是白色...', NULL);
+INSERT INTO `cg_report` (`id`, `uid`, `pid`, `report`, `time`) VALUES
+(6, 9, 149, '自从看了《太阳的后裔》之后，就对女主在剧里用的香氛蜡烛很感兴趣，没想到这次芭莎刚好有试用机会，还幸运地被抽中了，感谢芭姐给我拔了草~\r\n\r\nNeom是个英国本土品牌，据说凯特王妃最喜欢的香氛蜡烛就是他们家的！拿到手后，首先包装就让我很心水，简约的风格配上水彩画的图案，看上去既高大上又小清新。\r\n\r\n盒子一打开就能闻到淡淡的香味，所以即使不点燃的时候也可以放在书桌边，能起到提神舒缓的作用。蜡烛杯是白色的磨砂质地，看上去特别精致，摸着也很舒服~\r\n\r\n得知被抽中试用，做了些功课后才知道，这个牌子的香氛蜡烛所用的蜡都是纯天然的植物蜡而非石蜡，里面所含的精油也是100%的天然植物精油。这款香氛蜡烛的成分是西西里柠檬和鲜罗勒，味道比较清新，不像人工香精那样浓郁刺鼻，淡淡的柠檬香太适合工作或者看书的时候闻了。除此之外，很多品牌的香氛蜡烛芯熄灭的时候都会有黑烟，但是这款完全没有！而且里面的蜡烛使用一段时间后也不会挂壁，不会影响美观。\r\n\r\n晚上点上香氛蜡烛更是给房间添了许多情调，温暖的烛光伴随着空气中弥漫的香气，感觉整个身心都被治愈了。感谢芭姐给了我这次试用机会，让我提升了自己的生活品质！', '1496091921');
 
 -- --------------------------------------------------------
 
@@ -1179,9 +1206,10 @@ CREATE TABLE `cg_users` (
 --
 
 INSERT INTO `cg_users` (`id`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `avatar`, `sex`, `birthday`, `signature`, `last_login_ip`, `last_login_time`, `create_time`, `user_activation_key`, `user_status`, `score`, `user_type`, `coin`, `tel`, `much`, `hair`, `skin`, `addr`) VALUES
-(1, 'admin', '###14f9952da28b2c38a57588a7e5a78145', 'admin', '1811128205@qq.com', '', NULL, 1, '23', '', '0.0.0.0', '2017-05-28 15:27:08', '2017-04-23 03:16:22', '', 1, 0, 1, 0, '', 8000, 2, 1, ''),
-(3, 'root', '###e7f4c98625923b4a2fa894500419b462', 'leaves', '', '', NULL, 1, '23', 'love is loved', '0.0.0.0', '2017-05-28 16:29:00', '2000-01-01 00:00:00', '', 1, 0, 1, 0, '', 6000, 1, 2, ''),
-(4, 'dongyunli619@gmail.com', '###2275cf9ced8909549bdf7c5bd60a3434', NULL, '', '', NULL, 0, NULL, NULL, '0.0.0.0', '2017-05-14 17:21:22', '2000-01-01 00:00:00', '', 1, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'admin', '###14f9952da28b2c38a57588a7e5a78145', 'admin', '1811128205@qq.com', '', NULL, 1, '23', '', '0.0.0.0', '2017-05-30 16:54:31', '2017-04-23 03:16:22', '', 1, 0, 1, 0, '', 8000, 2, 1, ''),
+(3, 'root', '###e7f4c98625923b4a2fa894500419b462', 'leaves', '', '', NULL, 1, '23', 'love is loved', '0.0.0.0', '2017-05-29 01:39:51', '2000-01-01 00:00:00', '', 1, 0, 1, 0, '', 6000, 0, 1, ''),
+(4, 'dongyunli619@gmail.com', '###2275cf9ced8909549bdf7c5bd60a3434', NULL, '', '', NULL, 0, NULL, NULL, '0.0.0.0', '2017-05-14 17:21:22', '2000-01-01 00:00:00', '', 1, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 'doylee', '###2275cf9ced8909549bdf7c5bd60a3434', NULL, '', '', NULL, 0, NULL, NULL, NULL, '2000-01-01 00:00:00', '2000-01-01 00:00:00', '', 1, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1224,11 +1252,11 @@ CREATE TABLE `cg_usr` (
   `sex` int(11) DEFAULT NULL COMMENT '性别',
   `nickname` varchar(100) DEFAULT NULL COMMENT '昵称',
   `much` int(11) DEFAULT NULL COMMENT '月薪',
-  `hair` int(11) DEFAULT NULL COMMENT '发质',
-  `skin` int(11) DEFAULT NULL COMMENT '肤质',
+  `hair` int(11) DEFAULT NULL COMMENT '发质（0：干；1：油，2：中）',
+  `skin` int(11) DEFAULT NULL COMMENT '肤质（0：干；1：油，2：中）',
   `age` int(11) DEFAULT NULL,
   `signature` text COMMENT '个性签名',
-  `addr` varchar(300) DEFAULT NULL,
+  `addr` varchar(300) DEFAULT NULL COMMENT '收货地址（json）',
   `tel` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='前台用户信息表';
 
@@ -1238,8 +1266,9 @@ CREATE TABLE `cg_usr` (
 
 INSERT INTO `cg_usr` (`uid`, `usr`, `pwd`, `mail`, `sex`, `nickname`, `much`, `hair`, `skin`, `age`, `signature`, `addr`, `tel`) VALUES
 (7, '1150477170@qq.com', '7272087e94cd821f18f7658b1e1aca50', 'dongyunli619@gmail.com', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 'root', '7b24afc8bc80e548d66c4e7ff72171c5', 'dongyunli619@gmail.com', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'dongyunli619@gmail.com', 1, 'doylee', 4000, 1, 2, 22, '会为过去后悔，也有诗和远方', '北京通州', 17600514619);
+(9, 'root', '7b24afc8bc80e548d66c4e7ff72171c5', 'dongyunli619@gmail.com', 1, '李东云', 5000, 1, 1, 22, '会为过去后悔，也有诗和远方', '{\"usr\":\"乱世1\",\"phone\":\"17600514619\",\"address\":\"中关村\"}', 17600514619),
+(3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'dongyunli619@gmail.com', 1, '叶子', 7000, 2, 0, 23, '有你的地方，你走过的每一步，就是天涯', '{\"usr\":\"叶子\",\"phone\":\"15732052193\",\"address\":\"{\"}', 15732052193),
+(11, 'doylee', '7272087e94cd821f18f7658b1e1aca50', 'dongyunli619@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1277,6 +1306,12 @@ INSERT INTO `cg_usr_collection` (`ucid`, `uid`, `object_id`, `time`) VALUES
 ALTER TABLE `cg_ad`
   ADD PRIMARY KEY (`ad_id`),
   ADD KEY `ad_name` (`ad_name`);
+
+--
+-- Indexes for table `cg_apply`
+--
+ALTER TABLE `cg_apply`
+  ADD PRIMARY KEY (`aid`);
 
 --
 -- Indexes for table `cg_asset`
@@ -1477,6 +1512,11 @@ ALTER TABLE `cg_usr_collection`
 ALTER TABLE `cg_ad`
   MODIFY `ad_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '广告id';
 --
+-- 使用表AUTO_INCREMENT `cg_apply`
+--
+ALTER TABLE `cg_apply`
+  MODIFY `aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- 使用表AUTO_INCREMENT `cg_asset`
 --
 ALTER TABLE `cg_asset`
@@ -1485,7 +1525,7 @@ ALTER TABLE `cg_asset`
 -- 使用表AUTO_INCREMENT `cg_auth_rule`
 --
 ALTER TABLE `cg_auth_rule`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '规则id,自增主键', AUTO_INCREMENT=177;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '规则id,自增主键', AUTO_INCREMENT=178;
 --
 -- 使用表AUTO_INCREMENT `cg_comments`
 --
@@ -1510,7 +1550,7 @@ ALTER TABLE `cg_links`
 -- 使用表AUTO_INCREMENT `cg_menu`
 --
 ALTER TABLE `cg_menu`
-  MODIFY `id` smallint(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
+  MODIFY `id` smallint(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
 --
 -- 使用表AUTO_INCREMENT `cg_nav`
 --
@@ -1545,12 +1585,12 @@ ALTER TABLE `cg_posts`
 -- 使用表AUTO_INCREMENT `cg_product`
 --
 ALTER TABLE `cg_product`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
 --
 -- 使用表AUTO_INCREMENT `cg_report`
 --
 ALTER TABLE `cg_report`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- 使用表AUTO_INCREMENT `cg_role`
 --
@@ -1585,7 +1625,7 @@ ALTER TABLE `cg_term_relationships`
 -- 使用表AUTO_INCREMENT `cg_users`
 --
 ALTER TABLE `cg_users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- 使用表AUTO_INCREMENT `cg_user_favorites`
 --
@@ -1595,7 +1635,7 @@ ALTER TABLE `cg_user_favorites`
 -- 使用表AUTO_INCREMENT `cg_usr`
 --
 ALTER TABLE `cg_usr`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- 使用表AUTO_INCREMENT `cg_usr_collection`
 --
