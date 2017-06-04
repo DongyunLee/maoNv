@@ -207,8 +207,8 @@ class TryController extends HomebaseController
     {
         $action = I("post.action");
         $id = I("post.aid");
-        // dump(I('post'));die;
-        $address = json_encode(I("post"), JSON_UNESCAPED_UNICODE);
+        $address = I("post");
+        $address = json_encode($address, JSON_UNESCAPED_UNICODE);
         
         $apply = M("apply");
         $apply->aid = $id;

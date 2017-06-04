@@ -13,9 +13,7 @@
     <!--main-->
     <div class="my container">
 
-
         <!--top-->
-
         <div class="myTop row">
             <h4 class="col-md-3">
                 <img src="__TMPL__Public/assets/imgs/DP9.jpg" />
@@ -52,7 +50,7 @@
             <h3>已申请</h3>
             <foreach name="noentry" item="vo">
                 <php>
-                    if(empty($vo['smeta'])){ $smeta = '__TMPL__Public/assets/imgs/t6.jpg'; }else{ $http = mb_substr($vo['smeta'],0,4); if($http!='http'){
+                    if(empty($vo['smeta'])){ $smeta = '__TMPL__Public/assets/imgs/t7.jpg'; }else{ $http = mb_substr($vo['smeta'],0,4); if($http!='http'){
                     $smeta = 'data/upload/'.$vo['smeta']; }else{ $smeta = $vo['smeta']; } }
                 </php>
                 <div class="myapply row" href="#">
@@ -90,8 +88,12 @@
             <h3>我的报告</h3>
             <foreach name="report" item="vo">
                 <div class="myapply row" href="#">
-                    <a href="#" class="col-md-2">
-                        <img src="{$smeta}" width="90%"/>
+                    <a href="{:U('Try/reply?id='.$vo['id'])}" class="col-md-2">
+                        <php>
+                            if(empty($vo['smeta'])){ $smeta = '__TMPL__Public/assets/imgs/t6.jpg'; }else{ $http = mb_substr($vo['smeta'],0,4); if($http!='http'){
+                            $smeta = 'data/upload/'.$vo['smeta']; }else{ $smeta = $vo['smeta']; } }
+                        </php>
+                        <img src="{$smeta}" width="90%" />
                     </a>
                     <div href="#" class="col-md-9 sh baogao">
                         <a href="{:U('Try/reply?id='.$vo['id'])}">
@@ -109,14 +111,14 @@
             <div class="row">
                 <!-- <foreach name="ids" item="vo"> -->
                 <php>
-                    $posts = sp_sql_post($vo['object_id']); $time = strtotime($posts['post_date']);
+                    $time = strtotime($vo['post_date']);
                 </php>
                 <a href="{:U('News/detail?id=').$vo['object_id']}" class="news-top clearfix col-md-5">
                     <p class="fl">
                         <span style="font-size: 32px; display: block; height: 32px;">{$time|date="d",###}</span>
                         <span style="display: block;">{$time|date="m",###}</span>
                     </p>
-                    <h4 class="fl">{$posts.post_title|msubstr=0,25}</h4>
+                    <h4 class="fl">{$vo.post_title|msubstr=0,25}</h4>
                 </a>
                 <!-- </foreach> -->
             </div>

@@ -56,4 +56,28 @@ class ApplyController extends AdminbaseController
             return $this->error("删除失败");
         }
     }
+
+    public function examine()
+    {
+        $aid = I("get.aid");
+        $condition['status'] = 1;
+        $result = M("apply")->where("aid={$aid}")->save($condition);
+        if ($result) {
+            return $this->success("审核成功！");
+        } else {
+            return $this->error("审核失败");
+        }
+    }
+
+    public function notry()
+    {
+        $aid = I("get.aid");
+        $condition['status'] = 2;
+        $result = M("apply")->where("aid={$aid}")->save($condition);
+        if ($result) {
+            return $this->success("驳回成功！");
+        } else {
+            return $this->error("驳回失败");
+        }
+    }
 }

@@ -29,7 +29,7 @@ class UserController extends HomebaseController
         // 获取试用申请
         $notry = M("apply")
         ->join("__PRODUCT__ ON __PRODUCT__.pid=__APPLY__.pid")
-        ->where("uid={$usr_id}")
+        ->where("uid={$usr_id} AND status=0")
         ->select();
         
         // 获取未提交报告
@@ -44,12 +44,20 @@ class UserController extends HomebaseController
         ->where('uid='.$usr_id)
         ->order("id desc")
         ->select();
+
+        // 获取收藏
+        $posts = M("usr_collection")
+        ->join("__USR__ ON __USR__.uid = __USR_COLLECTION__.uid")
+        ->join("__POSTS__ ON __POSTS__.id=__USR_COLLECTION__.object_id")
+        ->where("cg_usr_collection.uid={$usr_id}")
+        ->order("ucid desc")
+        ->select();
         
         $this->assign('noentry', $notry);
         $this->assign('report', $report);
         $this->assign('product', $try);
         $this->assign('info', $usrinfo);
-        $this->assign("ids", $collects);
+        $this->assign("ids", $posts);
 
         if (empty($user)) {
             $this->error("查无此人！");

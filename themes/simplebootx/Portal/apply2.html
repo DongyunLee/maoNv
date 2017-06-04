@@ -29,8 +29,8 @@
 			<dl class="col-md-4">
 				<dt>正在申请试用的产品</dt>
 				<php>
-					if(empty($apply['smeta'])){ $smeta = '__TMPL__Public/assets/imgs/t6.jpg'; }else{ $http = mb_substr($apply['smeta'],0,4); if($http!='http'){
-					$smeta = 'data/upload/'.$apply['smeta']; }else{ $smeta = $apply['smeta']; } }
+					if(empty($apply['smeta'])){ $smeta = '__TMPL__Public/assets/imgs/t6.jpg'; }else{ $http = mb_substr($apply['smeta'],0,4);
+					if($http!='http'){ $smeta = 'data/upload/'.$apply['smeta']; }else{ $smeta = $apply['smeta']; } }
 				</php>
 				<dd><img src="{$smeta}" width="90%" /></dd>
 				<dt>{$apply.name}</dt>
@@ -41,17 +41,14 @@
 				<input type="hidden" name="aid" value="{$id}">
 				<p>
 					<span>姓名:</span>
-					<input type="hidden" id="o_n" value="{$addr.name}">
 					<input name="post[usr]" id="n_n" type="text" value="{$addr.usr}" />
 				</p>
 				<p>
 					<span>手机号:</span>
-					<input type="hidden" id="o_t" value="{$addr.tel}">
 					<input name="post[phone]" id="n_t" type="tel" value="{$addr.phone}" />
 				</p>
 				<p>
 					<span>详细地址：</span>
-					<input type="hidden" name="post[address]" id="o_a" value="{$addr.address}">
 					<textarea name="post[address]" id="n_a" style="float: left;">{$addr.address}</textarea>
 				</p>
 				<!-- <input type="submit" value="提交申请" id="sub" /> -->
@@ -74,7 +71,7 @@
 								<button type="button" id="btn1" class="btn btn-success" data-dismiss="modal">
 									是
 								</button>
-								<button type="button" id="btn2" onclick="sub_form()" class="btn btn-default" data-dismiss="modal">
+								<button type="button" id="btn2" class="btn btn-default" data-dismiss="modal">
 									否，直接提交申请
 								</button>
 								<!--<a class="btn btn-default" href="{:U('Try/apply2?id='.$posts['id'])}">否，直接提交申请</a>-->
@@ -111,19 +108,22 @@
 	<script>
 		$(function () {
 			$("#btn1").click(function () {
+				var addr = $("#n_a").val();
 				var data = $("#form input").map(function () {
 					return ($(this).attr("name") + '=' + $(this).val());
 				}).get().join("&");
+				data = data + "&post[address]=" + addr;
 				data = data + "&action=update";
+				// console.log(data); return;
 				$.ajax({
 					url: "{:U('Try/sub_addr')}",
 					method: "Post",
 					data: data,
 					success: function (msg) {
-						if(msg.status != 0){
+						if (msg.status != 0) {
 							alert(msg.info);
-							window.location.href="{:U('Try/index')}";
-						}else{
+							window.location.href = "{:U('Try/index')}";
+						} else {
 							alert(msg.info);
 						}
 					},
@@ -133,19 +133,22 @@
 				});
 			});
 			$("#btn2").click(function () {
+				var addr = $("#n_a").val();
 				var data = $("#form input").map(function () {
 					return ($(this).attr("name") + '=' + $(this).val());
 				}).get().join("&");
+				data = data + "&post[address]=" + addr;
 				data = data + "&action=submit";
+				// console.log(data);return;
 				$.ajax({
 					url: "{:U('Try/sub_addr')}",
 					method: "Post",
 					data: data,
 					success: function (msg) {
-						if(msg.status != undefined && msg.status != Null){
+						if (msg.status != undefined && msg.status != null) {
 							alert(msg.info);
-							window.location.href="{:U('Try/index')}";
-						}else{
+							window.location.href = "{:U('Try/index')}";
+						} else {
 							alert(msg.info);
 						}
 					},

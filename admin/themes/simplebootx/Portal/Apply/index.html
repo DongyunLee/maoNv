@@ -67,15 +67,15 @@
                             </notempty>
                         </td>
                         <td>
-                            <!--<php>
-                                if($vo.status == 1){
+                            <php>
+                                if($vo['status'] == 1){
                                     $status = '已通过';
-                                }elseif($vo.status == 2){
+                                }elseif($vo['status'] == 2){
                                     $status = '已驳回';
                                 }else{
                                     $status = '待审核';
                                 }
-                            </php>-->
+                            </php>
                             {$status}
                         </td>
                         <td>

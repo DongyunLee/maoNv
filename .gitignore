@@ -2,8 +2,8 @@
 .DS_Store
 .project
 .settings
-/data/runtime/
+/data/*
+/data/conf/db.php
 .idea
 /nbproject
-/data/conf/db.php
 .vscode
