@@ -122,4 +122,5 @@ return array (
   'ADMIN_MENU_RESTORE_MENU' => '还原菜单',
   'ADMIN_SETTING_UPLOAD' => '上传设置',
   'ADMIN_SETTING_UPLOAD_POST' => '上传设置提交',
+  'ADMIN_PRO_MENU' => '产品管理',
 );

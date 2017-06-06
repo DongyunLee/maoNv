@@ -32,4 +32,6 @@ return array (
   'PORTAL_ADMINTERM_DELETE' => '删除分类',
   'PORTAL_ADMINTERM_EDIT' => '编辑分类',
   'PORTAL_ADMINPOST_COPY' => '文章批量复制',
+  'PORTAL_PRO_INDEX' => '产品管理',
+  'PORTAL_NEWSMANAGER_INDEX' => '资讯管理',
 );

@@ -1,0 +1,184 @@
+<admintpl file="header" />
+</head>
+
+<body>
+    <div class="wrap js-check-wrap">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="javascript:;">申请列表</a></li>
+        </ul>
+        <form class="js-ajax-form" action="" method="post">
+            <div class="table-actions">
+                <button class="btn btn-success btn-small js-ajax-submit" type="submit" data-action="{:U('Apply/examine')}" data-subcheck="true">批量审核</button>
+                <button class="btn btn-danger btn-small js-ajax-submit" type="submit" data-action="{:U('Apply/notry')}" data-subcheck="true">批量驳回</button>
+            </div>
+            <table class="table table-hover table-bordered table-list">
+                <thead>
+                    <tr>
+                        <th width="15">
+                            <label>
+                                <input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x" />
+                            </label>
+                        </th>
+                        <th width="50">ID</th>
+                        <th>用户名</th>
+                        <th>申请产品</th>
+                        <th width="60">产品余量</th>
+                        <th>剩余时间</th>
+                        <th>申请时间</th>
+                        <th>缩略图</th>
+                        <th>审核状态</th>
+                        <th>{:L('ACTIONS')}</th>
+                    </tr>
+                </thead>
+                <foreach name="list" item="vo">
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]" value="{$vo.pid}" title="ID:{$vo.pid}">
+                        </td>
+                        <td><b>{$vo.aid}</b></td>
+                        <!--<empty name="vo.nickname">-->
+                        <td>
+                            <b>{$vo.usr}</b>
+                        </td>
+                        <!--<else />-->
+                        <td>
+                            <b>{$vo.nickname}</b>
+                        </td>
+                        <!--</empty>-->
+                        <td>
+                            <b>{$vo.name}</b>
+                        </td>
+                        <td>{$vo.r_num}</td>
+                        <td>
+                            <!--<php>
+                                $time = round(($vo['date'] - time())/3600);
+                            </php>-->
+                            {$time}小时
+                        </td>
+                        <td>
+                            {$vo.create_time|date="Y年m月d日 H:i",###}
+                        </td>
+                        <td>
+                            <php>$smeta=$vo[smeta];</php>
+                            <notempty name="smeta">
+                                <a href="javascript:parent.image_preview_dialog('{:sp_get_image_preview_url($smeta)}');">
+                                    <i class="fa fa-photo fa-fw"></i>
+                                </a>
+                            </notempty>
+                        </td>
+                        <td>
+                            <php>
+                                if($vo['status'] == 1){
+                                    $status = '已通过';
+                                }elseif($vo['status'] == 2){
+                                    $status = '已驳回';
+                                }else{
+                                    $status = '待审核';
+                                }
+                            </php>
+                            {$status}
+                        </td>
+                        <td>
+                            <a href="{:U('Apply/examine',array('aid'=>$vo['aid']))}">审核通过</a> |
+                            <a href="{:U('Apply/notry',array('aid'=>$vo['aid']))}">审核驳回</a>
+                        </td>
+                    </tr>
+                </foreach>
+                <tfoot>
+                    <tr>
+                        <th width="15">
+                            <label>
+                                <input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x" />
+                            </label>
+                        </th>
+                        <th width="50">ID</th>
+                        <th>用户名</th>
+                        <th>申请产品</th>
+                        <th width="60">产品余量</th>
+                        <th>剩余时间</th>
+                        <th>申请时间</th>
+                        <th>缩略图</th>
+                        <th>审核状态</th>
+                        <th>{:L('ACTIONS')}</th>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="table-actions">
+                <button class="btn btn-success btn-small js-ajax-submit" type="submit" data-action="{:U('Apply/examine')}" data-subcheck="true">批量审核</button>
+                <button class="btn btn-danger btn-small js-ajax-submit" type="submit" data-action="{:U('Apply/notry')}" data-subcheck="true">批量驳回</button>
+            </div>
+            <div class="pagination">{$page}</div>
+        </form>
+    </div>
+    <script src="__PUBLIC__/js/common.js"></script>
+    <script>
+        function refersh_window() {
+            var refersh_time = getCookie('refersh_time');
+            if (refersh_time == 1) {
+                window.location = "{:U('Pro/index',$formget)}";
+            }
+        }
+        setInterval(function () {
+            refersh_window();
+        }, 2000);
+        $(function () {
+            setCookie("refersh_time", 0);
+            Wind.use('ajaxForm', 'artDialog', 'iframeTools', function () {
+                //批量复制
+                $('.js-articles-copy').click(function (e) {
+                    var ids = [];
+                    $("input[name='ids[]']").each(function () {
+                        if ($(this).is(':checked')) {
+                            ids.push($(this).val());
+                        }
+                    });
+
+                    if (ids.length == 0) {
+                        art.dialog.through({
+                            id: 'error',
+                            icon: 'error',
+                            content: '您没有勾选信息，无法进行操作！',
+                            cancelVal: '关闭',
+                            cancel: true
+                        });
+                        return false;
+                    }
+
+                    ids = ids.join(',');
+                    art.dialog.open("__ROOT__/index.php?g=portal&m=Pro&a=copy&ids=" + ids, {
+                        title: "批量复制",
+                        width: "300px"
+                    });
+                });
+                //批量移动
+                $('.js-articles-move').click(function (e) {
+                    var ids = [];
+                    $("input[name='ids[]']").each(function () {
+                        if ($(this).is(':checked')) {
+                            ids.push($(this).val());
+                        }
+                    });
+
+                    if (ids.length == 0) {
+                        art.dialog.through({
+                            id: 'error',
+                            icon: 'error',
+                            content: '您没有勾选信息，无法进行操作！',
+                            cancelVal: '关闭',
+                            cancel: true
+                        });
+                        return false;
+                    }
+
+                    ids = ids.join(',');
+                    art.dialog.open("__ROOT__/index.php?g=portal&m=Pro&a=move&old_term_id={$term.term_id|default=0}&ids=" + ids, {
+                        title: "批量移动",
+                        width: "300px"
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

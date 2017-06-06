@@ -1,86 +1,89 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-  <head>
-    <title>用户评价</title>
-    <tc_include file="Public:head"/>
-    <link rel="stylesheet" href="__TMPL__Public/assets/css/try.css" />
-    <link rel="stylesheet" href="__TMPL__Public/assets/css/pinglun.css" />
-  </head>
-  <body>
-    <!--nav-->
-    <tc_include file="Public:nav"/>
-	<ul class="Tmain row ">
-				<li class="row pinglun col-md-6 col-sm-10 col-xs-11">
-				<h3>当前点评产品：</h3>
-                <php>$posts = sp_sql_post($report['pid']);</php>
-                <php>
-                    $smeta = json_decode($posts['smeta'],true);
-                    $smeta = $smeta['photo'][0]['url'];
-                </php>
-					<div class="row">
-						<div class="Timg col-md-4 col-sm-4" >
-                            <a href="chanpin.html">
-                                <img src="{$smeta}" width="100%"/>
-                            </a>
-                        </div>
-						<div class="col-md-8 col-sm-4">
-							<h3>{$posts.post_title}</h3>
-							<p>离试用截止时间：
-                                <php>
-                                    $gotime = strtotime($posts['post_date']);
-                                    $thesetime = $gotime-time();
-                                    echo round($thesetime/3600);
-                                </php>
-                                小时</p>
-							<div class="Tnum row">
-								<p class="col-md-4 col-xs-4">试用数：
-									<span>{$posts.post_excerpt}</span></p>
-								<p class="col-md-4 col-xs-4">申请数：<span>{$posts.post_hits}</span></p>
-								<p class="col-md-4 col-xs-4">规格：<span>{$posts.post_source}</span></p>
-							</div>
+<html lang="zh-CN">
 
-						</div>
+<head>
+	<title>用户评价</title>
+	<tc_include file="Public:head" />
+	<link rel="stylesheet" href="__TMPL__Public/assets/css/try.css" />
+	<link rel="stylesheet" href="__TMPL__Public/assets/css/pinglun.css" />
+</head>
+
+<body>
+	<!--nav-->
+	<tc_include file="Public:nav" />
+	<php>
+		if(empty($report['smeta'])){ $smeta = '__TMPL__Public/assets/imgs/t6.jpg'; }else{ $http = mb_substr($report['smeta'],0,4);
+		if($http!='http'){ $smeta = 'data/upload/'.$report['smeta']; }else{ $smeta = $report['smeta']; } }
+	</php>
+	<ul class="Tmain row ">
+		<li class="row pinglun col-md-6 col-sm-10 col-xs-11">
+			<h3>当前点评产品：</h3>
+			<div class="row">
+				<div class="Timg col-md-4 col-sm-4">
+					<a href="chanpin.html">
+						<img src="{$smeta}" width="100%"/>
+					</a>
+				</div>
+				<div class="col-md-8 col-sm-4">
+					<h3>{$report.name}</h3>
+					<p>截止时间：
+						<php>
+							echo date("Y-m-d H:i",$report['date']);
+						</php>
+					</p>
+					<div class="Tnum row">
+						<p class="col-md-4 col-xs-4">试用数：<span>{$report.num}</span></p>
+						<p class="col-md-4 col-xs-4">申请数：<span>{$report.r_num}</span></p>
+						<p class="col-md-4 col-xs-4">规格：<span>{$report.price}元</span></p>
 					</div>
 
-				<!-----评论1------>
-					<div class="recom row">
-						<h3 class="RTitle" >＃{$posts.post_title} 试用＃</h3>
-                        <php>
-                            $usr = session('USR');
-                            dump($usr);
-                        </php>
-						<div class="row">
-							<div class="col-md-7 col-sm-7 col-xs-12 row">
-								<div class="col-md-3 col-sm-4 col-xs-4 Rimg">
-                                    <img src="__TMPL__Public/assets/imgs/n10.jpg" />
-                                </div>
-								<div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
-									<p>{$usr.nickname}</p>
-									<p>肤质：<span>干性</span>年龄：<span>{$usr.age}</span></p>
-								</div>
-							</div>
-                            <notempty name="report['time']">
-                                <time class="col-md-3 col-sm-3 col-xs-8">{$report.time|date="Y-m-d H：s",###}</time>
-                            </notempty>
-						</div>
-						<div class="pinglun1">
-							{$report.content}
-						</div>
+				</div>
+			</div>
 
-	                </div>
-				</li>
+			<!-----评论1------>
+			<div class="recom row">
+				<h3 class="RTitle">＃{$report.name} 试用＃</h3>
+				<div class="row">
+					<div class="col-md-7 col-sm-7 col-xs-12 row">
+						<div class="col-md-3 col-sm-4 col-xs-4 Rimg">
+							<img src="__TMPL__Public/assets/imgs/n10.jpg" />
+						</div>
+						<div class="col-md-8 col-sm-8 col-xs-8 huiyuan">
+							<p>{$report.usr}</p>
+							<p>
+								<php>
+									$skin = $report['skin'] == 0?'干性':($report['skin'] == 1?'油性':'中性');
+								</php>
+								肤质：<span>{$skin}</span> 年龄：
+								<span>{$report.age}</span>
+							</p>
+						</div>
+					</div>
+					<notempty name="report['time']">
+						<time class="col-md-3 col-sm-3 col-xs-8">
+							{$report.time|date="Y-m-d H：i",###}
+						</time>
+					</notempty>
+				</div>
+				<div class="pinglun1">
+					{$report.report}
+				</div>
+
+			</div>
+		</li>
 
 		<!-- <div class="go-back col-md-2 col-sm-6 col-xs-6">
 			<a href="#">上一篇</a>
 			|
 			<a href="#">下一篇</a>
 		</div> -->
-			</ul>
+	</ul>
 
 
 	<!--footer-->
-	<tc_include file="Public:footer"/>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <tc_include file="Public:scripts"/>
-  </body>
+	<tc_include file="Public:footer" />
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<tc_include file="Public:scripts" />
+</body>
+
 </html>

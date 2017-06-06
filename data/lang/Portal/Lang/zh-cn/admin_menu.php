@@ -13,6 +13,7 @@ return array (
   'PORTAL_ADMINTERM_ADD_POST' => '提交添加',
   'PORTAL_ADMINTERM_EDIT_POST' => '提交编辑',
   'PORTAL_ADMINTERM_LISTORDERS' => '文章分类排序',
+  'PORTAL_APPLY_INDEX' => '试用审核',
   'PORTAL_PRO_INDEX' => '产品管理',
   'PORTAL_ADMINPAGE_RECYCLEBIN' => '页面回收',
   'PORTAL_ADMINPOST_INDEX' => '文章管理',

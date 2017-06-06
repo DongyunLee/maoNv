@@ -12,7 +12,7 @@
 
     <!--nav-->
     <tc_include file='Public:nav' />
-    <!-- ----------------------main----------------- -->
+    <!--main-->
     <php>
         $time = strtotime($post['post_date']);
     </php>
@@ -25,12 +25,13 @@
                         <time>{$time|date="Y-m-d H：i",###}</time>
                     </p>
                     <p class="col-md-4">来源:<br/><span>{$post.post_source}</span></p>
-                    <form action="{:U('user/favorite/do_favorite',array('id'=>$post['id']))}" method="post">
-                        <input type="hidden" name="title" value="{$post.post_title}">
-                        <input type="hidden" name="url" value="{:U('News/detail',array('id'=>$post['id']))}">
-                        <input type="hidden" name="key" value="{:sp_get_favorite_key('posts',$post['id'])}">
-                        <input type="submit" value="收藏文章" class="js-favorite-btn col-md-3 collect">
-                    </form>
+                    <if condition="$cstatus eq 0">
+                        <form action="{:U('News/collect',array('id'=>$post['id']))}" method="post">
+                            <input type="submit" class=" col-md-3 collect" value="收藏文章">
+                        </form>
+                        <else />
+                        <span class="col-md-3 collect">已收藏</span>
+                    </if>
                 </div>
                 <div class="Dtop row">{$post.post_content}</div>
                 <div class="Dpage row">
