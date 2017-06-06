@@ -80,4 +80,16 @@ class ApplyController extends AdminbaseController
             return $this->error("驳回失败");
         }
     }
+
+    public function user()
+    {
+        $id = I("get.id");
+        $aid = I("get.aid");
+        $user = M("usr")->where("uid = {$id}")->find();
+        $msg = M("apply")->where("aid = {$aid}")->find();
+
+        $this->assign("msg",$msg['msg']);
+        $this->assign("user",$user);
+        $this->display();
+    }
 }
