@@ -25,12 +25,12 @@
                         <time>{$time|date="Y-m-d H：i",###}</time>
                     </p>
                     <p class="col-md-4">来源:<br/><span>{$post.post_source}</span></p>
-                    <if condition="$cstatus eq 0">
+                    <if condition="$cstatus neq 0">
+                        <span class="col-md-3 collect">已收藏</span>
+                        <else />
                         <form action="{:U('News/collect',array('id'=>$post['id']))}" method="post">
                             <input type="submit" class=" col-md-3 collect" value="收藏文章">
                         </form>
-                        <else />
-                        <span class="col-md-3 collect">已收藏</span>
                     </if>
                 </div>
                 <div class="Dtop row">{$post.post_content}</div>

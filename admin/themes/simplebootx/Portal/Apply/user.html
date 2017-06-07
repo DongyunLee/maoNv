@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        h1{
+            margin: 20px auto;
+            text-align: center;
+            background-color: lightslategray;
+            color:aliceblue;
+            width: 50%;
+        }
+        .box {
+            margin: 20px auto;
+        }
+
+        .box1 {
+            margin: 0px auto;
+            width: 80%;
+            /*background-color: lightgray;*/
+            text-align: center;
+            line-height: 30px;
+        }
+        .box2{
+            margin: 0 auto;
+            width:50%;
+            background-color: lightgrey
+        }
+
+        span {
+            padding-right: 20px;
+            width: 65px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        input,textarea {
+            text-align: center;
+            border: none;
+            background: none;
+        }
+        textarea{
+            resize: none
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="history.go(-1)" type="button" class="btn btn-success">后退</button>
+    <div class="box">
+        <h1>用户信息</h1>
+        <div class="box1">
+            <span>用户名</span>
+            <input type="text" value="{$user.usr}" readonly/>
+        </div>
+        <div class="box1">
+            <span>昵称</span>
+            <input type="text" value="{$user.nickname}" readonly/>
+        </div>
+        <div class="box1">
+            <span>邮箱</span>
+            <input type="text" value="{$user.mail}" readonly/>
+        </div>
+        <div class="box1">
+            <span>年龄</span>
+            <input type="text" value="{$user.age}岁" readonly/>
+        </div>
+        <div class="box1">
+            <span>性别</span>
+            <php>
+                $sex = $user['sex']==1?'男':'女';
+            </php>
+            <input type="text" value="{$sex}" readonly/>
+        </div>
+        <div class="box1">
+            <span>工资</span>
+            <input type="text" value="{$user.much}元/月" readonly/>
+        </div>
+        <div class="box1">
+            <span>发质</span>
+            <php>
+                $hair = $user['hair']==0?'干':($user['hair']==1?'油':'中');
+            </php>
+            <input type="text" value="{$hair}性" readonly/>
+        </div>
+        <div class="box1">
+            <span>肤质</span>
+            <php>
+                $skin = $user['skin']==0?'干':($user['skin']==1?'油':'中');
+            </php>
+            <input type="text" value="{$skin}性" readonly/>
+        </div>
+        <div class="box1">
+            <span>申请宣言</span>
+            <textarea readonly>{$msg}</textarea>
+        </div>
+        <php>
+            $address = json_decode($user['addr'],true); $name = $address['usr']; $phone = $address['phone']; $addr = $address['address'];
+        </php>
+        <div class="box2">
+            <div class="box1">
+                <span>收件人</span>
+                <input type="text" value="{$name}" readonly/>
+            </div>
+            <div class="box1">
+                <span>收件号码</span>
+                <input type="text" value="{$phone}" readonly/>
+            </div>
+            <div class="box1">
+                <span>收件地址</span>
+                <textarea readonly>{$addr}</textarea>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

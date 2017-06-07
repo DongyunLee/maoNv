@@ -34,8 +34,12 @@ class NewsController extends HomebaseController{
         $post = sp_sql_post($id);
         $tid = I('get.cid');
         $terms = sp_sql_posts('cid:'.$tid.";order:object_id desc;limit:8");
-        $status = M("usr_collection")->where("object_id={$id} AND uid={$uid}")->find();
-        $status = ($status) ? 1 : 0 ;
+        if($uid){
+            $status = M("usr_collection")->where("object_id={$id} AND uid={$uid}")->find();
+            $status = ($status) ? 1 : 0 ;
+        }else {
+            $status = 0;
+        }
 
         $prev = 9999999;
         $next = 0;

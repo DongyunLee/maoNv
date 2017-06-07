@@ -38,11 +38,11 @@
                         <td><b>{$vo.aid}</b></td>
                         <!--<empty name="vo.nickname">-->
                         <td>
-                            <b>{$vo.usr}</b>
+                            <a href="{:U('Apply/user?id='.$vo['uid'].'&aid='.$vo['aid'])}"><b>{$vo.usr}</b></a>
                         </td>
                         <!--<else />-->
                         <td>
-                            <b>{$vo.nickname}</b>
+                            <a href="{:U('Apply/user?id='.$vo['uid'].'&aid='.$vo['aid'])}"><b>{$vo.nickname}</b></a>
                         </td>
                         <!--</empty>-->
                         <td>
@@ -68,13 +68,7 @@
                         </td>
                         <td>
                             <php>
-                                if($vo['status'] == 1){
-                                    $status = '已通过';
-                                }elseif($vo['status'] == 2){
-                                    $status = '已驳回';
-                                }else{
-                                    $status = '待审核';
-                                }
+                                if($vo['status'] == 1){ $status = '已通过'; }elseif($vo['status'] == 2){ $status = '已驳回'; }else{ $status = '待审核'; }
                             </php>
                             {$status}
                         </td>
