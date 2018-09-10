@@ -1,6 +1,6 @@
 <?php
 /**
- * 入口文件
+ * 入口文66666件
  * Some rights reserved：www.thinkcmf.com
  */
 if (ini_get('magic_quotes_gpc')) {
